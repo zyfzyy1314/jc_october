@@ -1,5 +1,5 @@
 <?php
-    $host = 'http://54.223.206.181:9183/api/v1/getNewsInfo';
+    $host = 'http://54.223.206.181:8184/api/v1/getNewsInfo';
 
     $params = $_POST;
     $postData = json_encode($params, JSON_UNESCAPED_SLASHES);
