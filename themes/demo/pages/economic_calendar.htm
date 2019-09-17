@@ -26,7 +26,7 @@ layout = "default"
             </el-row>
         </el-form-item>
 
-        <div v-show="showSearch">
+        <div v-show="showSearch" class="form-left">
             <el-form-item label="重要性">
                 <el-checkbox-group v-model="temp.importance" @change="handleChange(2)">
                     <el-checkbox label="高"> </el-checkbox>
@@ -77,28 +77,17 @@ layout = "default"
                 </el-checkbox>
                 <el-checkbox-group v-model="temp.country" @change="handleCountryChange" :min="1">
                     <el-checkbox label="中国"></el-checkbox>
+                    <el-checkbox label="澳大利亚"></el-checkbox>
                     <el-checkbox label="美国"></el-checkbox>
-                    <el-checkbox label="日本"></el-checkbox>
                     <el-checkbox label="英国"></el-checkbox>
-                    <el-checkbox label="瑞士"></el-checkbox>
+                    <el-checkbox label="日本"></el-checkbox>
+                    <el-checkbox label="意大利"></el-checkbox>
                     <el-checkbox label="德国"></el-checkbox>
-                    <el-checkbox label="西班牙"></el-checkbox>
+                    <el-checkbox label="法国"></el-checkbox>
+                    <el-checkbox label="欧元区"></el-checkbox>
+                    <el-checkbox label="瑞士"></el-checkbox>
                     <el-checkbox label="加拿大"></el-checkbox>
                     <el-checkbox label="新西兰"></el-checkbox>
-                    <el-checkbox label="法国"></el-checkbox>
-                    <el-checkbox label="澳大利亚"></el-checkbox>
-                    <el-checkbox label="意大利"></el-checkbox>
-                    <el-checkbox label="南非"></el-checkbox>
-                    <el-checkbox label="印度尼西亚"></el-checkbox>
-                    <el-checkbox label="欧元区"></el-checkbox>
-                    <el-checkbox label="印度"></el-checkbox>
-                    <el-checkbox label="台湾"></el-checkbox>
-                    <el-checkbox label="新加坡"></el-checkbox>
-                    <el-checkbox label="香港"></el-checkbox>
-                    <el-checkbox label="巴西"></el-checkbox>
-                    <el-checkbox label="韩国"></el-checkbox>
-                    <el-checkbox label="马来西亚"></el-checkbox>
-                    <el-checkbox label="泰国"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 

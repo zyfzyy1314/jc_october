@@ -1,0 +1,6 @@
+﻿.vscode
+/node_modules
+/.env
+/composer.lock
+/storage/
+/u.php

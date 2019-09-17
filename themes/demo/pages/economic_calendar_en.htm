@@ -27,7 +27,7 @@ layout = "default"
             </el-row>
         </el-form-item>
 
-        <div v-show="showSearch">
+        <div v-show="showSearch" class="form-left">
             <el-form-item label="Importance">
                 <el-checkbox-group v-model="temp.importance" @change="handleChange(2)">
                     <el-checkbox label="High"></el-checkbox>
@@ -78,31 +78,17 @@ layout = "default"
                 </el-checkbox>
                 <el-checkbox-group v-model="temp.country" @change="handleCountryChange" :min="1">
                     <el-checkbox label="China"></el-checkbox>
+                    <el-checkbox label="Australia"></el-checkbox>
                     <el-checkbox label="United States"></el-checkbox>
+                    <el-checkbox label="United Kingdom"></el-checkbox>
                     <el-checkbox label="Japan"></el-checkbox>
-                    <el-checkbox label="Britain"></el-checkbox>
-                    <el-checkbox label="Switzerland"></el-checkbox>
+                    <el-checkbox label="Italy"></el-checkbox>
                     <el-checkbox label="Germany"></el-checkbox>
-                    <el-checkbox label="Spain"></el-checkbox>
+                    <el-checkbox label="France"></el-checkbox>
+                    <el-checkbox label="European Union"></el-checkbox>
+                    <el-checkbox label="Switzerland"></el-checkbox>
                     <el-checkbox label="Canada"></el-checkbox>
                     <el-checkbox label="New Zealand"></el-checkbox>
-                    <el-checkbox label="France"></el-checkbox>
-                    <el-checkbox label="Australia"></el-checkbox>
-                    <el-checkbox label="Italy"></el-checkbox>
-                    <el-checkbox label="Euro Zone"></el-checkbox>
-                    <el-checkbox label="Singapore"></el-checkbox>
-                    <el-checkbox label="Greece"></el-checkbox>
-                    <el-checkbox label="Portugal"></el-checkbox>
-                    <el-checkbox label="Brazil"></el-checkbox>
-                    <el-checkbox label="Norway"></el-checkbox>
-                    <el-checkbox label="India"></el-checkbox>
-                    <el-checkbox label="Sweden"></el-checkbox>
-                    <el-checkbox label="Hong Kong"></el-checkbox>
-                    <el-checkbox label="Ireland"></el-checkbox>
-                    <el-checkbox label="Finland"></el-checkbox>
-                    <el-checkbox label="South Afric"></el-checkbox>
-                    <el-checkbox label="Belgium"></el-checkbox>
-                    <el-checkbox label="United Kingdom"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 

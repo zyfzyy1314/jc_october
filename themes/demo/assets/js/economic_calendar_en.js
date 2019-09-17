@@ -1,6 +1,7 @@
-const cityOptions = ['China', 'United States', 'Japan', 'Britain', 'Switzerland', 'Germany', 'Spain', 'Canada', 'New Zealand',
-    'France', 'Australia', 'Italy', 'Euro Zone', 'Singapore', 'Greece', 'Portugal', 'Brazil', 'Norway', 'India', 'Sweden', 'Hong Kong',
-    'Ireland', 'Finland', 'South Afric', 'Belgium', 'United Kingdom']
+let timeZone = String(-new Date().getTimezoneOffset() / 60)
+
+const cityOptions = ['China', 'Australia', 'United States', 'United Kingdom', 'Japan', 'Italy', 'Germany', 'France', 'European Union',
+    'Switzerland', 'Canada', 'New Zealand'];
 
 // var href = location.href;
 // var search = href.substr(href.indexOf("?") + 1);
@@ -33,7 +34,7 @@ new Vue({
                 time: 'Today',
                 importance: ['High', 'Middle', 'Low'],
                 event: ['Financial Events', 'Economic Data'],
-                zone: '8',
+                zone: timeZone,
                 country: cityOptions
             },
             cities: cityOptions,
@@ -53,7 +54,8 @@ new Vue({
                 url_id: '',
                 id: '',
                 language: 'en'
-            }
+            },
+            currentZone: 8
         }
     },
     created() {
@@ -83,6 +85,8 @@ new Vue({
                     _this.tableData = data
                     _this.total = response.Content.total
                     _this.listLoading = false
+
+                    _this.handleChange(3)
                 }
             })
         },
@@ -101,11 +105,12 @@ new Vue({
                 let data = this.tableData
                 for (let i = 0; i < data.length; i++) {
                     let pubTime = new Date(data[i]['date'])
-                    pubTime = new Date(pubTime.valueOf() + this.temp.zone * 60 * 60 * 1000)
+                    pubTime = new Date(pubTime.valueOf() + this.temp.zone * 60 * 60 * 1000 - this.currentZone * 60 * 60 * 1000)
 
                     data[i]['date'] = pubTime.getFullYear() + '-' + (pubTime.getMonth() + 1) + '-' + pubTime.getDate() + ' '
                         + this.zeroPadding(pubTime.getHours(), 2) + ':' + this.zeroPadding(pubTime.getMinutes(), 2) + ':' + this.zeroPadding(pubTime.getSeconds(), 2)
                 }
+                this.currentZone = this.temp.zone
             } else {
                 this.getEconomic()
             }
@@ -136,7 +141,7 @@ new Vue({
                 time: 'Today',
                 importance: ['High', 'Middle', 'Low'],
                 event: ['Financial Events', 'Economic Data'],
-                zone: '0',
+                zone: timeZone,
                 country: cityOptions
             }
 

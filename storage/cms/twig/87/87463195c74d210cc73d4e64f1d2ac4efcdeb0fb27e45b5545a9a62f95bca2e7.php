@@ -60,7 +60,7 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
             </el-row>
         </el-form-item>
 
-        <div v-show=\"showSearch\">
+        <div v-show=\"showSearch\" class=\"form-left\">
             <el-form-item label=\"Importance\">
                 <el-checkbox-group v-model=\"temp.importance\" @change=\"handleChange(2)\">
                     <el-checkbox label=\"High\"></el-checkbox>
@@ -111,31 +111,17 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                 </el-checkbox>
                 <el-checkbox-group v-model=\"temp.country\" @change=\"handleCountryChange\" :min=\"1\">
                     <el-checkbox label=\"China\"></el-checkbox>
+                    <el-checkbox label=\"Australia\"></el-checkbox>
                     <el-checkbox label=\"United States\"></el-checkbox>
+                    <el-checkbox label=\"United Kingdom\"></el-checkbox>
                     <el-checkbox label=\"Japan\"></el-checkbox>
-                    <el-checkbox label=\"Britain\"></el-checkbox>
-                    <el-checkbox label=\"Switzerland\"></el-checkbox>
+                    <el-checkbox label=\"Italy\"></el-checkbox>
                     <el-checkbox label=\"Germany\"></el-checkbox>
-                    <el-checkbox label=\"Spain\"></el-checkbox>
+                    <el-checkbox label=\"France\"></el-checkbox>
+                    <el-checkbox label=\"European Union\"></el-checkbox>
+                    <el-checkbox label=\"Switzerland\"></el-checkbox>
                     <el-checkbox label=\"Canada\"></el-checkbox>
                     <el-checkbox label=\"New Zealand\"></el-checkbox>
-                    <el-checkbox label=\"France\"></el-checkbox>
-                    <el-checkbox label=\"Australia\"></el-checkbox>
-                    <el-checkbox label=\"Italy\"></el-checkbox>
-                    <el-checkbox label=\"Euro Zone\"></el-checkbox>
-                    <el-checkbox label=\"Singapore\"></el-checkbox>
-                    <el-checkbox label=\"Greece\"></el-checkbox>
-                    <el-checkbox label=\"Portugal\"></el-checkbox>
-                    <el-checkbox label=\"Brazil\"></el-checkbox>
-                    <el-checkbox label=\"Norway\"></el-checkbox>
-                    <el-checkbox label=\"India\"></el-checkbox>
-                    <el-checkbox label=\"Sweden\"></el-checkbox>
-                    <el-checkbox label=\"Hong Kong\"></el-checkbox>
-                    <el-checkbox label=\"Ireland\"></el-checkbox>
-                    <el-checkbox label=\"Finland\"></el-checkbox>
-                    <el-checkbox label=\"South Afric\"></el-checkbox>
-                    <el-checkbox label=\"Belgium\"></el-checkbox>
-                    <el-checkbox label=\"United Kingdom\"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -161,32 +147,32 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                             <span>Latest Release
                                 <div class=\"noBold\" v-html=\"props.row.date.slice(0, 10)\">
                                     ";
-        // line 125
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 125), "date", [], "any", false, false, false, 125), "slice", [0 => 0, 1 => 10], "method", false, false, false, 125), "html", null, true);
+        // line 111
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 111), "date", [], "any", false, false, false, 111), "slice", [0 => 0, 1 => 10], "method", false, false, false, 111), "html", null, true);
         echo "</div>
                             </span>
                             <span>Reality
                                 <div class=\"arial_14 redFont\"
                                     v-html=\"props.row.reality == '' ? '--' : props.row.reality\">
                                     ";
-        // line 130
-        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 130), "reality", [], "any", false, false, false, 130) == "")) ? (print ("--")) : (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 130), "reality", [], "any", false, false, false, 130), "html", null, true))));
+        // line 116
+        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 116), "reality", [], "any", false, false, false, 116) == "")) ? (print ("--")) : (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 116), "reality", [], "any", false, false, false, 116), "html", null, true))));
         echo "</div>
                             </span>
                             <span>Forecast
                                 <div class=\"arial_14 noBold\"
                                     v-html=\"props.row.forecast == '' ? '--' : props.row.forecast\">
                                     ";
-        // line 135
-        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 135), "forecast", [], "any", false, false, false, 135) == "")) ? (print ("--")) : (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 135), "forecast", [], "any", false, false, false, 135), "html", null, true))));
+        // line 121
+        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 121), "forecast", [], "any", false, false, false, 121) == "")) ? (print ("--")) : (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 121), "forecast", [], "any", false, false, false, 121), "html", null, true))));
         echo "</div>
                             </span>
                             <span>Previous
                                 <div class=\"arial_14 noBold blackFont\"
                                     v-html=\"props.row.previous == '' ? '--' : props.row.previous\">
                                     ";
-        // line 140
-        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 140), "previous", [], "any", false, false, false, 140) == "")) ? (print ("--")) : (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 140), "previous", [], "any", false, false, false, 140), "html", null, true))));
+        // line 126
+        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 126), "previous", [], "any", false, false, false, 126) == "")) ? (print ("--")) : (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 126), "previous", [], "any", false, false, false, 126), "html", null, true))));
         echo "</div>
                             </span>
                         </div>
@@ -198,8 +184,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                                     <p>Source: <a :href=\"props.row.source_of_report_link\" target=\"_blank\"
                                             style=\"text-decoration: none; cursor: pointer;\"
                                             v-html=\"props.row.source_of_report\">";
-        // line 150
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 150), "source_of_report", [], "any", false, false, false, 150), "html", null, true);
+        // line 136
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 136), "source_of_report", [], "any", false, false, false, 136), "html", null, true);
         echo "</a>
                                     </p>
                                 </div>
@@ -215,8 +201,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                                         <span>Country:</span>
                                         <span v-html=\"props.row.history_country\">
                                             ";
-        // line 164
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 164), "history_country", [], "any", false, false, false, 164), "html", null, true);
+        // line 150
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 150), "history_country", [], "any", false, false, false, 150), "html", null, true);
         echo "
                                         </span>
                                     </div>
@@ -224,8 +210,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                                         <span>Currency:</span>
                                         <span
                                             v-html=\"props.row.history_currency\">";
-        // line 170
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 170), "history_currency", [], "any", false, false, false, 170), "html", null, true);
+        // line 156
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["props"] ?? null), "row", [], "any", false, false, false, 156), "history_currency", [], "any", false, false, false, 156), "html", null, true);
         echo "</span>
                                     </div>
                                 </div>
@@ -246,8 +232,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                                 <el-table-column prop=\"date\" label=\"Release Date\">
                                     <template slot-scope=\"scope\">
                                         <span>";
-        // line 189
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 189), "date_str", [], "any", false, false, false, 189), "html", null, true);
+        // line 175
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 175), "date_str", [], "any", false, false, false, 175), "html", null, true);
         echo "</span>
                                     </template>
                                 </el-table-column>
@@ -256,8 +242,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                                     <template slot-scope=\"scope\">
                                         <span
                                             :style=\"{color: props.row.importance>=3 ? '#48a047' : ''}\">";
-        // line 196
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 196), "reality", [], "any", false, false, false, 196), "html", null, true);
+        // line 182
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 182), "reality", [], "any", false, false, false, 182), "html", null, true);
         echo "</span>
                                     </template>
                                 </el-table-column>
@@ -266,8 +252,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                                     <template slot-scope=\"scope\">
                                         <span
                                             :style=\"{color: props.row.importance>=3 ? '#48a047' : ''}\">";
-        // line 203
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 203), "forecast", [], "any", false, false, false, 203), "html", null, true);
+        // line 189
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 189), "forecast", [], "any", false, false, false, 189), "html", null, true);
         echo "</span>
                                     </template>
                                 </el-table-column>
@@ -276,8 +262,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                                     <template slot-scope=\"scope\">
                                         <span
                                             :style=\"{color: scope.row.importance>=3 ? '#48a047' : ''}\">";
-        // line 210
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 210), "previous", [], "any", false, false, false, 210), "html", null, true);
+        // line 196
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 196), "previous", [], "any", false, false, false, 196), "html", null, true);
         echo "</span>
                                     </template>
                                 </el-table-column>
@@ -298,8 +284,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                 <span v-if=\"temp.time == 'Today' || temp.time == 'Tomorrow'\"
                     :style=\"{color: scope.row.importance>=3 ? '#48a047' : ''}\"
                     v-html=\"scope.row.date.split(' ')[1]\">";
-        // line 229
-        echo twig_escape_filter($this->env, (($__internal_f607aeef2c31a95a7bf963452dff024ffaeb6aafbe4603f9ca3bec57be8633f4 = twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 229), "date", [], "any", false, false, false, 229), "split", [0 => " "], "method", false, false, false, 229)) && is_array($__internal_f607aeef2c31a95a7bf963452dff024ffaeb6aafbe4603f9ca3bec57be8633f4) || $__internal_f607aeef2c31a95a7bf963452dff024ffaeb6aafbe4603f9ca3bec57be8633f4 instanceof ArrayAccess ? ($__internal_f607aeef2c31a95a7bf963452dff024ffaeb6aafbe4603f9ca3bec57be8633f4[1] ?? null) : null), "html", null, true);
+        // line 215
+        echo twig_escape_filter($this->env, (($__internal_f607aeef2c31a95a7bf963452dff024ffaeb6aafbe4603f9ca3bec57be8633f4 = twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 215), "date", [], "any", false, false, false, 215), "split", [0 => " "], "method", false, false, false, 215)) && is_array($__internal_f607aeef2c31a95a7bf963452dff024ffaeb6aafbe4603f9ca3bec57be8633f4) || $__internal_f607aeef2c31a95a7bf963452dff024ffaeb6aafbe4603f9ca3bec57be8633f4 instanceof ArrayAccess ? ($__internal_f607aeef2c31a95a7bf963452dff024ffaeb6aafbe4603f9ca3bec57be8633f4[1] ?? null) : null), "html", null, true);
         echo "</span>
                 <span v-else v-html=\"`\${scope.row.date}(\${formatWeekDay(scope.row.date)})`\"></span>
             </template>
@@ -309,8 +295,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
             <template slot-scope=\"scope\">
                 <span :style=\"{color: scope.row.importance>=3 ? '#48a047' : ''}\"
                     v-html=\"scope.row.country\">";
-        // line 237
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 237), "country", [], "any", false, false, false, 237), "html", null, true);
+        // line 223
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 223), "country", [], "any", false, false, false, 223), "html", null, true);
         echo "</span>
             </template>
         </el-table-column>
@@ -319,8 +305,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
             <template slot-scope=\"scope\">
                 <span :style=\"{color: scope.row.importance>=3 ? '#48a047' : ''}\"
                     v-html=\"scope.row.title\">";
-        // line 244
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 244), "title", [], "any", false, false, false, 244), "html", null, true);
+        // line 230
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 230), "title", [], "any", false, false, false, 230), "html", null, true);
         echo "</span>
             </template>
         </el-table-column>
@@ -336,12 +322,12 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
             <template slot-scope=\"scope\">
                 <span :style=\"{color: scope.row.importance>=3 ? '#48a047' : ''}\"
                     v-html=\"scope.row.previous\">";
-        // line 258
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 258), "previous", [], "any", false, false, false, 258), "html", null, true);
+        // line 244
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 244), "previous", [], "any", false, false, false, 244), "html", null, true);
         echo "
                     ";
-        // line 259
-        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 259), "unit", [], "any", false, false, false, 259) != "null")) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 259), "unit", [], "any", false, false, false, 259), "html", null, true))) : (print ("")));
+        // line 245
+        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 245), "unit", [], "any", false, false, false, 245) != "null")) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 245), "unit", [], "any", false, false, false, 245), "html", null, true))) : (print ("")));
         echo "</span>
             </template>
         </el-table-column>
@@ -350,12 +336,12 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
             <template slot-scope=\"scope\">
                 <span v-if=\"scope.row.forecast != null\" :style=\"{color: scope.row.importance>=3 ? '#48a047' : ''}\"
                     v-html=\"scope.row.forecast\">";
-        // line 266
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 266), "forecast", [], "any", false, false, false, 266), "html", null, true);
+        // line 252
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 252), "forecast", [], "any", false, false, false, 252), "html", null, true);
         echo "
                     ";
-        // line 267
-        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 267), "unit", [], "any", false, false, false, 267) != "null")) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 267), "unit", [], "any", false, false, false, 267), "html", null, true))) : (print ("")));
+        // line 253
+        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 253), "unit", [], "any", false, false, false, 253) != "null")) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 253), "unit", [], "any", false, false, false, 253), "html", null, true))) : (print ("")));
         echo "</span>
                 <span v-else>---</span>
             </template>
@@ -365,12 +351,12 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
             <template slot-scope=\"scope\">
                 <span v-if=\"scope.row.reality != null\" :style=\"{color: scope.row.importance>=3 ? '#48a047' : ''}\"
                     v-html=\"scope.row.reality\">";
-        // line 275
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 275), "reality", [], "any", false, false, false, 275), "html", null, true);
+        // line 261
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 261), "reality", [], "any", false, false, false, 261), "html", null, true);
         echo "
                     ";
-        // line 276
-        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 276), "unit", [], "any", false, false, false, 276) != "null")) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 276), "unit", [], "any", false, false, false, 276), "html", null, true))) : (print ("")));
+        // line 262
+        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 262), "unit", [], "any", false, false, false, 262) != "null")) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 262), "unit", [], "any", false, false, false, 262), "html", null, true))) : (print ("")));
         echo "</span>
                 <span v-else>---</span>
             </template>
@@ -379,8 +365,8 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                 <template slot-scope=\"scope\">
                     <span
                         style=\"color:rgb(59,164,77);border:1px solid rgb(59,164,77);padding:2px 5px\">";
-        // line 283
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 283), "effect", [], "any", false, false, false, 283), "html", null, true);
+        // line 269
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["scope"] ?? null), "row", [], "any", false, false, false, 269), "effect", [], "any", false, false, false, 269), "html", null, true);
         echo "</span>
                 </template>
             </el-table-column> -->
@@ -393,23 +379,23 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
 </div>
 
 ";
-        // line 294
+        // line 280
         echo $this->env->getExtension('Cms\Twig\Extension')->startBlock('scripts'        );
-        // line 295
+        // line 281
         echo "<script src=\"";
         echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/javascript/vue.js");
         echo "\"></script>
 <script src=\"";
-        // line 296
+        // line 282
         echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/javascript/element-index.js");
         echo "\"></script>
 <script src=\"";
-        // line 297
+        // line 283
         echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/javascript/echarts.min.js");
         echo "\"></script>
 <script type=\"text/javascript\" src=\"/themes/demo/assets/js/economic_calendar_en.js\"></script>
 ";
-        // line 294
+        // line 280
         echo $this->env->getExtension('Cms\Twig\Extension')->endBlock(true        );
     }
 
@@ -425,7 +411,7 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
 
     public function getDebugInfo()
     {
-        return array (  413 => 294,  408 => 297,  404 => 296,  399 => 295,  397 => 294,  383 => 283,  373 => 276,  369 => 275,  358 => 267,  354 => 266,  344 => 259,  340 => 258,  323 => 244,  313 => 237,  302 => 229,  280 => 210,  270 => 203,  260 => 196,  250 => 189,  228 => 170,  219 => 164,  202 => 150,  189 => 140,  181 => 135,  173 => 130,  165 => 125,  37 => 1,);
+        return array (  399 => 280,  394 => 283,  390 => 282,  385 => 281,  383 => 280,  369 => 269,  359 => 262,  355 => 261,  344 => 253,  340 => 252,  330 => 245,  326 => 244,  309 => 230,  299 => 223,  288 => 215,  266 => 196,  256 => 189,  246 => 182,  236 => 175,  214 => 156,  205 => 150,  188 => 136,  175 => 126,  167 => 121,  159 => 116,  151 => 111,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -454,7 +440,7 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
             </el-row>
         </el-form-item>
 
-        <div v-show=\"showSearch\">
+        <div v-show=\"showSearch\" class=\"form-left\">
             <el-form-item label=\"Importance\">
                 <el-checkbox-group v-model=\"temp.importance\" @change=\"handleChange(2)\">
                     <el-checkbox label=\"High\"></el-checkbox>
@@ -505,31 +491,17 @@ class __TwigTemplate_dfbb62ff138c1cebf9e0fadacec28135b8627df27ea8f036c7c717a0257
                 </el-checkbox>
                 <el-checkbox-group v-model=\"temp.country\" @change=\"handleCountryChange\" :min=\"1\">
                     <el-checkbox label=\"China\"></el-checkbox>
+                    <el-checkbox label=\"Australia\"></el-checkbox>
                     <el-checkbox label=\"United States\"></el-checkbox>
+                    <el-checkbox label=\"United Kingdom\"></el-checkbox>
                     <el-checkbox label=\"Japan\"></el-checkbox>
-                    <el-checkbox label=\"Britain\"></el-checkbox>
-                    <el-checkbox label=\"Switzerland\"></el-checkbox>
+                    <el-checkbox label=\"Italy\"></el-checkbox>
                     <el-checkbox label=\"Germany\"></el-checkbox>
-                    <el-checkbox label=\"Spain\"></el-checkbox>
+                    <el-checkbox label=\"France\"></el-checkbox>
+                    <el-checkbox label=\"European Union\"></el-checkbox>
+                    <el-checkbox label=\"Switzerland\"></el-checkbox>
                     <el-checkbox label=\"Canada\"></el-checkbox>
                     <el-checkbox label=\"New Zealand\"></el-checkbox>
-                    <el-checkbox label=\"France\"></el-checkbox>
-                    <el-checkbox label=\"Australia\"></el-checkbox>
-                    <el-checkbox label=\"Italy\"></el-checkbox>
-                    <el-checkbox label=\"Euro Zone\"></el-checkbox>
-                    <el-checkbox label=\"Singapore\"></el-checkbox>
-                    <el-checkbox label=\"Greece\"></el-checkbox>
-                    <el-checkbox label=\"Portugal\"></el-checkbox>
-                    <el-checkbox label=\"Brazil\"></el-checkbox>
-                    <el-checkbox label=\"Norway\"></el-checkbox>
-                    <el-checkbox label=\"India\"></el-checkbox>
-                    <el-checkbox label=\"Sweden\"></el-checkbox>
-                    <el-checkbox label=\"Hong Kong\"></el-checkbox>
-                    <el-checkbox label=\"Ireland\"></el-checkbox>
-                    <el-checkbox label=\"Finland\"></el-checkbox>
-                    <el-checkbox label=\"South Afric\"></el-checkbox>
-                    <el-checkbox label=\"Belgium\"></el-checkbox>
-                    <el-checkbox label=\"United Kingdom\"></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 

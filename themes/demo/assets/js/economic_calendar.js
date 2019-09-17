@@ -1,5 +1,6 @@
-const cityOptions = ['中国', '美国', '日本', '英国', '瑞士', '德国', '西班牙', '加拿大', '新西兰', '法国', '澳大利亚', '意大利',
-    '南非', '印度尼西亚', '欧元区', '印度', '台湾', '新加坡', '香港', '巴西', '韩国', '马来西亚', '泰国']
+let timeZone = String(-new Date().getTimezoneOffset() / 60)
+
+const cityOptions = ['中国', '澳大利亚', '美国', '英国', '日本', '意大利', '德国', '法国', '欧元区', '瑞士', '加拿大', '新西兰'];
 
 // var href = location.href;
 // var search = href.substr(href.indexOf("?") + 1);
@@ -32,7 +33,7 @@ new Vue({
                 time: '今天',
                 importance: ['高', '中', '低'],
                 event: ['财经事件', '财经数据'],
-                zone: '8',
+                zone: timeZone,
                 country: cityOptions
             },
             cities: cityOptions,
@@ -52,7 +53,8 @@ new Vue({
                 url_id: '',
                 id: '',
                 language: 'cn'
-            }
+            },
+            currentZone: 8
         }
     },
     created() {
@@ -82,6 +84,8 @@ new Vue({
                     _this.tableData = data
                     _this.total = response.Content.total
                     _this.listLoading = false
+
+                    _this.handleChange(3)
                 }
             })
         },
@@ -100,11 +104,12 @@ new Vue({
                 let data = this.tableData
                 for (let i = 0; i < data.length; i++) {
                     let pubTime = new Date(data[i]['date'])
-                    pubTime = new Date(pubTime.valueOf() + this.temp.zone * 60 * 60 * 1000)
+                    pubTime = new Date(pubTime.valueOf() + this.temp.zone * 60 * 60 * 1000 - this.currentZone * 60 * 60 * 1000)
 
                     data[i]['date'] = pubTime.getFullYear() + '-' + (pubTime.getMonth() + 1) + '-' + pubTime.getDate() + ' '
                         + this.zeroPadding(pubTime.getHours(), 2) + ':' + this.zeroPadding(pubTime.getMinutes(), 2) + ':' + this.zeroPadding(pubTime.getSeconds(), 2)
                 }
+                this.currentZone = this.temp.zone
             } else {
                 this.getEconomic()
             }
@@ -135,7 +140,7 @@ new Vue({
                 time: '今天',
                 importance: ['高', '中', '低'],
                 event: ['财经事件', '财经数据'],
-                zone: '0',
+                zone: timeZone,
                 country: cityOptions
             }
 

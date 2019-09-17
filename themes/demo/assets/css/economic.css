@@ -129,3 +129,7 @@
 .el-table__expanded-cell[class*=cell] {
     padding: 20px 20px !important;
 }
+
+.form-left {
+    margin-left: 15px;
+}
