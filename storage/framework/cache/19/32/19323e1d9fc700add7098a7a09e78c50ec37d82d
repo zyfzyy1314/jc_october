@@ -1,0 +1,27 @@
+1568713066a:1:{s:10:"ticker.htm";a:8:{s:8:"fileName";s:10:"ticker.htm";s:7:"content";s:501:"title = "tiker"
+url = "/ticker"
+layout = "default"
+==
+<link href="{{ 'assets/css/widget.css'|theme }}" rel="stylesheet">
+<div id="container" class="default-marquee" style="border-radius:0;">
+    <ul id="widgetContainer">
+
+    </ul>
+</div>
+
+{% put scripts %}
+<script src="{{ 'assets/javascript/jquery.kxbdMarquee.js'|theme }}"></script>
+<script src="{{ 'assets/javascript/jquery.marquee.js'|theme }}"></script>
+<script type="text/javascript" src="/themes/demo/assets/js/tiker.js"></script>
+{% endput %}";s:5:"mtime";i:1568712346;s:6:"markup";s:447:"<link href="{{ 'assets/css/widget.css'|theme }}" rel="stylesheet">
+<div id="container" class="default-marquee" style="border-radius:0;">
+    <ul id="widgetContainer">
+
+    </ul>
+</div>
+
+{% put scripts %}
+<script src="{{ 'assets/javascript/jquery.kxbdMarquee.js'|theme }}"></script>
+<script src="{{ 'assets/javascript/jquery.marquee.js'|theme }}"></script>
+<script type="text/javascript" src="/themes/demo/assets/js/tiker.js"></script>
+{% endput %}";s:4:"code";N;s:5:"title";s:5:"tiker";s:3:"url";s:7:"/ticker";s:6:"layout";s:7:"default";}}
