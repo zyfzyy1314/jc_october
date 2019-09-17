@@ -359,3 +359,63 @@ Stack trace:
 #48 /Users/kekaiwang/Sites/jc_october/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #49 /Users/kekaiwang/Sites/jc_october/index.php(43): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #50 {main}  
+[2019-09-17 09:29:35] development.ERROR: ErrorException: file_put_contents(D:\Object\jc_october\storage\framework/sessions/AN2qTebdaikGJuSp9Kr4TJt944f1jy35BGCr1piB): failed to open stream: No such file or directory in D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php:122
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', 'D:\\Object\\jc_oc...', 122, Array)
+#1 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php(122): file_put_contents('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', 2)
+#2 D:\Object\jc_october\vendor\october\rain\src\Filesystem\Filesystem.php(217): Illuminate\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#3 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\FileSessionHandler.php(83): October\Rain\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#4 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Store.php(128): Illuminate\Session\FileSessionHandler->write('AN2qTebdaikGJuS...', 'a:3:{s:6:"_toke...')
+#5 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(87): Illuminate\Session\Store->save()
+#6 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(218): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#7 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(189): Illuminate\Foundation\Http\Kernel->terminateMiddleware(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#8 D:\Object\jc_october\index.php(48): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#9 {main}  
+[2019-09-17 09:29:55] development.ERROR: ErrorException: file_put_contents(D:\Object\jc_october\storage\framework/sessions/AN2qTebdaikGJuSp9Kr4TJt944f1jy35BGCr1piB): failed to open stream: No such file or directory in D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php:122
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', 'D:\\Object\\jc_oc...', 122, Array)
+#1 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php(122): file_put_contents('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', 2)
+#2 D:\Object\jc_october\vendor\october\rain\src\Filesystem\Filesystem.php(217): Illuminate\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#3 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\FileSessionHandler.php(83): October\Rain\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#4 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Store.php(128): Illuminate\Session\FileSessionHandler->write('AN2qTebdaikGJuS...', 'a:3:{s:6:"_toke...')
+#5 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(87): Illuminate\Session\Store->save()
+#6 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(218): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#7 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(189): Illuminate\Foundation\Http\Kernel->terminateMiddleware(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#8 D:\Object\jc_october\index.php(48): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#9 {main}  
+[2019-09-17 09:30:09] development.ERROR: ErrorException: file_put_contents(D:\Object\jc_october\storage\framework/sessions/AN2qTebdaikGJuSp9Kr4TJt944f1jy35BGCr1piB): failed to open stream: No such file or directory in D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php:122
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', 'D:\\Object\\jc_oc...', 122, Array)
+#1 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php(122): file_put_contents('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', 2)
+#2 D:\Object\jc_october\vendor\october\rain\src\Filesystem\Filesystem.php(217): Illuminate\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#3 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\FileSessionHandler.php(83): October\Rain\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#4 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Store.php(128): Illuminate\Session\FileSessionHandler->write('AN2qTebdaikGJuS...', 'a:3:{s:6:"_toke...')
+#5 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(87): Illuminate\Session\Store->save()
+#6 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(218): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#7 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(189): Illuminate\Foundation\Http\Kernel->terminateMiddleware(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#8 D:\Object\jc_october\index.php(48): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#9 {main}  
+[2019-09-17 09:30:15] development.ERROR: ErrorException: file_put_contents(D:\Object\jc_october\storage\framework/sessions/AN2qTebdaikGJuSp9Kr4TJt944f1jy35BGCr1piB): failed to open stream: No such file or directory in D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php:122
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', 'D:\\Object\\jc_oc...', 122, Array)
+#1 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php(122): file_put_contents('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', 2)
+#2 D:\Object\jc_october\vendor\october\rain\src\Filesystem\Filesystem.php(217): Illuminate\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#3 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\FileSessionHandler.php(83): October\Rain\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#4 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Store.php(128): Illuminate\Session\FileSessionHandler->write('AN2qTebdaikGJuS...', 'a:3:{s:6:"_toke...')
+#5 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(87): Illuminate\Session\Store->save()
+#6 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(218): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#7 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(189): Illuminate\Foundation\Http\Kernel->terminateMiddleware(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#8 D:\Object\jc_october\index.php(48): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#9 {main}  
+[2019-09-17 09:32:38] development.ERROR: ErrorException: file_put_contents(D:\Object\jc_october\storage\framework/sessions/AN2qTebdaikGJuSp9Kr4TJt944f1jy35BGCr1piB): failed to open stream: No such file or directory in D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php:122
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', 'D:\\Object\\jc_oc...', 122, Array)
+#1 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Filesystem\Filesystem.php(122): file_put_contents('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', 2)
+#2 D:\Object\jc_october\vendor\october\rain\src\Filesystem\Filesystem.php(217): Illuminate\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#3 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\FileSessionHandler.php(83): October\Rain\Filesystem\Filesystem->put('D:\\Object\\jc_oc...', 'a:3:{s:6:"_toke...', true)
+#4 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Store.php(128): Illuminate\Session\FileSessionHandler->write('AN2qTebdaikGJuS...', 'a:3:{s:6:"_toke...')
+#5 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(87): Illuminate\Session\Store->save()
+#6 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(218): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#7 D:\Object\jc_october\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(189): Illuminate\Foundation\Http\Kernel->terminateMiddleware(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#8 D:\Object\jc_october\index.php(48): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#9 {main}  
