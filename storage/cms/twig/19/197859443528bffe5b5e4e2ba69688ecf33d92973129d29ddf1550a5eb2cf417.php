@@ -64,7 +64,7 @@ class __TwigTemplate_d68a78857266411f0f4693a7bf599790808f2d981bdad5d7b23d43b21ed
         echo "\" rel=\"stylesheet\">
     <link href=\"";
         // line 14
-        echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/css/theme.css");
+        echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/css/theme.css?v=334455");
         echo "\" rel=\"stylesheet\">
     ";
         // line 15
@@ -170,7 +170,7 @@ class __TwigTemplate_d68a78857266411f0f4693a7bf599790808f2d981bdad5d7b23d43b21ed
     <meta name=\"generator\" content=\"OctoberCMS\">
     <link rel=\"icon\" type=\"image/png\" href=\"{{ 'assets/images/october.png'|theme }}\">
     <link href=\"{{ 'assets/css/vendor.css'|theme }}\" rel=\"stylesheet\">
-    <link href=\"{{ 'assets/css/theme.css'|theme }}\" rel=\"stylesheet\">
+    <link href=\"{{ 'assets/css/theme.css?v=334455'|theme }}\" rel=\"stylesheet\">
     {% styles %}
 </head>
 

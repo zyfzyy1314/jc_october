@@ -47,7 +47,7 @@ class __TwigTemplate_8e964bd9cc7cf066c85f90835d8b09885e39c955ddd5e3ec5650d4f115a
             <a class=\"navbar-brand\" href=\"";
         // line 11
         echo $this->extensions['Cms\Twig\Extension']->pageFilter("home");
-        echo "\">October Demo</a>
+        echo "\">Financial news</a>
         </div>
         <div class=\"collapse navbar-collapse navbar-main-collapse\">
             <ul class=\"nav navbar-nav\">
@@ -208,7 +208,7 @@ class __TwigTemplate_8e964bd9cc7cf066c85f90835d8b09885e39c955ddd5e3ec5650d4f115a
                 <span class=\"icon-bar\"></span>
                 <span class=\"icon-bar\"></span>
             </button>
-            <a class=\"navbar-brand\" href=\"{{ 'home'|page }}\">October Demo</a>
+            <a class=\"navbar-brand\" href=\"{{ 'home'|page }}\">Financial news</a>
         </div>
         <div class=\"collapse navbar-collapse navbar-main-collapse\">
             <ul class=\"nav navbar-nav\">
