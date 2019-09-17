@@ -1,0 +1,131 @@
+.market {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.el-table th {
+    /* color: #ba9b5b; */
+	color:#000000;
+}
+
+.el-table--mini, .el-table--small, .el-table__expand-icon {
+    font-size: 12px;
+}
+
+.el-table {
+    font-size: 12px !important;
+}
+
+.releaseInfo {
+    border-top: 1px solid #DADADA;
+    border-bottom: 1px solid #DADADA;
+    margin-top: 30px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.noBold {
+    font-weight: normal !important;
+}
+
+.releaseInfo span {
+    display: inline-block;
+    width: 18%;
+    padding-right: 10px;
+    line-height: 30px;
+}
+
+.releaseInfo SPAN:first-child {
+    width: 25%;
+    border-right: 1px solid #DADADA;
+    margin-right: 20px;
+    padding-left: 0;
+}
+
+.overViewBox.event {
+    line-height: 16px;
+    height: auto;
+    min-height: 0;
+    margin: 17px 0 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #DADADA;
+}
+
+/* .overViewBox {
+    position: relative;
+} */
+
+.overViewBox.event .left {
+    display: block;
+    width: 70%;
+    padding-top: 0;
+    float: left;
+    padding-right: 19px;
+}
+
+.overViewBox .left {
+    -webkit-box-align: start;
+    align-items: flex-start;
+    flex: 1;
+    padding: 5px 5px 2px 0;
+}
+
+.overViewBox.event .right {
+    width: 30%;
+    height: auto;
+    border-left: 1px solid #DADADA;
+    padding-left: 19px;
+    float: right;
+}
+
+.overViewBox.event .right DIV {
+    display: table-row;
+}
+
+.overViewBox.event .right SPAN:first-child {
+    max-width: 89px;
+    min-width: 47px;
+    padding: 8px 7px 0 0;
+}
+
+.overViewBox.event .right SPAN {
+    display: table-cell;
+}
+
+.clear {
+    clear: both;
+}
+
+.historyTbl th:nth-child(2) {
+    min-width: 250px;
+}
+
+.historyTbl th:nth-child(3) {
+    min-width: 100px;
+}
+
+.historyTbl th:nth-child(4) {
+    min-width: 100px;
+}
+
+.historyTbl th:nth-child(5) {
+    min-width: 100px;
+}
+
+.historyTbl th {
+    border-bottom: 1px solid #EBEEF5;
+}
+
+/* .history-data {
+    border-bottom: 1px solid #EBEEF5;
+} */
+
+.show-margin:first-child {
+    margin-left: -150px !important;
+}
+
+.el-table__expanded-cell[class*=cell] {
+    padding: 20px 20px !important;
+}

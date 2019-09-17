@@ -1,0 +1,36 @@
+1568690729a:1:{s:11:"news_en.htm";a:8:{s:8:"fileName";s:11:"news_en.htm";s:7:"content";s:555:"title = "news"
+url = "/news_en"
+layout = "default"
+==
+
+<link href="{{ 'assets/css/news.css'|theme }}" rel="stylesheet">
+
+<div class="market">
+    <ul class="dateBox">
+
+    </ul>
+
+    <button type="button" class="el-button more gold el-button--primary el-button--small" id="loadMore">
+        <img id="loading" src="/themes/demo/assets/css/loading.gif" style="width: 14px; display: none;" />
+        <span>load more</span>
+    </button>
+</div>
+
+{% put scripts %}
+<script type="text/javascript" src="/themes/demo/assets/js/news_en.js"></script>
+{% endput %}";s:5:"mtime";i:1568687521;s:6:"markup";s:500:"<link href="{{ 'assets/css/news.css'|theme }}" rel="stylesheet">
+
+<div class="market">
+    <ul class="dateBox">
+
+    </ul>
+
+    <button type="button" class="el-button more gold el-button--primary el-button--small" id="loadMore">
+        <img id="loading" src="/themes/demo/assets/css/loading.gif" style="width: 14px; display: none;" />
+        <span>load more</span>
+    </button>
+</div>
+
+{% put scripts %}
+<script type="text/javascript" src="/themes/demo/assets/js/news_en.js"></script>
+{% endput %}";s:4:"code";N;s:5:"title";s:4:"news";s:3:"url";s:8:"/news_en";s:6:"layout";s:7:"default";}}

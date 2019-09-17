@@ -1,0 +1,132 @@
+.market {
+    margin-top: 10px;
+    width: 80%;
+    margin: 0 auto;
+    min-height: 800px;
+}
+
+.nowTime {
+    float: right;
+    font-size: 12px;
+    margin-top: -10px;
+}
+    
+.dateBox {
+    position: relative;
+    padding-top: 10px;
+}
+
+/* .market-cn .dateBox:before {
+    content: '';
+    width: 1px;
+    background: #e5e5e5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 47px;
+} */
+
+ul {
+    list-style: none;
+    padding-left: 0px;
+}
+    
+.date {
+    position: absolute;
+    top: -10px;
+    background-color: #fff;
+}
+
+.fontW {
+    font-weight: bold;
+}
+        
+/* &:before 
+    content ''
+    width 1px 
+    background rgb(229,229,229)
+    position absolute
+    top 0
+    bottom 0 
+    left 9px */
+.timeBox {
+    padding-left: 2px;
+    display: flex;
+    align-items: center;
+}
+        
+.timeIcon {
+    position: relative;
+    z-index: 10;
+    background-color: #fff;
+}
+       
+.time {
+    margin: 0 30px 0 20px;
+}
+        
+.text {
+    border-bottom: 1px solid rgb(229,229,229);
+    padding: 20px 0;
+    width: 100%;
+}
+        
+.more {
+    background:rgba(245,245,245,1);
+    margin-top: 30px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+}
+
+.el-button {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: center;
+    box-sizing: border-box;
+    outline: 0;
+    margin: 0;
+    transition: .1s;
+}
+
+.icon-password:before {
+    content: "\E90E";
+    color: #ba9b5b;
+}
+
+.icon-password {
+    /* font-family: 'icomoon' !important; */
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+.color-red {
+    color: red;
+}
+
+.title-en {
+    color: #1256A0;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.author-en {
+    font-weight: bold;
+    color: gray;
+}
+
+.newsEn {
+    font-size: 14px;
+}
+
+.content-en {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}

@@ -1,0 +1,21 @@
+title = "news"
+url = "/news_en"
+layout = "default"
+==
+
+<link href="{{ 'assets/css/news.css'|theme }}" rel="stylesheet">
+
+<div class="market">
+    <ul class="dateBox">
+
+    </ul>
+
+    <button type="button" class="el-button more gold el-button--primary el-button--small" id="loadMore">
+        <img id="loading" src="/themes/demo/assets/css/loading.gif" style="width: 14px; display: none;" />
+        <span>load more</span>
+    </button>
+</div>
+
+{% put scripts %}
+<script type="text/javascript" src="/themes/demo/assets/js/news_en.js"></script>
+{% endput %}
