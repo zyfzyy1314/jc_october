@@ -1,6 +1,6 @@
 ﻿.vscode
 /node_modules
-# /.env
+/.env
 /composer.lock
-# /storage/
+/storage/
 /u.php
