@@ -1,42 +1,36 @@
 <?php
-    $host = 'http://54.223.206.181:8184/api/v1/getNewsInfo';
+    //包含Eloquent的初始化文件
+    include './db.php';
+    include './helpers.php';
 
-    $params = $_POST;
-    $postData = json_encode($params, JSON_UNESCAPED_SLASHES);
+    use Illuminate\Database\Capsule\Manager as DB;
 
-    $getData = http_build_query($params);
-
-    $header [] =  'Content-Type: application/json';
-    array_push($header, 'accept: application/json');
-
-    $method = $_SERVER ['REQUEST_METHOD'];
+    $data = $_POST;
     
-    $ch = curl_init();
-
-    curl_setopt_array($ch, array(
-        CURLOPT_URL => $method == 'GET' ? ($host . '?' . $getData) : $host,
-        CURLOPT_RETURNTRANSFER => 1, //设定返回字符串
-        CURLOPT_HEADER => 0, //不返回头部信息
-        CURLOPT_CONNECTTIMEOUT => 60, //超时时间
-    ));
-
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-
-    if ($method == 'POST') {
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+    if (empty($data)) {
+        return false;
     }
 
-    if (stristr($host, 'https://')) {
-        //跳过SSL验证
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, '0');
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, '0');
-    }
+    $page = $data ['page'];
+    $limit = $data ['limit'];
 
-    // 处理返回信息
-    $outPut = curl_exec($ch);
+    $order = $data ['language'] == 'cn' ? 'publishDate' : 'outId';
 
-    // 关闭请求
-    curl_close($ch);
+    $table = DB::table('economic_news_' . $data ['language']);
 
-    echo json_encode(json_decode($outPut, true));
+    $total = $table
+        ->where('status', 1)
+        ->where(function ($query) use ($data) {
+            if ($data ['language'] == 'cn') {
+                $query->where('source', $data ['source']);
+            }
+        })
+        ->count();
+
+    $List = $table
+        ->orderBy($order, 'desc')
+        ->skip(($page - 1) * $limit)
+        ->take($limit)
+        ->get();
+
+    echo json_encode(['Status' => 200, 'Content' => ['total' => $total, 'data' => $List]]);

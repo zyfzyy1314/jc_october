@@ -1,42 +1,43 @@
 <?php
-    $host = 'http://54.223.206.181:8184/api/v1/getNewsHistory';
+    //包含Eloquent的初始化文件
+    include './db.php';
+    include './helpers.php';
 
-    $params = $_POST;
-    $postData = json_encode($params, JSON_UNESCAPED_SLASHES);
+    use Illuminate\Database\Capsule\Manager as DB;
 
-    $getData = http_build_query($params);
-
-    $header [] =  'Content-Type: application/json';
-    array_push($header, 'accept: application/json');
-
-    $method = $_SERVER ['REQUEST_METHOD'];
+    $data = $_POST;
     
-    $ch = curl_init();
-
-    curl_setopt_array($ch, array(
-        CURLOPT_URL => $method == 'GET' ? ($host . '?' . $getData) : $host,
-        CURLOPT_RETURNTRANSFER => 1, //设定返回字符串
-        CURLOPT_HEADER => 0, //不返回头部信息
-        CURLOPT_CONNECTTIMEOUT => 60, //超时时间
-    ));
-
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-
-    if ($method == 'POST') {
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+    if (empty($data)) {
+        return false;
     }
 
-    if (stristr($host, 'https://')) {
-        //跳过SSL验证
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, '0');
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, '0');
+    $chart = DB::table('economic_history_data')
+        ->where('url_id', $data['url_id'])
+        ->orderBy('date', 'asc')
+        ->groupBy(DB::raw('left(date, 10)'))
+        ->get([
+            'id',
+            'date_str',
+            'reality',
+            'date',
+            'date_mark'
+        ]);
+
+    $chartList = [];
+
+    if ($chart) {
+        $chart = object2array($chart);
+
+        $chartsTime = [];
+        $chartsData = [];
+
+        foreach($chart as $key => $value) {
+            $chartsTime [$key] = substr($value ['date'], 0, 10);
+            $chartsData [$key] = preg_replace( '/[^0-9\-. ]/i', '', $value['reality']);
+        }
+
+        $chartList ['time'] = $chartsTime;
+        $chartList ['data'] = $chartsData;
     }
 
-    // 处理返回信息
-    $outPut = curl_exec($ch);
-
-    // 关闭请求
-    curl_close($ch);
-
-    echo json_encode(json_decode($outPut, true));
+    echo json_encode(['Status' => 200, 'chart' => $chartList]);

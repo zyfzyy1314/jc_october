@@ -77,7 +77,7 @@ new Vue({
                 dataType: "json",
                 async: true,
                 success: function (response) {
-                    var data = response.Content.data
+                    var data = response.Content
                     data.forEach(function (item, key) {
                         item.date = item.date.replace(/\-/g, '/')
                     })
@@ -164,10 +164,12 @@ new Vue({
             return week[date]
         },
         rowExpand(row, expandedRows) {
-            this.historyTemp.id = row.id
-            this.historyTemp.url_id = row.url_id
+            if (expandedRows != '') {
+                this.historyTemp.id = row.id
+                this.historyTemp.url_id = row.url_id
 
-            this.getHistoryInfo()
+                this.getHistoryInfo()
+            }
         },
         getHistoryInfo() {
             this.historyLoading = true
