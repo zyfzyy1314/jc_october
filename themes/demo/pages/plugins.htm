@@ -5,12 +5,6 @@ is_hidden = 0
 
 [demoTodo]
 max = 4
-
-[blogRssFeed]
-sortOrder = "created_at desc"
-postsPerPage = 10
-blogPage = "blog/post"
-postPage = "blog/post"
 ==
 <div class="jumbotron title-js">
     <div class="container">
@@ -28,16 +22,15 @@ postPage = "blog/post"
     {% component 'demoTodo' %}
 </div>
 
-<div class="container">
-
-</div>
-
 <!-- Page Explanation -->
 <div class="container">{% partial "explain/plugins.htm" %}</div>
 
 <br />
 
 <div class="text-center">
-    <p><a target="_blank" href="http://octobercms.com/docs" class="btn btn-lg btn-default">Learn more at October's
-            Documentation</a></p>
+    <p>
+        <a target="_blank" href="http://octobercms.com/docs" class="btn btn-lg btn-default">
+            Learn more at October's Documentation
+        </a>
+    </p>
 </div>

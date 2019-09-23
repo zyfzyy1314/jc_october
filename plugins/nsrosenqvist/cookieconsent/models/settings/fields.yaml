@@ -1,0 +1,74 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    message:
+        label: Message
+        type: text
+        default: This website uses cookies to ensure you get the best experience on our website
+        comment: The message shown by the plugin.
+
+    dismiss:
+        label: Dismiss Text
+        type: text
+        default: Got it!
+        comment: The text used on the dismiss button.
+        span: auto
+
+    learnMore:
+        label: Learn More Link Text
+        type: text
+        default: More info
+        comment: The text shown on the link to the cookie policy (requires the link option to also be set)
+        span: auto
+
+    link:
+        label: Link
+        type: text
+        comment: The url of your cookie policy. If not set, the link is hidden.
+        span: auto
+
+    container:
+        label: CSS-selector for container
+        type: text
+        comment: The element you want the Cookie Consent notification to be appended to. If not set, the Cookie Consent plugin is appended to the body.
+        span: auto
+
+    theme:
+        label: Theme
+        type: text
+        default: light-floating
+        comment: The Cookie Consent theme to use (light-floating, dark-floating, light-bottom, dark-bottom, light-top, dark-top). If you wish to use your own CSS instead, specify the URL of your CSS file. e.g. styles/my_custom_theme.css. This can be a relative or absolute URL. To stop Cookie Consent from loading CSS at all, specify false.
+
+    popup_background:
+        label: Popup background
+        type: colorpicker
+        default: "000"
+        comment: Color of the popup background.
+
+    button_background:
+        label: Button background
+        type: colorpicker
+        default: "f1d600"
+        comment: Color of the buttons.
+
+    path:
+        label: Path
+        type: text
+        default: /
+        comment: The path for the consent cookie that Cookie Consent uses, to remember that users have consented to cookies. Use to limit consent to a specific path within your website.
+
+    expiryDays:
+        label: Expiry Days
+        type: number
+        default: 365
+        comment: The number of days Cookie Consent should store the user’s consent information for.
+        span: auto
+
+    version:
+        label: Version
+        type: text
+        default: 3.1.0
+        comment: Supported options is version number (e.g. "3.1.0")
+        span: auto

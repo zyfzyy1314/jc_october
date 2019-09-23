@@ -5,7 +5,7 @@ include '../vendor/autoload.php';
 
 $database = [
     'driver'    => 'mysql',
-    'host'      => '101.132.140.5',
+    'host'      => '18.163.42.141',
     'database'  => 'economic_data',
     'username'  => 'economic_admin',
     'password'  => '6Truw6hhv*Xb4ruw3!3xV*!',

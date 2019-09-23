@@ -10,7 +10,7 @@ $(function () {
         $('#loading').css('display', 'inline');
 
         $.ajax({
-            url: "./controller/marketNews.php",
+            url: "/controller/marketNews.php",
             type: "POST",
             data: {
                 date: date,

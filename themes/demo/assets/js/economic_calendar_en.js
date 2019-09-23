@@ -71,7 +71,7 @@ new Vue({
             var _this = this
 
             $.ajax({
-                url: "./controller/economic.php",
+                url: "/controller/economic.php",
                 type: "POST",
                 data: _this.temp,
                 dataType: "json",
@@ -177,7 +177,7 @@ new Vue({
             var _this = this
 
             $.ajax({
-                url: "./controller/economicHistory.php",
+                url: "/controller/economicHistory.php",
                 type: "POST",
                 data: _this.historyTemp,
                 dataType: "json",

@@ -72,7 +72,7 @@ $(function () {
 
     setInterval(function () {
         $.ajax({
-            url: "./controller/widget.php",
+            url: "/controller/widget.php",
             type: "GET",
             data: "symbols=" + symbolList + "&type=2",
             dataType: "json",
