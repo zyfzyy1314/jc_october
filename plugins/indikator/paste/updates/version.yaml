@@ -1,0 +1,31 @@
+1.0.0:
+    - First version of Paste Content plugin.
+    - create_paste_text_table.php
+1.0.1:
+    - Added the Code page.
+    - create_paste_code_table.php
+1.0.2:
+    - Added Type field to the Text page.
+    - add_type_field_to_text_table.php
+1.0.3: Paste snippets via build-in editor.
+1.0.4: Minor improvements.
+1.0.5: Added new icon for main navigation.
+1.1.0: Paste operation works in the CMS too.
+1.1.1: Improved the paste Twig function.
+1.2.0:
+    - Added the Block content type.
+    - create_paste_block_table.php
+1.2.1:
+    - Added usage stats and minor improvements.
+    - add_color_field_to_block_table.php
+1.2.2: Added extra columns to the lists.
+1.2.3:
+    - Improved the Code and Stat popups.
+    - change_columns_type.php
+    - update_timestamp_nullable.php
+1.2.4: Added navigation links to the forms.
+1.2.5: !!! Updated for October 420+.
+1.2.6:
+    - Added multilanguage support.
+    - Minor code improvements.
+1.2.7: Updated the main navigation icon.
