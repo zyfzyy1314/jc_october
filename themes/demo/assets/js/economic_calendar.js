@@ -52,7 +52,10 @@ new Vue({
                 limit: 10,
                 url_id: '',
                 id: '',
-                language: 'cn'
+                language: 'cn',
+                previous: '',
+                reality: '',
+                forecast: ''
             },
             currentZone: 8
         }
@@ -79,7 +82,21 @@ new Vue({
                     var data = response.Content
                     data.forEach(function (item, key) {
                         item.date = item.date.replace(/\-/g, '/')
+                        item.expand = true
                     })
+
+                    if (data.length > 0) {
+                        data.unshift({ 'id': '--', 'timeLine': data[0]['date'], 'expand': false })
+
+                        let nowDate = data[0]['timeLine'].split(' ')[0]
+
+                        for (let i = 1; i < data.length; i++) {
+                            if (data[i]['date'].split(' ')[0] != nowDate) {
+                                nowDate = data[i]['date'].split(' ')[0]
+                                data.splice(i, 0, { 'id': '--', 'timeLine': data[i]['date'], 'expand': false })
+                            }
+                        }
+                    }
 
                     _this.tableData = data
                     _this.total = response.Content.total
@@ -166,6 +183,9 @@ new Vue({
             if (expandedRows != '') {
                 this.historyTemp.url_id = row.url_id
                 this.historyTemp.id = row.id
+                this.historyTemp.previous = row.previous
+                this.historyTemp.reality = row.reality
+                this.historyTemp.forecast = row.forecast
 
                 this.getHistoryInfo()
             }
@@ -196,7 +216,7 @@ new Vue({
                                 text: ''
                             },
                             tooltip: {
-                                formatter: "{a} : <br\>{b} : {c}%"
+                                formatter: "{a} : <br\>{b} : {c}" + response.unit
                             },
                             legend: {
                                 data: ['']
@@ -221,6 +241,15 @@ new Vue({
         handleHistoryChange(page) {
             this.historyTemp.page = page
             this.getHistoryInfo()
+        },
+        arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+            if (row.id == '--') {
+                return [1, 3];
+            }
+        },
+        setClassName({ row, index }) {
+            // 通过自己的逻辑返回一个class或者空
+            return row.expand ? '' : 'expand';
         }
     }
 })

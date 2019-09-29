@@ -3,22 +3,62 @@ let timeZone = String(-new Date().getTimezoneOffset() / 60)
 const cityOptions = ['China', 'Australia', 'United States', 'United Kingdom', 'Japan', 'Italy', 'Germany', 'France', 'European Union',
     'Switzerland', 'Canada', 'New Zealand'];
 
-// var href = location.href;
-// var search = href.substr(href.indexOf("?") + 1);
+const weekArr = {
+        0: 'Sun',
+        1: 'Mon',
+        2: 'Tue',
+        3: 'Wed',
+        4: 'Thu',
+        5: 'Fri',
+        6: 'Sat'
+    }
 
-// arr = search.split("&");
-// var params = [];
+// type 1: 本周 2：上周 3：下周
+function getWeekDay(type) {
+    var monday = new Date()
+    var weekday = monday.getDay()
 
-// for (var i = 0; i < arr.length; i++) {
-//     num = arr[i].indexOf("=");
-//     if (num > 0) {
-//         name = arr[i].substring(0, num);
-//         value = arr[i].substr(num + 1);
-//         params[name] = value;
-//     }
-// }
+    if (weekday == 0) {
+        weekday = 7
+    }
+    
+    if (type == 1) {
+        monday.setDate(monday.getDate() - weekday + 1)
 
-// let language = params.language == undefined ? 'cn' : params.language != 'en' && params.language != 'cn' ? 'cn' : params.language
+        return getForeach(monday)
+    } else if (type == 2) {
+        monday.setDate(monday.getDate() - weekday + 1 - 7)
+
+        return getForeach(monday)
+    } else if (type == 3) {
+        monday.setDate(monday.getDate() - weekday + 1 + 7)
+
+        return getForeach(monday)
+    }
+}
+
+function timeFormat(date) {
+    let arr = []
+    var y = date.getFullYear(); //年
+    var m = date.getMonth() + 1; //月
+    var d = date.getDate(); //日
+
+    arr ['simple'] = m + '/' + d
+    arr ['all'] = y + '-' + m + '-' + d
+    arr ['weekday'] = weekArr[date.getDay()]
+
+    return arr
+}
+
+function getForeach(date) {
+    let arr = []
+
+    for (let i = 0; i < 7; i++) {
+        arr [i] = timeFormat(new Date(Date.parse(date) + (i * 86400 * 1000)))
+    }
+
+    return arr
+}
 
 new Vue({
     el: '#app',
@@ -32,6 +72,7 @@ new Vue({
                 type: 1,
                 language: 'en',
                 time: 'Today',
+                date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
                 importance: ['High', 'Middle', 'Low'],
                 event: ['Financial Events', 'Economic Data'],
                 zone: timeZone,
@@ -53,9 +94,16 @@ new Vue({
                 limit: 10,
                 url_id: '',
                 id: '',
-                language: 'en'
+                language: 'en',
+                previous: '',
+                reality: '',
+                forecast: ''
             },
-            currentZone: 8
+            currentZone: 8,
+            histotyDialog: false,
+            historyTitle: '',
+            timeArray: getWeekDay(1),
+            filterType: 1
         }
     },
     created() {
@@ -86,40 +134,31 @@ new Vue({
                     _this.total = response.Content.total
                     _this.listLoading = false
 
-                    _this.handleChange(3)
+                    _this.handleChangeZone()
                 }
             })
-        },
-        handleCurrentChange(currentPage) {
-            this.temp.page = currentPage
-            this.getEconomic()
         },
         handleCheckAllChange(val) {
             this.temp.country = val ? cityOptions : [];
             this.isIndeterminate = false
-
-            this.getEconomic()
         },
-        handleChange(type) {
-            if (type == 3) {
-                let data = this.tableData
-                for (let i = 0; i < data.length; i++) {
-                    let pubTime = new Date(data[i]['date'])
-                    pubTime = new Date(pubTime.valueOf() + this.temp.zone * 60 * 60 * 1000 - this.currentZone * 60 * 60 * 1000)
+        handleChangeZone() {
+            let data = this.tableData
+            for (let i = 0; i < data.length; i++) {
+                let pubTime = new Date(data[i]['date'])
+                pubTime = new Date(pubTime.valueOf() + this.temp.zone * 60 * 60 * 1000 - this.currentZone * 60 * 60 * 1000)
 
-                    data[i]['date'] = pubTime.getFullYear() + '-' + (pubTime.getMonth() + 1) + '-' + pubTime.getDate() + ' '
-                        + this.zeroPadding(pubTime.getHours(), 2) + ':' + this.zeroPadding(pubTime.getMinutes(), 2) + ':' + this.zeroPadding(pubTime.getSeconds(), 2)
-                }
-                this.currentZone = this.temp.zone
-            } else {
-                this.getEconomic()
+                data[i]['date'] = pubTime.getFullYear() + '-' + (pubTime.getMonth() + 1) + '-' + pubTime.getDate() + ' '
+                    + this.zeroPadding(pubTime.getHours(), 2) + ':' + this.zeroPadding(pubTime.getMinutes(), 2) + ':' + this.zeroPadding(pubTime.getSeconds(), 2)
             }
+            this.currentZone = this.temp.zone
         },
         handleCountryChange(value) {
             let checkedCount = value.length
             this.checkAll = checkedCount === this.cities.length;
             this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-
+        },
+        handleConfirmFilter() {
             this.getEconomic()
         },
         zeroPadding(num, digit) {
@@ -139,6 +178,7 @@ new Vue({
                 type: 1,
                 language: 'en',
                 time: 'Today',
+                date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
                 importance: ['High', 'Middle', 'Low'],
                 event: ['Financial Events', 'Economic Data'],
                 zone: timeZone,
@@ -167,8 +207,9 @@ new Vue({
             if (expandedRows != '') {
                 this.historyTemp.id = row.id
                 this.historyTemp.url_id = row.url_id
-
-                this.getHistoryInfo()
+                this.historyTemp.previous = row.previous
+                this.historyTemp.reality = row.reality
+                this.historyTemp.forecast = row.forecast
             }
         },
         getHistoryInfo() {
@@ -189,7 +230,7 @@ new Vue({
                     _this.historyLoading = false
 
                     if (response.chart.time && response.chart.time != '') {
-                        var myChart = echarts.init(document.getElementById(`charts-${_this.historyTemp.id}`))
+                        var myChart = echarts.init(document.getElementById('historyCharts'))
 
                         var option = {
                             color: ['#5d83af'],
@@ -197,7 +238,7 @@ new Vue({
                                 text: ''
                             },
                             tooltip: {
-                                formatter: "{a} : <br\>{b} : {c}%"
+                                formatter: "{a} : <br\>{b} : {c}" + response.unit
                             },
                             legend: {
                                 data: ['']
@@ -222,6 +263,39 @@ new Vue({
         handleHistoryChange(page) {
             this.historyTemp.page = page
             this.getHistoryInfo()
+        },
+        handleShowCharts(row) {
+            this.historyTemp.id = row.id
+            this.historyTemp.url_id = row.url_id
+            this.historyTemp.previous = row.previous
+            this.historyTemp.reality = row.reality
+            this.historyTemp.forecast = row.forecast
+
+            this.historyTitle = row.title
+            this.histotyDialog = true
+
+            this.getHistoryInfo()
+        },
+        handleChangeWeek(type) {
+            if (type == 4 && this.filterType != 1) {
+                this.filterType = 1
+                this.timeArray = getWeekDay(1)
+                this.temp.date = new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
+
+                this.getEconomic()
+            } else if (type != 4) {
+                this.filterType = type
+                this.timeArray = getWeekDay(type)
+                this.temp.date = this.timeArray[0].all
+
+                this.getEconomic()
+            }
+        },
+        handleChangeDate(date) {
+            if (date != this.temp.date && !this.listLoading) {
+                this.temp.date = date
+                this.getEconomic()
+            }
         }
     }
 })

@@ -5,111 +5,128 @@ layout = "default"
 
 <link href="{{ 'assets/css/economic.css'|theme }}" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link href="//at.alicdn.com/t/font_1434648_gzsrfbw8qnm.css" rel="stylesheet">
 
 <div class="market" id="app">
-    <el-form ref="temp" :model="temp" label-position="left" label-width="150px" style="margin-top: 50px;">
-        <el-form-item class="show-margin">
-            <el-row :gutter="20" style="margin-left: 0px;">
-                <el-col :span="12">
-                    <el-radio-group v-model="temp.time" size="small" @change="handleChange(1)">
-                        <el-radio-button label="Today"></el-radio-button>
-                        <el-radio-button label="Tomorrow"></el-radio-button>
-                        <el-radio-button label="This Week"></el-radio-button>
-                        <el-radio-button label="Next Week"></el-radio-button>
-                    </el-radio-group>
-                </el-col>
+    <el-row>
+        <div class="grid-content bg-purple-dark">
+            <el-col :span="16">
+                <ul class="clendar-ul calendar-pointer">
+                    <li @click="handleChangeWeek(2)"> < Last week</li>
+                    <li v-for="item in timeArray" @click="handleChangeDate(item.all)" v-bind:class="{ today_date: item.all == temp.date ? true : false }">
+                        <p v-html="item.simple" style="margin-bottom: 0px;"></p>
+                        <p v-html="item.weekday"></p>
+                    </li>
+                    <li @click="handleChangeWeek(3)">Next week > </li>
+                </ul>
+            </el-col>
+        
+            <el-col :span="4">
+                <el-popover
+                placement="bottom"
+                width="600"
+                trigger="click">
+                    <el-form ref="temp" :model="temp" label-position="top" class="calendar-form">
+                        <el-form-item label="Importance">
+                            <el-checkbox-group v-model="temp.importance" :min="1">
+                                <el-checkbox label="High"></el-checkbox>
+                                <el-checkbox label="Middle"></el-checkbox>
+                                <el-checkbox label="Low"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-form-item>
+            
+                        <el-form-item label="Event Type">
+                            <el-checkbox-group v-model="temp.event" :min="1">
+                                <el-checkbox label="Financial Events"></el-checkbox>
+                                <el-checkbox label="Economic Data"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-form-item>
+            
+                        <el-form-item label="Current Time">
+                            <el-select v-model="temp.zone" placeholder="select" @change="handleChangeZone">
+                                <el-option label="(GMT-11:00) Midway Island, Samoa" value="-11"></el-option>
+                                <el-option label="(GMT-10:00) Hawaii-Aleutian" value="-10"></el-option>
+                                <el-option label="(GMT-09:00) Gambier Islands" value="-9"></el-option>
+                                <el-option label="(GMT-08:00) Tijuana, Baja California" value="-8"></el-option>
+                                <el-option label="(GMT-07:00) Mountain Time (US &amp; Canada)" value="-7"></el-option>
+                                <el-option label="(GMT-06:00) Saskatchewan, Central America" value="-6"></el-option>
+                                <el-option label="(GMT-05:00) Guadalajara, Mexico City, Monterrey" value="-5"></el-option>
+                                <el-option label="(GMT-04:00) La Paz" value="-4"></el-option>
+                                <el-option label="(GMT-03:00) UTC-3" value="-3"></el-option>
+                                <el-option label="(GMT-02:00) Mid-Atlantic" value="-2"></el-option>
+                                <el-option label="(GMT-01:00) Azores" value="-1"></el-option>
+                                <el-option label="(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London" value="0">
+                                </el-option>
+                                <el-option label="(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna" value="1">
+                                </el-option>
+                                <el-option label="(GMT+02:00) Beirut" value="2"></el-option>
+                                <el-option label="(GMT+03:00) Minsk" value="3"></el-option>
+                                <el-option label="(GMT+04:00) Abu Dhabi, Muscat" value="4"></el-option>
+                                <el-option label="(GMT+05:00) Ekaterinburg" value="5"></el-option>
+                                <el-option label="(GMT+06:00) Astana, Dhaka" value="6"></el-option>
+                                <el-option label="(GMT+07:00) Bangkok, Hanoi, Jakarta" value="7"></el-option>
+                                <el-option label="(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi" value="8"></el-option>
+                                <el-option label="(GMT+09:00) Osaka, Sapporo, Tokyo" value="9"></el-option>
+                                <el-option label="(GMT+10:00) Brisbane" value="+10"></el-option>
+                                <el-option label="(GMT+11:00) Solomon Is., New Caledonia" value="11"></el-option>
+                            </el-select>
+                        </el-form-item>
+            
+                        <el-form-item label="Country">
+                            <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">All
+                            </el-checkbox>
+                            <el-checkbox-group v-model="temp.country" @change="handleCountryChange" :min="1">
+                                <el-checkbox label="China"></el-checkbox>
+                                <el-checkbox label="Australia"></el-checkbox>
+                                <el-checkbox label="United States"></el-checkbox>
+                                <el-checkbox label="United Kingdom"></el-checkbox>
+                                <el-checkbox label="Japan"></el-checkbox>
+                                <el-checkbox label="Italy"></el-checkbox>
+                                <el-checkbox label="Germany"></el-checkbox>
+                                <el-checkbox label="France"></el-checkbox>
+                                <el-checkbox label="European Union"></el-checkbox>
+                                <el-checkbox label="Switzerland"></el-checkbox>
+                                <el-checkbox label="Canada"></el-checkbox>
+                                <el-checkbox label="New Zealand"></el-checkbox>
+                            </el-checkbox-group>
+                        </el-form-item>
+            
+                        <!-- <el-form-item>
+                            <el-row :gutter="20">
+                                <el-col :span="4" :offset="16">
+                                    <el-button type="text" size="small" icon="el-icon-refresh-right" plain @click="handleDefault">
+                                        Restore Default Settings
+                                    </el-button>
+                                </el-col>
+                            </el-row>
+                        </el-form-item> -->
 
-                <el-col :span="12" style="display:flex;justify-content:flex-end;padding-right:40px;">
-                    <el-button type="info" size="small" icon="el-icon-search" plain @click="handleShowSearch">
-                        Filters
-                    </el-button>
-                </el-col>
-            </el-row>
-        </el-form-item>
-
-        <div v-show="showSearch" class="form-left">
-            <el-form-item label="Importance">
-                <el-checkbox-group v-model="temp.importance" @change="handleChange(2)">
-                    <el-checkbox label="High"></el-checkbox>
-                    <el-checkbox label="Middle"></el-checkbox>
-                    <el-checkbox label="Low"></el-checkbox>
-                </el-checkbox-group>
-            </el-form-item>
-
-            <el-form-item label="Event Type">
-                <el-checkbox-group v-model="temp.event" @change="handleChange(2)" :min="1">
-                    <el-checkbox label="Financial Events"></el-checkbox>
-                    <el-checkbox label="Economic Data"></el-checkbox>
-                </el-checkbox-group>
-            </el-form-item>
-
-            <el-form-item label="Current Time">
-                <el-select v-model="temp.zone" placeholder="select" @change="handleChange(3)">
-                    <el-option label="(GMT-11:00) Midway Island, Samoa" value="-11"></el-option>
-                    <el-option label="(GMT-10:00) Hawaii-Aleutian" value="-10"></el-option>
-                    <el-option label="(GMT-09:00) Gambier Islands" value="-9"></el-option>
-                    <el-option label="(GMT-08:00) Tijuana, Baja California" value="-8"></el-option>
-                    <el-option label="(GMT-07:00) Mountain Time (US &amp; Canada)" value="-7"></el-option>
-                    <el-option label="(GMT-06:00) Saskatchewan, Central America" value="-6"></el-option>
-                    <el-option label="(GMT-05:00) Guadalajara, Mexico City, Monterrey" value="-5"></el-option>
-                    <el-option label="(GMT-04:00) La Paz" value="-4"></el-option>
-                    <el-option label="(GMT-03:00) UTC-3" value="-3"></el-option>
-                    <el-option label="(GMT-02:00) Mid-Atlantic" value="-2"></el-option>
-                    <el-option label="(GMT-01:00) Azores" value="-1"></el-option>
-                    <el-option label="(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London" value="0">
-                    </el-option>
-                    <el-option label="(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna" value="1">
-                    </el-option>
-                    <el-option label="(GMT+02:00) Beirut" value="2"></el-option>
-                    <el-option label="(GMT+03:00) Minsk" value="3"></el-option>
-                    <el-option label="(GMT+04:00) Abu Dhabi, Muscat" value="4"></el-option>
-                    <el-option label="(GMT+05:00) Ekaterinburg" value="5"></el-option>
-                    <el-option label="(GMT+06:00) Astana, Dhaka" value="6"></el-option>
-                    <el-option label="(GMT+07:00) Bangkok, Hanoi, Jakarta" value="7"></el-option>
-                    <el-option label="(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi" value="8"></el-option>
-                    <el-option label="(GMT+09:00) Osaka, Sapporo, Tokyo" value="9"></el-option>
-                    <el-option label="(GMT+10:00) Brisbane" value="+10"></el-option>
-                    <el-option label="(GMT+11:00) Solomon Is., New Caledonia" value="11"></el-option>
-                </el-select>
-            </el-form-item>
-
-            <el-form-item label="Country">
-                <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">All
-                </el-checkbox>
-                <el-checkbox-group v-model="temp.country" @change="handleCountryChange" :min="1">
-                    <el-checkbox label="China"></el-checkbox>
-                    <el-checkbox label="Australia"></el-checkbox>
-                    <el-checkbox label="United States"></el-checkbox>
-                    <el-checkbox label="United Kingdom"></el-checkbox>
-                    <el-checkbox label="Japan"></el-checkbox>
-                    <el-checkbox label="Italy"></el-checkbox>
-                    <el-checkbox label="Germany"></el-checkbox>
-                    <el-checkbox label="France"></el-checkbox>
-                    <el-checkbox label="European Union"></el-checkbox>
-                    <el-checkbox label="Switzerland"></el-checkbox>
-                    <el-checkbox label="Canada"></el-checkbox>
-                    <el-checkbox label="New Zealand"></el-checkbox>
-                </el-checkbox-group>
-            </el-form-item>
-
-            <el-form-item>
-                <el-row :gutter="20">
-                    <el-col :span="4" :offset="16">
-                        <el-button type="text" size="small" icon="el-icon-refresh-right" plain @click="handleDefault">
-                            Restore Default Settings
-                        </el-button>
-                    </el-col>
-                </el-row>
-            </el-form-item>
+                        <el-form-item>
+                            <el-button type="warning" @click="handleConfirmFilter">Apply Filter</el-button>
+                            <el-button @click="handleDefault">Cancel</el-button>
+                        </el-form-item>
+                    </el-form>
+                    <i class="iconfont icon-shaixuan calendar-pointer calendar-left" slot="reference">Filter</i>
+                </el-popover>
+            </el-col>
         </div>
-    </el-form>
 
-    <el-table :data="tableData" stripe style="width: 100%" highlight-current-row v-loading="listLoading"
-        @expand-change="rowExpand">
+        <div class="date-span">
+            <el-col :span="16">
+                <p v-html="`${temp.date}(${formatWeekDay(temp.date)})`"></p>
+            </el-col>
+
+            <el-col :span="4" style="line-height: 40px;">
+                <el-button type="warning" plain style="float: right;" v-bind:class="{ this_week : filterType == 1 ? true : false }" @click="handleChangeWeek(4)">This Week</el-button>
+            </el-col>
+        </div>
+    </el-row>
+
+    <el-table :data="tableData" stripe style="width: 100%" highlight-current-row v-loading="listLoading" @expand-change="rowExpand">
         <el-table-column type="expand">
             <template slot-scope="props">
                 <el-row :gutter="20">
-                    <el-col :span="12">
+                    <el-col :span="24">
                         <div class="releaseInfo bold">
                             <span>Latest Release
                                 <div class="noBold" v-html="props.row.date.slice(0, 10)">
@@ -131,7 +148,7 @@ layout = "default"
                                     {{ props.row.previous == '' ? '--' : props.row.previous }}</div>
                             </span>
                         </div>
-                        <br>
+
                         <div v-show="props.row.overview">
                             <div class="overViewBox event">
                                 <div class="left">
@@ -146,7 +163,7 @@ layout = "default"
                                         <span>Importance:</span>
                                         <span>
                                             <i class="el-icon-star-on" v-for="i in [1,2,3]" :key="i"
-                                                :style="{color: i<=props.row.importance ? props.row.importance>=3 ? '#48a047' : '#ba9b5b' : '#f0f0f0'}"></i>
+                                                :style="{color: i<=props.row.importance ? props.row.importance>=3 ? '#f33d3d' : '#ba9b5b' : '#f0f0f0'}"></i>
                                         </span>
                                     </div>
                                     <div>
@@ -164,50 +181,6 @@ layout = "default"
                                 <div class="clear"></div>
                             </div>
                         </div>
-                        <br>
-                    </el-col>
-                    <br>
-                    <el-col :span="12" v-loading="historyLoading">
-                        <div :id="`charts-${props.row.id}`" style="width: 100%;height: 300px;"></div>
-                        <!-- <div class="history-data bold">
-                                <span>History:
-                                </span>
-                            </div>
-                            <el-table :data="historyData" stripe style="width: 100%" highlight-current-row
-                                v-loading="historyLoading">
-                                <el-table-column prop="date" label="Release Date">
-                                    <template slot-scope="scope">
-                                        <span>{{ scope.row.date_str }}</span>
-                                    </template>
-                                </el-table-column>
-
-                                <el-table-column prop="reality" label="Actual">
-                                    <template slot-scope="scope">
-                                        <span
-                                            :style="{color: props.row.importance>=3 ? '#48a047' : ''}">{{scope.row.reality}}</span>
-                                    </template>
-                                </el-table-column>
-
-                                <el-table-column prop="forecast" label="Forecast">
-                                    <template slot-scope="scope">
-                                        <span
-                                            :style="{color: props.row.importance>=3 ? '#48a047' : ''}">{{scope.row.forecast}}</span>
-                                    </template>
-                                </el-table-column>
-
-                                <el-table-column prop="previous" label="Previous">
-                                    <template slot-scope="scope">
-                                        <span
-                                            :style="{color: scope.row.importance>=3 ? '#48a047' : ''}">{{scope.row.previous}}</span>
-                                    </template>
-                                </el-table-column>
-                            </el-table>
-
-                            <div class="pages">
-                                <el-pagination @current-change="handleHistoryChange" :page-size="historyTemp.limit"
-                                    background layout="prev, pager, next, jumper" :total="historyTotal"
-                                    :current-page.sync="historyTemp.page"></el-pagination>
-                            </div> -->
                     </el-col>
                 </el-row>
             </template>
@@ -215,23 +188,29 @@ layout = "default"
 
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
-                <span v-if="temp.time == 'Today' || temp.time == 'Tomorrow'"
-                    :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
-                    v-html="scope.row.date.split(' ')[1]">{{scope.row.date.split(' ')[1]}}</span>
-                <span v-else v-html="`${scope.row.date}(${formatWeekDay(scope.row.date)})`"></span>
+                <span :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.date.split(' ')[1].slice(0, 5)"></span>
             </template>
         </el-table-column>
 
         <el-table-column prop="country" label="Currency">
             <template slot-scope="scope">
-                <span :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
-                    v-html="scope.row.country">{{scope.row.country}}</span>
+                <div v-if="scope.row.currency != 'EUR'">
+                    <img :src="`/themes/demo/assets/images/flag/${scope.row.currency}.png`" width="32" height="21"/>
+                    <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
+                        v-html="scope.row.currency">{{scope.row.currency}}</span>
+                </div>
+
+                <div v-else>
+                    <img :src="`/themes/demo/assets/images/flag/${scope.row.country}.png`" width="32" height="21"/>
+                    <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
+                        v-html="scope.row.currency">{{scope.row.currency}}</span>
+                </div>
             </template>
         </el-table-column>
 
-        <el-table-column prop="title" label="Event">
+        <el-table-column prop="title" label="Event" min-width="200px">
             <template slot-scope="scope">
-                <span :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
+                <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
                     v-html="scope.row.title">{{scope.row.title}}</span>
             </template>
         </el-table-column>
@@ -239,13 +218,13 @@ layout = "default"
         <el-table-column prop="importance" label="Importance">
             <template slot-scope="scope">
                 <i class="el-icon-star-on" v-for="i in [1,2,3]" :key="i"
-                    :style="{color: i<=scope.row.importance ? scope.row.importance>=3 ? '#48a047' : '#ba9b5b' : '#f0f0f0'}"></i>
+                    :style="{color: i<=scope.row.importance ? scope.row.importance>=3 ? '#f33d3d' : '#ba9b5b' : '#f0f0f0'}"></i>
             </template>
         </el-table-column>
 
         <el-table-column prop="previous" label="Previous">
             <template slot-scope="scope">
-                <span :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
+                <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
                     v-html="scope.row.previous">{{scope.row.previous}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
             </template>
@@ -253,7 +232,7 @@ layout = "default"
 
         <el-table-column prop="forecast" label="Forecast">
             <template slot-scope="scope">
-                <span v-if="scope.row.forecast != null" :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
+                <span v-if="scope.row.forecast != null" :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
                     v-html="scope.row.forecast">{{scope.row.forecast}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
                 <span v-else>---</span>
@@ -262,24 +241,28 @@ layout = "default"
 
         <el-table-column prop="reality" label="Actual">
             <template slot-scope="scope">
-                <span v-if="scope.row.reality != null" :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
+                <span v-if="scope.row.reality != null" :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
                     v-html="scope.row.reality">{{scope.row.reality}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
                 <span v-else>---</span>
             </template>
         </el-table-column>
-        <!-- <el-table-column prop="effect" label="影响">
-                <template slot-scope="scope">
-                    <span
-                        style="color:rgb(59,164,77);border:1px solid rgb(59,164,77);padding:2px 5px">{{ scope.row.effect}}</span>
-                </template>
-            </el-table-column> -->
+
+        <el-table-column prop="reality" label="Graph">
+            <template slot-scope="scope">
+                <i class="iconfont icon-tongjitubiao calendar-pointer" @click="handleShowCharts(scope.row)"></i>
+            </template>
+        </el-table-column>
     </el-table>
 
     <!-- <div class="pages">
         <el-pagination @current-change="handleCurrentChange" :page-size="temp.limit" background
             layout="prev, pager, next, jumper" :total="total" :current-page.sync="nowPage"></el-pagination>
     </div> -->
+
+    <el-dialog :title="historyTitle" :visible.sync="histotyDialog">
+        <div id="historyCharts" style="width: 100%;height: 300px;" v-loading="historyLoading"></div>
+    </el-dialog>
 </div>
 
 {% put scripts %}

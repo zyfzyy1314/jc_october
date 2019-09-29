@@ -7,3 +7,8 @@ function changeFrameHeight() {
     var ifm = document.getElementById('jcFrame');
     ifm.height = document.documentElement.scrollHeight
 }
+
+function selectTextNews() {
+    var iframeText = document.getElementById("iframeTextNews");
+    iframeText.select();
+}

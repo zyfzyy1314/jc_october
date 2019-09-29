@@ -13,6 +13,7 @@
 
     $chart = DB::table('economic_history_data')
         ->where('url_id', $data['url_id'])
+        ->where('reality', '<>', '')
         ->orderBy('date', 'asc')
         ->groupBy(DB::raw('left(date, 10)'))
         ->get([
@@ -40,4 +41,14 @@
         $chartList ['data'] = $chartsData;
     }
 
-    echo json_encode(['Status' => 200, 'chart' => $chartList]);
+    $unit = '';
+
+    if ($data['reality']) {
+        $unit = preg_replace( '/[0-9\.\-\,]/i', '', $data['reality']);
+    } else if ($data ['previous']) {
+        $unit = preg_replace( '/[0-9\.\-\,]/i', '', $data['previous']);
+    } else if ($data ['forecast']) {
+        $unit = preg_replace( '/[0-9\.\-\,]/i', '', $data['forecast']);
+    }
+
+    echo json_encode(['Status' => 200, 'chart' => $chartList, 'unit' => $unit]);

@@ -104,7 +104,7 @@ layout = "default"
     </el-form>
 
     <el-table :data="tableData" stripe style="width: 100%" highlight-current-row v-loading="listLoading"
-        @expand-change="rowExpand">
+        @expand-change="rowExpand" :span-method="arraySpanMethod" :row-class-name="setClassName">
         <el-table-column type="expand">
             <template slot-scope="props">
                 <el-row :gutter="20">
@@ -210,36 +210,34 @@ layout = "default"
 
         <el-table-column prop="date" label="时间" width="180px">
             <template slot-scope="scope">
-                <span v-if="temp.time == '今天' || temp.time == '明天'"
-                    :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
-                    v-html="scope.row.date.split(' ')[1]">{{scope.row.date.split(' ')[1]}}</span>
-                <span v-else v-html="`${scope.row.date}(${formatWeekDay(scope.row.date)})`"></span>
+                <span v-if="scope.row.id !='--'" :style=" {color: scope.row.importance>=3 ? '#48a047' : ''}" v-html="scope.row.date.split(' ')[1]"></span>
+                <span v-else v-html="`${scope.row.timeLine.split(' ')[0]}(${formatWeekDay(scope.row.timeLine)})`"></span>
             </template>
         </el-table-column>
 
         <el-table-column prop="country" label="国/区">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
                     v-html="scope.row.country">{{scope.row.country}}</span>
             </template>
         </el-table-column>
 
         <el-table-column prop="title" label="事件">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
                     v-html="scope.row.title">{{scope.row.title}}</span>
             </template>
         </el-table-column>
 
         <el-table-column prop="importance" label="重要性">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <i class="el-icon-star-on" v-for="i in [1,2,3]" :key="i"
                     :style="{color: i<=scope.row.importance ? '#ba9b5b' : '#f0f0f0'}"></i>
             </template>
         </el-table-column>
 
         <el-table-column prop="previous" label="前值">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
                     v-html="scope.row.previous">{{scope.row.previous}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
@@ -247,7 +245,7 @@ layout = "default"
         </el-table-column>
 
         <el-table-column prop="forecast" label="预测值">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span v-if="scope.row.forecast != null" :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
                     v-html="scope.row.forecast">{{scope.row.forecast}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
@@ -256,7 +254,7 @@ layout = "default"
         </el-table-column>
 
         <el-table-column prop="reality" label="公布值">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span v-if="scope.row.reality != null" :style="{color: scope.row.importance>=3 ? '#48a047' : ''}"
                     v-html="scope.row.reality">{{scope.row.reality}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>

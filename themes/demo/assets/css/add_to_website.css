@@ -1,0 +1,22 @@
+.market {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.el-tabs__nav-scroll {
+    background: #f4f4f4;
+    padding: 0px 40px;
+}
+
+.el-tabs__active-bar {
+    background-color: transparent !important;
+}
+
+.el-tabs__item.is-active {
+    color: #f3953d !important;
+    font-weight: bold;
+}
+
+.el-tabs__item:hover {
+    color: #f3953d !important;
+}

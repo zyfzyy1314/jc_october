@@ -1,6 +1,6 @@
 .market {
     width: 100%;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .el-table th {
@@ -9,16 +9,17 @@
 }
 
 .el-table--mini, .el-table--small, .el-table__expand-icon {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .el-table {
-    font-size: 12px !important;
+    font-size: 14px !important;
+    font-family: 'arial';
 }
 
 .releaseInfo {
-    border-top: 1px solid #DADADA;
-    border-bottom: 1px solid #DADADA;
+    /* border-top: 1px solid #DADADA;
+    border-bottom: 1px solid #DADADA; */
     margin-top: 30px;
 }
 
@@ -38,8 +39,8 @@
 }
 
 .releaseInfo SPAN:first-child {
-    width: 25%;
-    border-right: 1px solid #DADADA;
+    /* width: 25%; */
+    /* border-right: 1px solid #DADADA; */
     margin-right: 20px;
     padding-left: 0;
 }
@@ -49,8 +50,8 @@
     height: auto;
     min-height: 0;
     margin: 17px 0 20px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #DADADA;
+    /* padding-bottom: 14px;
+    border-bottom: 1px solid #DADADA; */
 }
 
 /* .overViewBox {
@@ -75,8 +76,8 @@
 .overViewBox.event .right {
     width: 30%;
     height: auto;
-    border-left: 1px solid #DADADA;
-    padding-left: 19px;
+    /* border-left: 1px solid #DADADA; */
+    padding-left: 60px;
     float: right;
 }
 
@@ -92,6 +93,7 @@
 
 .overViewBox.event .right SPAN {
     display: table-cell;
+    padding-bottom: 20px;
 }
 
 .clear {
@@ -132,4 +134,141 @@
 
 .form-left {
     margin-left: 15px;
+}
+
+/* .expand .el-table__expand-column .cell {
+    display: none;
+}
+
+.expand {
+    background-color: #CCCDCE !important;
+    color: black;
+}
+
+.expand .el-table_1_column_2 {
+    /* text-align-last: left; */
+/* } */
+
+.expand td {
+    background-color: #CCCDCE !important;
+    color: black;
+} */
+
+.el-row {
+    margin-bottom: 20px;
+}
+.el-col {
+    border-radius: 4px;
+}
+.bg-purple-dark {
+    background: #f4f4f4;
+}
+
+.grid-content {
+    border-radius: 4px;
+    height: 60px;
+}
+
+.clendar-ul {
+    width: 1170px;
+    margin: 0px auto;
+    text-align: center;
+}
+.clendar-ul li {
+    position: relative;
+    float: left;
+    /* line-height: 60px; */
+    padding-left: 20px;
+    list-style: none;
+    font-size: 14px;
+    height: 60px;
+    padding-top: 10px;
+}
+
+.clendar-ul li:first-child,
+.clendar-ul li:last-child {
+    padding-top: 20px;
+}
+
+.calendar-pointer {
+    cursor: pointer;
+}
+
+.calendar-left {
+    border-left: 1px solid #dddddd;
+    /* color: #dddddd; */
+    font-size: 16px;
+    line-height: 60px;
+    height: 20px;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.el-form-item {
+    margin-bottom: 0px !important;
+}
+
+.el-form--label-top .el-form-item__label {
+    padding: 0px 0px 0px !important;
+}
+
+.el-checkbox {
+    margin-right: 10px;
+}
+
+.calendar-form label {
+    margin-bottom: 0px !important;
+}
+
+.calendar-form .el-form-item__label {
+    line-height: normal !important;
+}
+
+.el-checkbox__input.is-checked+.el-checkbox__label {
+    color: #f3953d !important;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    background-color: #f3953d !important;
+    border-color: #f3953d !important;
+}
+
+.el-checkbox__inner:hover {
+    border-color: #f3953d !important;
+}
+
+.el-table__expanded-cell {
+    background-color: #f4f4f4;
+}
+
+.today_date {
+    color: #f3953d;
+    font-weight: bold;
+}
+
+.el-button {
+    padding: 4px 4px !important;
+}
+
+.this_week {
+    background-color: #E6A23C !important;
+    color: #fff !important;
+}
+
+.date-span {
+    height: 40px;
+}
+
+.date-span p {
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.date-span button {
+    margin-top: 15px !important;
+}
+
+thead th {
+    background: #f4f4f4 !important;
 }
