@@ -163,7 +163,7 @@ layout = "default"
                                         <span>Importance:</span>
                                         <span>
                                             <i class="el-icon-star-on" v-for="i in [1,2,3]" :key="i"
-                                                :style="{color: i<=props.row.importance ? props.row.importance>=3 ? '#f33d3d' : '#ba9b5b' : '#f0f0f0'}"></i>
+                                                :style="{color: i<=props.row.importance ? props.row.importance>=3 ? '#f33d3d' : '#f3953d' : '#f0f0f0'}"></i>
                                         </span>
                                     </div>
                                     <div>
@@ -218,7 +218,7 @@ layout = "default"
         <el-table-column prop="importance" label="Importance">
             <template slot-scope="scope">
                 <i class="el-icon-star-on" v-for="i in [1,2,3]" :key="i"
-                    :style="{color: i<=scope.row.importance ? scope.row.importance>=3 ? '#f33d3d' : '#ba9b5b' : '#f0f0f0'}"></i>
+                    :style="{color: i<=scope.row.importance ? scope.row.importance>=3 ? '#f33d3d' : '#f3953d' : '#f0f0f0'}"></i>
             </template>
         </el-table-column>
 

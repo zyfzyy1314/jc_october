@@ -45,4 +45,19 @@ jQuery(document).ready(function($){
         previousTop = currentTop
         scrolling = false
     }
+
+    // 显示当前时区时间
+    var nowTime = new Date()
+
+    var y = nowTime.getFullYear() //年
+    var m = nowTime.getMonth() + 1 //月
+    var d = nowTime.getDate() //日
+    
+    nowTime = d + ' ' + nowTime.toDateString().split(' ')[1] + ',' + y + ' GMT' + String(-new Date().getTimezoneOffset() / 60)
+
+    console.log(nowTime)
+
+
+
+    $('#nowTimeZone').html(nowTime)
 });
