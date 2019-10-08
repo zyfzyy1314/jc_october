@@ -22,15 +22,15 @@ function getWeekDay(type) {
         weekday = 7
     }
     
-    if (type == 1) {
+    if (type == 'This week') {
         monday.setDate(monday.getDate() - weekday + 1)
 
         return getForeach(monday)
-    } else if (type == 2) {
+    } else if (type == 'Last week') {
         monday.setDate(monday.getDate() - weekday + 1 - 7)
 
         return getForeach(monday)
-    } else if (type == 3) {
+    } else if (type == 'Next week') {
         monday.setDate(monday.getDate() - weekday + 1 + 7)
 
         return getForeach(monday)
@@ -43,7 +43,7 @@ function timeFormat(date) {
     var m = date.getMonth() + 1; //月
     var d = date.getDate(); //日
 
-    arr ['simple'] = m + '/' + d
+    arr ['simple'] = d + ' ' + date.toDateString().split(' ')[1]
     arr ['all'] = y + '-' + m + '-' + d
     arr ['weekday'] = weekArr[date.getDay()]
 
@@ -71,7 +71,7 @@ new Vue({
                 limit: 50,
                 type: 1,
                 language: 'en',
-                time: 'Today',
+                time: '',
                 date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
                 importance: ['High', 'Middle', 'Low'],
                 event: ['Financial Events', 'Economic Data'],
@@ -102,8 +102,8 @@ new Vue({
             currentZone: 8,
             histotyDialog: false,
             historyTitle: '',
-            timeArray: getWeekDay(1),
-            filterType: 1
+            timeArray: getWeekDay('This week'),
+            filterType: ''
         }
     },
     created() {
@@ -128,7 +128,21 @@ new Vue({
                     var data = response.Content
                     data.forEach(function (item, key) {
                         item.date = item.date.replace(/\-/g, '/')
+                        item.expand = true
                     })
+
+                    if (data.length > 0) {
+                        data.unshift({ 'id': '--', 'timeLine': data[0]['date'], 'expand': false })
+
+                        let nowDate = data[0]['timeLine'].split(' ')[0]
+
+                        for (let i = 1; i < data.length; i++) {
+                            if (data[i]['date'].split(' ')[0] != nowDate) {
+                                nowDate = data[i]['date'].split(' ')[0]
+                                data.splice(i, 0, { 'id': '--', 'timeLine': data[i]['date'], 'expand': false })
+                            }
+                        }
+                    }
 
                     _this.tableData = data
                     _this.total = response.Content.total
@@ -277,16 +291,18 @@ new Vue({
             this.getHistoryInfo()
         },
         handleChangeWeek(type) {
-            if (type == 4 && this.filterType != 1) {
+            if (type == 'This week' && this.filterType != 1) {
                 this.filterType = 1
-                this.timeArray = getWeekDay(1)
-                this.temp.date = new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
+                this.timeArray = getWeekDay('This week')
+                this.temp.date = '' // new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
+                this.temp.time = 'This week'
 
                 this.getEconomic()
             } else if (type != 4) {
                 this.filterType = type
                 this.timeArray = getWeekDay(type)
-                this.temp.date = this.timeArray[0].all
+                this.temp.time = type
+                this.temp.date = ''
 
                 this.getEconomic()
             }
@@ -296,6 +312,15 @@ new Vue({
                 this.temp.date = date
                 this.getEconomic()
             }
+        },
+        arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+            if (row.id == '--') {
+                return [1, 3];
+            }
+        },
+        setClassName({ row, index }) {
+            // 通过自己的逻辑返回一个class或者空
+            return row.expand ? '' : 'expand';
         }
     }
 })

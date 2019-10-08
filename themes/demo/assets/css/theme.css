@@ -391,7 +391,7 @@
   padding-bottom: 60px !important;
 }
 .navbar-header .navbar-brand {
-  padding-left: 55px;
+  /* padding-left: 55px; */
   /* background-image: url('../images/october.png'); */
   background-size: auto 60%;
   background-repeat: no-repeat;

@@ -1,5 +1,5 @@
 title = "economic calendar"
-url = "/economic_calendar_en"
+url = "/"
 layout = "default"
 ==
 
@@ -12,12 +12,13 @@ layout = "default"
         <div class="grid-content bg-purple-dark">
             <el-col :span="16">
                 <ul class="clendar-ul calendar-pointer">
-                    <li @click="handleChangeWeek(2)"> < Last week</li>
+                    <li @click="handleChangeWeek('Last week')" v-bind:class="{ this_week : temp.time == 'Last week' ? true : false }"> < Last week</li>
                     <li v-for="item in timeArray" @click="handleChangeDate(item.all)" v-bind:class="{ today_date: item.all == temp.date ? true : false }">
                         <p v-html="item.simple" style="margin-bottom: 0px;"></p>
                         <p v-html="item.weekday"></p>
                     </li>
-                    <li @click="handleChangeWeek(3)">Next week > </li>
+                    <li @click="handleChangeWeek('Next week')" v-bind:class="{ this_week : temp.time == 'Next week' ? true : false }" style="padding-top: 20px;">Next week > </li>
+                    <li @click="handleChangeWeek('This week')" v-bind:class="{ this_week : temp.time == 'This week' ? true : false }">This week</li>
                 </ul>
             </el-col>
         
@@ -34,7 +35,7 @@ layout = "default"
                                 <el-checkbox label="Low"></el-checkbox>
                             </el-checkbox-group>
                         </el-form-item>
-            
+
                         <el-form-item label="Event Type">
                             <el-checkbox-group v-model="temp.event" :min="1">
                                 <el-checkbox label="Financial Events"></el-checkbox>
@@ -111,18 +112,19 @@ layout = "default"
             </el-col>
         </div>
 
-        <div class="date-span">
+        <!-- <div class="date-span">
             <el-col :span="16">
                 <p v-html="`${temp.date}(${formatWeekDay(temp.date)})`"></p>
             </el-col>
 
             <el-col :span="4" style="line-height: 40px;">
-                <el-button type="warning" plain style="float: right;" v-bind:class="{ this_week : filterType == 1 ? true : false }" @click="handleChangeWeek(4)">This Week</el-button>
+                <el-button type="warning" plain style="float: right;" v-bind:class="{ this_week : filterType == 1 ? true : false }" @click="handleChangeWeek('This week')">This Week</el-button>
             </el-col>
-        </div>
+        </div> -->
     </el-row>
 
-    <el-table :data="tableData" stripe style="width: 100%" highlight-current-row v-loading="listLoading" @expand-change="rowExpand">
+    <el-table :data="tableData" stripe style="width: 100%" highlight-current-row v-loading="listLoading" @expand-change="rowExpand" 
+        :span-method="arraySpanMethod" :row-class-name="setClassName">
         <el-table-column type="expand">
             <template slot-scope="props">
                 <el-row :gutter="20">
@@ -188,12 +190,13 @@ layout = "default"
 
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
-                <span :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.date.split(' ')[1].slice(0, 5)"></span>
+                <span v-if="scope.row.id !='--'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.date.split(' ')[1].slice(0, 5)"></span>
+                <span v-else v-html="`${scope.row.timeLine.split(' ')[0]}(${formatWeekDay(scope.row.timeLine)})`"></span>
             </template>
         </el-table-column>
 
         <el-table-column prop="country" label="Currency">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <div v-if="scope.row.currency != 'EUR'">
                     <img :src="`/themes/demo/assets/images/flag/${scope.row.currency}.png`" width="32" height="21"/>
                     <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
@@ -209,21 +212,21 @@ layout = "default"
         </el-table-column>
 
         <el-table-column prop="title" label="Event" min-width="200px">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
                     v-html="scope.row.title">{{scope.row.title}}</span>
             </template>
         </el-table-column>
 
         <el-table-column prop="importance" label="Importance">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <i class="el-icon-star-on" v-for="i in [1,2,3]" :key="i"
                     :style="{color: i<=scope.row.importance ? scope.row.importance>=3 ? '#f33d3d' : '#f3953d' : '#f0f0f0'}"></i>
             </template>
         </el-table-column>
 
         <el-table-column prop="previous" label="Previous">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
                     v-html="scope.row.previous">{{scope.row.previous}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
@@ -231,7 +234,7 @@ layout = "default"
         </el-table-column>
 
         <el-table-column prop="forecast" label="Forecast">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span v-if="scope.row.forecast != null" :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
                     v-html="scope.row.forecast">{{scope.row.forecast}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
@@ -240,7 +243,7 @@ layout = "default"
         </el-table-column>
 
         <el-table-column prop="reality" label="Actual">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span v-if="scope.row.reality != null" :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
                     v-html="scope.row.reality">{{scope.row.reality}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
@@ -249,7 +252,7 @@ layout = "default"
         </el-table-column>
 
         <el-table-column prop="reality" label="Graph">
-            <template slot-scope="scope">
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <i class="iconfont icon-tongjitubiao calendar-pointer" @click="handleShowCharts(scope.row)"></i>
             </template>
         </el-table-column>

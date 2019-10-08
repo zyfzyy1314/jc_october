@@ -52,12 +52,16 @@ jQuery(document).ready(function($){
     var y = nowTime.getFullYear() //年
     var m = nowTime.getMonth() + 1 //月
     var d = nowTime.getDate() //日
+
+    var zone = String(-new Date().getTimezoneOffset() / 60)
+
+    if (zone > 0) {
+        zone = '+' + zone
+    } else {
+        zone = '-' + zone
+    }
     
-    nowTime = d + ' ' + nowTime.toDateString().split(' ')[1] + ',' + y + ' GMT' + String(-new Date().getTimezoneOffset() / 60)
-
-    console.log(nowTime)
-
-
+    nowTime = d + ' ' + nowTime.toDateString().split(' ')[1] + ',' + y + ' GMT' + zone
 
     $('#nowTimeZone').html(nowTime)
 });

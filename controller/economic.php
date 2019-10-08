@@ -20,27 +20,35 @@
     $List = DB::table($table)
         ->leftJoin('economic_history_overview_' . $data['language'] . ' as b', 'a.url_id', '=', 'b.url_id')
         ->where(function($query) use($data) {
-            // if ($data ['time'] == '今天' || $data ['time'] == 'Today') {
-            //     $query->whereBetween('a.date', [date('Y-m-d') . ' 00:00:00', date('Y-m-d') . ' 23:59:59']);
-            // } else if ($data ['time'] == '明天' || $data ['time'] == 'Tomorrow') {
-            //     $query->whereBetween(
-            //         'a.date', 
-            //         [
-            //             date('Y-m-d', strtotime('+1 day')) . ' 00:00:00', 
-            //             date('Y-m-d', strtotime('+1 day')) . ' 23:59:59'
-            //         ]);
-            // } else if ($data ['time'] == '这周' || $data ['time'] == 'This Week') {
-            //     $query->whereBetween('a.date', [
-            //         date('Y-m-d', strtotime('this week monday')) . ' 00:00:00',
-            //         date('Y-m-d', strtotime(date('Y-m-d', strtotime("this week Sunday", time()))) + 24 * 3600 - 1) . ' 23:59:59'
-            //     ]);
-            // } else if ($data ['time'] == '下周' || $data ['time'] == 'Next Week') {
-            //     $query->whereBetween('a.date', [
-            //         date('Y-m-d', strtotime('next week monday', time())) . ' 00:00:00',
-            //         date('Y-m-d', strtotime(date('Y-m-d', strtotime("next week Sunday", time()))) + 24 * 3600 - 1) . ' 23:59:59'
-            //     ]);
-            // }
-            $query->whereBetween('a.date', [$data['date'] . ' 00:00:00', $data['date'] . ' 23:59:59']);
+            if ($data['date'] != '') {
+                $query->whereBetween('a.date', [$data['date'] . ' 00:00:00', $data['date'] . ' 23:59:59']);
+            } else {
+                if ($data ['time'] == '今天' || $data ['time'] == 'Today') {
+                    $query->whereBetween('a.date', [date('Y-m-d') . ' 00:00:00', date('Y-m-d') . ' 23:59:59']);
+                } else if ($data ['time'] == '明天' || $data ['time'] == 'Tomorrow') {
+                    $query->whereBetween(
+                        'a.date', 
+                        [
+                            date('Y-m-d', strtotime('+1 day')) . ' 00:00:00', 
+                            date('Y-m-d', strtotime('+1 day')) . ' 23:59:59'
+                        ]);
+                } else if ($data ['time'] == '这周' || $data ['time'] == 'This week') {
+                    $query->whereBetween('a.date', [
+                        date('Y-m-d', strtotime('this week monday')) . ' 00:00:00',
+                        date('Y-m-d', strtotime(date('Y-m-d', strtotime("this week Sunday", time()))) + 24 * 3600 - 1) . ' 23:59:59'
+                    ]);
+                } else if ($data ['time'] == '下周' || $data ['time'] == 'Next week') {
+                    $query->whereBetween('a.date', [
+                        date('Y-m-d', strtotime('next week monday', time())) . ' 00:00:00',
+                        date('Y-m-d', strtotime(date('Y-m-d', strtotime("next week Sunday", time()))) + 24 * 3600 - 1) . ' 23:59:59'
+                    ]);
+                } else if ($data ['time'] == '上周' || $data ['time'] == 'Last week') {
+                    $query->whereBetween('a.date', [
+                        date('Y-m-d', strtotime('-2 monday', time())) . ' 00:00:00',
+                        date('Y-m-d', strtotime('-1 sunday', time())) . ' 23:59:59'
+                    ]);
+                }
+            }
 
             if (isset($data ['importance']) && $data ['importance'] != '') {
                 $query->whereIn('a.importance', formatQuery($data['importance'], 1));

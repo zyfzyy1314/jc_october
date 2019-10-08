@@ -136,7 +136,7 @@
     margin-left: 15px;
 }
 
-/* .expand .el-table__expand-column .cell {
+.expand .el-table__expand-column .cell {
     display: none;
 }
 
@@ -146,17 +146,14 @@
 }
 
 .expand .el-table_1_column_2 {
-    /* text-align-last: left; */
-/* } */
+    text-align-last: left;
+}
 
 .expand td {
     background-color: #CCCDCE !important;
     color: black;
-} */
-
-.el-row {
-    margin-bottom: 20px;
 }
+
 .el-col {
     border-radius: 4px;
 }
@@ -252,8 +249,7 @@
 }
 
 .this_week {
-    background-color: #E6A23C !important;
-    color: #fff !important;
+    color: black !important;
 }
 
 .date-span {
@@ -267,8 +263,4 @@
 
 .date-span button {
     margin-top: 15px !important;
-}
-
-thead th {
-    background: #f4f4f4 !important;
 }
