@@ -285,7 +285,7 @@ new Vue({
                             },
                             yAxis: {},
                             series: [{
-                                name: '今值',
+                                name: 'Reality',
                                 type: 'bar',
                                 data: response.chart.data
                             }]
