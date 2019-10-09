@@ -63,5 +63,5 @@ jQuery(document).ready(function($){
     
     nowTime = d + ' ' + nowTime.toDateString().split(' ')[1] + ',' + y + ' GMT' + zone
 
-    $('#nowTimeZone').html(nowTime)
+    $('#nowTimeZone').html('<i class="iconfont icon-shijian"></i> ' + nowTime)
 });

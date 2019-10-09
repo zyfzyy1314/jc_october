@@ -1,7 +1,7 @@
 let timeZone = String(-new Date().getTimezoneOffset() / 60)
 
-const cityOptions = ['China', 'Australia', 'United States', 'United Kingdom', 'Japan', 'Italy', 'Germany', 'France', 'European Union',
-    'Switzerland', 'Canada', 'New Zealand'];
+const cityOptions = ['Australia', 'Canada', 'China', 'European Union', 'France', 'Germany', 'Italy', 'Japan', 'New Zealand', 'Switzerland', 
+    'United Kingdom', 'United States']
 
 const weekArr = {
         0: 'Sun',
@@ -134,14 +134,24 @@ new Vue({
                     })
 
                     if (data.length > 0) {
-                        console.log(new Date(data[0]['date']))
                         data.unshift({ 'id': '--', 'timeLine': data[0]['date'], 'expand': false })
 
                         let nowDate = data[0]['timeLine'].split(' ')[0]
+                        
                         for (let i = 1; i < data.length; i++) {
                             if (data[i]['date'].split(' ')[0] != nowDate) {
                                 nowDate = data[i]['date'].split(' ')[0]
                                 data.splice(i, 0, { 'id': '--', 'timeLine': data[i]['date'], 'expand': false })
+                            }
+
+                            if (i > 1 && data[i]['id'] != '--' && data[i - 1]['id'] != '--' && 
+                            data[i]['date'].split(' ')[1].slice(0, 5) == data[i-1]['date'].split(' ')[1].slice(0, 5) && data[i]['currency'] == data[i-1]['currency']) 
+                            {
+                                data [i]['show_date'] = ''
+                                data [i]['show_currency'] = ''
+                            } else if (data[i]['id'] != '--') {
+                                data [i]['show_date'] = data[i]['date'].split(' ')[1].slice(0, 5)
+                                data [i]['show_currency'] = data[i]['currency']
                             }
                         }
                     }

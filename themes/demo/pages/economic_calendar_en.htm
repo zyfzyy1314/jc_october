@@ -5,7 +5,7 @@ layout = "default"
 
 <link href="{{ 'assets/css/economic.css'|theme }}" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-<link href="//at.alicdn.com/t/font_1434648_gzsrfbw8qnm.css" rel="stylesheet">
+<link href="//at.alicdn.com/t/font_1434648_lgaky3w0ysg.css" rel="stylesheet">
 
 <div class="market" id="app">
     <el-row>
@@ -44,8 +44,8 @@ layout = "default"
                             </el-checkbox-group>
                         </el-form-item>
             
-                        <el-form-item label="Current Time">
-                            <el-select v-model="temp.zone" placeholder="select" @change="handleChangeZone" style="width: 300px;">
+                        <el-form-item label="Time Zone">
+                            <el-select v-model="temp.zone" placeholder="select" @change="handleChangeZone" style="width: 400px;">
                                 <el-option label="(GMT-11:00) Midway Island, Samoa" value="-11"></el-option>
                                 <el-option label="(GMT-10:00) Hawaii-Aleutian" value="-10"></el-option>
                                 <el-option label="(GMT-09:00) Gambier Islands" value="-9"></el-option>
@@ -74,22 +74,22 @@ layout = "default"
                             </el-select>
                         </el-form-item>
             
-                        <el-form-item label="Country">
+                        <el-form-item label="Region">
                             <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">All
                             </el-checkbox>
                             <el-checkbox-group v-model="temp.country" @change="handleCountryChange" :min="1">
-                                <el-checkbox label="China"></el-checkbox>
                                 <el-checkbox label="Australia"></el-checkbox>
-                                <el-checkbox label="United States"></el-checkbox>
-                                <el-checkbox label="United Kingdom"></el-checkbox>
-                                <el-checkbox label="Japan"></el-checkbox>
-                                <el-checkbox label="Italy"></el-checkbox>
-                                <el-checkbox label="Germany"></el-checkbox>
-                                <el-checkbox label="France"></el-checkbox>
-                                <el-checkbox label="European Union"></el-checkbox>
-                                <el-checkbox label="Switzerland"></el-checkbox>
                                 <el-checkbox label="Canada"></el-checkbox>
+                                <el-checkbox label="China"></el-checkbox>
+                                <el-checkbox label="European Union"></el-checkbox>
+                                <el-checkbox label="France"></el-checkbox>
+                                <el-checkbox label="Germany"></el-checkbox>
+                                <el-checkbox label="Italy"></el-checkbox>
+                                <el-checkbox label="Japan"></el-checkbox>
                                 <el-checkbox label="New Zealand"></el-checkbox>
+                                <el-checkbox label="Switzerland"></el-checkbox>
+                                <el-checkbox label="United Kingdom"></el-checkbox>
+                                <el-checkbox label="United States"></el-checkbox>
                             </el-checkbox-group>
                         </el-form-item>
             
@@ -133,32 +133,31 @@ layout = "default"
             <template slot-scope="props">
                 <el-row :gutter="20">
                     <el-col :span="24">
-                        <div class="releaseInfo bold">
-                            <span>Latest Release
-                                <div class="noBold" v-html="props.row.date.slice(0, 10)">
-                                    {{ props.row.date.slice(0, 10) }}</div>
-                            </span>
-                            <span>Reality
-                                <div class="arial_14 redFont"
-                                    v-html="props.row.reality == '' ? '--' : props.row.reality">
-                                    {{ props.row.reality == '' ? '--' : props.row.reality }}</div>
-                            </span>
-                            <span>Forecast
-                                <div class="arial_14 noBold"
-                                    v-html="props.row.forecast == '' ? '--' : props.row.forecast">
-                                    {{ props.row.forecast == '' ? '--' : props.row.forecast }}</div>
-                            </span>
-                            <span>Previous
-                                <div class="arial_14 noBold blackFont"
-                                    v-html="props.row.previous == '' ? '--' : props.row.previous">
-                                    {{ props.row.previous == '' ? '--' : props.row.previous }}</div>
-                            </span>
-                        </div>
-
                         <div v-show="props.row.overview">
                             <div class="overViewBox event">
                                 <div class="left">
-                                    <div v-html="props.row.overview"></div>
+                                    <div class="releaseInfo bold">
+                                        <span>Latest Release
+                                            <div class="noBold" v-html="props.row.date.slice(0, 10)">
+                                                {{ props.row.date.slice(0, 10) }}</div>
+                                        </span>
+                                        <span>Reality
+                                            <div class="arial_14 redFont"
+                                                v-html="props.row.reality == '' ? '--' : props.row.reality">
+                                                {{ props.row.reality == '' ? '--' : props.row.reality }}</div>
+                                        </span>
+                                        <span>Forecast
+                                            <div class="arial_14 noBold"
+                                                v-html="props.row.forecast == '' ? '--' : props.row.forecast">
+                                                {{ props.row.forecast == '' ? '--' : props.row.forecast }}</div>
+                                        </span>
+                                        <span>Previous
+                                            <div class="arial_14 noBold blackFont"
+                                                v-html="props.row.previous == '' ? '--' : props.row.previous">
+                                                {{ props.row.previous == '' ? '--' : props.row.previous }}</div>
+                                        </span>
+                                    </div>
+                                    <div v-html="props.row.overview" style="margin-top: 30px;"></div>
                                     <p>Source: <a :href="props.row.source_of_report_link" target="_blank"
                                             style="text-decoration: none; cursor: pointer;"
                                             v-html="props.row.source_of_report">{{ props.row.source_of_report }}</a>
@@ -174,8 +173,14 @@ layout = "default"
                                     </div>
                                     <div>
                                         <span>Country:</span>
-                                        <span v-html="props.row.history_country">
-                                            {{ props.row.history_country }}
+                                        <span>
+                                            <div v-if="props.row.currency != 'EUR'">
+                                                <img :src="`/themes/demo/assets/images/flag/${props.row.currency}.png`" width="32" height="21" style="margin-top: -1px;"/>
+                                            </div>
+                            
+                                            <div v-else>
+                                                <img :src="`/themes/demo/assets/images/flag/${props.row.country}.png`" width="32" height="21" style="margin-top: -1px;"/>
+                                            </div>
                                         </span>
                                     </div>
                                     <div>
@@ -194,19 +199,19 @@ layout = "default"
 
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
-                <span v-if="scope.row.id !='--'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.date.split(' ')[1].slice(0, 5)"></span>
+                <span v-if="scope.row.id !='--'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.show_date"></span>
                 <span v-else v-html="`${formatWeekDay(scope.row.timeLine)}`"></span>
             </template>
         </el-table-column>
 
         <el-table-column prop="country" label="Currency">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
-                <div v-if="scope.row.currency != 'EUR'">
+                <div v-if="scope.row.currency != 'EUR' && scope.row.show_currency != ''">
                     <img :src="`/themes/demo/assets/images/flag/${scope.row.currency}.png`" width="32" height="21" style="margin-top: -1px;"/>
                     <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.currency">{{scope.row.currency}}</span>
                 </div>
 
-                <div v-else>
+                <div v-else-if="scope.row.show_currency != ''">
                     <img :src="`/themes/demo/assets/images/flag/${scope.row.country}.png`" width="32" height="21" style="margin-top: -1px;"/>
                     <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.currency">{{scope.row.currency}}</span>
                 </div>

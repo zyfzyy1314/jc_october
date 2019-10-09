@@ -33,7 +33,7 @@
         $chartsData = [];
 
         foreach($chart as $key => $value) {
-            $chartsTime [$key] = substr($value ['date'], 0, 10);
+            $chartsTime [$key] = date('m/d/Y', strtotime($value ['date']));
             $chartsData [$key] = preg_replace( '/[^0-9\-. ]/i', '', $value['reality']);
         }
 
