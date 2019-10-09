@@ -10,7 +10,7 @@ layout = "default"
 <div class="market" id="app">
     <el-row>
         <div class="grid-content bg-purple-dark">
-            <el-col :span="16">
+            <el-col :span="21">
                 <ul class="clendar-ul calendar-pointer">
                     <li @click="handleChangeWeek('Last week')" v-bind:class="{ this_week : temp.time == 'Last week' ? true : false }"> < Last week</li>
                     <li v-for="item in timeArray" @click="handleChangeDate(item.all)" v-bind:class="{ today_date: item.all == temp.date ? true : false }">
@@ -22,11 +22,12 @@ layout = "default"
                 </ul>
             </el-col>
         
-            <el-col :span="4">
+            <el-col :span="3">
                 <el-popover
-                placement="bottom"
-                width="600"
-                trigger="click">
+                    placement="bottom"
+                    width="600"
+                    trigger="manual"
+                    v-model="showFilter">
                     <el-form ref="temp" :model="temp" label-position="top" class="calendar-form">
                         <el-form-item label="Importance">
                             <el-checkbox-group v-model="temp.importance" :min="1">
@@ -44,7 +45,7 @@ layout = "default"
                         </el-form-item>
             
                         <el-form-item label="Current Time">
-                            <el-select v-model="temp.zone" placeholder="select" @change="handleChangeZone">
+                            <el-select v-model="temp.zone" placeholder="select" @change="handleChangeZone" style="width: 300px;">
                                 <el-option label="(GMT-11:00) Midway Island, Samoa" value="-11"></el-option>
                                 <el-option label="(GMT-10:00) Hawaii-Aleutian" value="-10"></el-option>
                                 <el-option label="(GMT-09:00) Gambier Islands" value="-9"></el-option>
@@ -107,7 +108,10 @@ layout = "default"
                             <el-button @click="handleDefault">Cancel</el-button>
                         </el-form-item>
                     </el-form>
-                    <i class="iconfont icon-shaixuan calendar-pointer calendar-left" slot="reference">Filter</i>
+                    <i class="iconfont icon-shaixuan calendar-pointer calendar-left" 
+                        v-bind:class="{ filter_class : temp.filter == true ? true : false }" 
+                        slot="reference" 
+                        @click="showFilter = !showFilter">Filter</i>
                 </el-popover>
             </el-col>
         </div>
@@ -198,23 +202,20 @@ layout = "default"
         <el-table-column prop="country" label="Currency">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <div v-if="scope.row.currency != 'EUR'">
-                    <img :src="`/themes/demo/assets/images/flag/${scope.row.currency}.png`" width="32" height="21"/>
-                    <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
-                        v-html="scope.row.currency">{{scope.row.currency}}</span>
+                    <img :src="`/themes/demo/assets/images/flag/${scope.row.currency}.png`" width="32" height="21" style="margin-top: -1px;"/>
+                    <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.currency">{{scope.row.currency}}</span>
                 </div>
 
                 <div v-else>
-                    <img :src="`/themes/demo/assets/images/flag/${scope.row.country}.png`" width="32" height="21"/>
-                    <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
-                        v-html="scope.row.currency">{{scope.row.currency}}</span>
+                    <img :src="`/themes/demo/assets/images/flag/${scope.row.country}.png`" width="32" height="21" style="margin-top: -1px;"/>
+                    <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.currency">{{scope.row.currency}}</span>
                 </div>
             </template>
         </el-table-column>
 
         <el-table-column prop="title" label="Event" min-width="200px">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
-                <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
-                    v-html="scope.row.title">{{scope.row.title}}</span>
+                <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.title">{{scope.row.title}}</span>
             </template>
         </el-table-column>
 
@@ -227,16 +228,13 @@ layout = "default"
 
         <el-table-column prop="previous" label="Previous">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
-                <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
-                    v-html="scope.row.previous">{{scope.row.previous}}
-                    {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
+                <span v-html="scope.row.previous">{{scope.row.previous}} {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
             </template>
         </el-table-column>
 
         <el-table-column prop="forecast" label="Forecast">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
-                <span v-if="scope.row.forecast != null" :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
-                    v-html="scope.row.forecast">{{scope.row.forecast}}
+                <span v-if="scope.row.forecast != null" v-html="scope.row.forecast">{{scope.row.forecast}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
                 <span v-else>---</span>
             </template>
@@ -244,8 +242,7 @@ layout = "default"
 
         <el-table-column prop="reality" label="Actual">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
-                <span v-if="scope.row.reality != null" :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}"
-                    v-html="scope.row.reality">{{scope.row.reality}}
+                <span v-if="scope.row.reality != null" v-html="scope.row.reality">{{scope.row.reality}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
                 <span v-else>---</span>
             </template>

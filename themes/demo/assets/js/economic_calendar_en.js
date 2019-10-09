@@ -76,7 +76,8 @@ new Vue({
                 importance: ['High', 'Middle', 'Low'],
                 event: ['Financial Events', 'Economic Data'],
                 zone: timeZone,
-                country: cityOptions
+                country: cityOptions,
+                filter: false
             },
             cities: cityOptions,
             nowPage: 1,
@@ -103,7 +104,8 @@ new Vue({
             histotyDialog: false,
             historyTitle: '',
             timeArray: getWeekDay('This week'),
-            filterType: ''
+            filterType: '',
+            showFilter: false
         }
     },
     created() {
@@ -173,6 +175,9 @@ new Vue({
             this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
         },
         handleConfirmFilter() {
+            this.temp.filter = true
+            this.showFilter = false
+
             this.getEconomic()
         },
         zeroPadding(num, digit) {
@@ -196,8 +201,11 @@ new Vue({
                 importance: ['High', 'Middle', 'Low'],
                 event: ['Financial Events', 'Economic Data'],
                 zone: timeZone,
-                country: cityOptions
+                country: cityOptions,
+                filter: false
             }
+
+            this.showFilter = false
 
             this.getEconomic()
         },

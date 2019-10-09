@@ -33,6 +33,12 @@
                     </a>
                 </li> -->
 
+                <li class="{% if this.page.id == 'economic_calendar_en' %}active{% endif %}">
+                    <a href="{{ 'economic_calendar_en'|page }}">
+                        CALENDAR
+                    </a>
+                </li>
+
                 <li class="{% if this.page.id == 'news_en' %}active{% endif %}">
                     <a href="{{ 'news_en'|page }}">
                         NEWS
@@ -44,12 +50,6 @@
                         财经日历
                     </a>
                 </li> -->
-
-                <li class="{% if this.page.id == 'economic_calendar_en' %}active{% endif %}">
-                    <a href="{{ 'economic_calendar_en'|page }}">
-                        CALENDAR
-                    </a>
-                </li>
 
                 <li class="{% if this.page.id == 'add_to_website' %}active{% endif %}">
                     <a href="{{ 'add_to_website'|page }}">

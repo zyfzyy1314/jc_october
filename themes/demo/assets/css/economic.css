@@ -167,19 +167,16 @@
 }
 
 .clendar-ul {
-    width: 1170px;
     margin: 0px auto;
     text-align: center;
 }
 .clendar-ul li {
-    position: relative;
     float: left;
-    /* line-height: 60px; */
-    padding-left: 20px;
     list-style: none;
     font-size: 14px;
     height: 60px;
     padding-top: 10px;
+    width: 10%;
 }
 
 .clendar-ul li:first-child,
@@ -193,7 +190,6 @@
 
 .calendar-left {
     border-left: 1px solid #dddddd;
-    /* color: #dddddd; */
     font-size: 16px;
     line-height: 60px;
     height: 20px;
@@ -242,10 +238,14 @@
 .today_date {
     color: #f3953d;
     font-weight: bold;
+    background-image: url('/themes/demo/assets/images/back.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
 }
 
 .el-button {
     padding: 4px 4px !important;
+    border-radius: 0px !important;
 }
 
 .this_week {
@@ -263,4 +263,20 @@
 
 .date-span button {
     margin-top: 15px !important;
+}
+
+.filter_class {
+    color: #f3953d;
+}
+
+.el-select .el-input.is-focus .el-input__inner {
+    border-color: #f3953d !important;
+}
+
+.el-select .el-input__inner:focus {
+    border-color: #f3953d !important;
+}
+
+.el-select-dropdown__item.selected {
+    color: #f3953d !important;
 }
