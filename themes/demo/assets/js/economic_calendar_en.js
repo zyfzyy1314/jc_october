@@ -134,10 +134,10 @@ new Vue({
                     })
 
                     if (data.length > 0) {
+                        console.log(new Date(data[0]['date']))
                         data.unshift({ 'id': '--', 'timeLine': data[0]['date'], 'expand': false })
 
                         let nowDate = data[0]['timeLine'].split(' ')[0]
-
                         for (let i = 1; i < data.length; i++) {
                             if (data[i]['date'].split(' ')[0] != nowDate) {
                                 nowDate = data[i]['date'].split(' ')[0]
@@ -210,10 +210,10 @@ new Vue({
             this.getEconomic()
         },
         formatWeekDay(date) {
-            var date = new Date(date)
-            date = date.getDay()
+            let nowDate = new Date(date)
+            let getDay = nowDate.getDay()
 
-            var week = {
+            let week = {
                 0: 'Sunday',
                 1: 'Monday',
                 2: 'Tuesday',
@@ -223,7 +223,22 @@ new Vue({
                 6: 'Saturday'
             }
 
-            return week[date]
+            let month = {
+                'Jan': 'January',
+                'Feb': 'February',
+                'Mar': 'March',
+                'Apr': 'April',
+                'May': 'May',
+                'Jun': 'June',
+                'Jul': 'July',
+                'Aug': 'August',
+                'Sept': 'September',
+                'Oct': 'October',
+                'Nov': 'November',
+                'Dec': 'December'
+            }
+
+            return week[getDay] + ' ' + month[nowDate.toDateString().split(' ')[1]] + ' ' + nowDate.getDate() + ' ' + nowDate.getFullYear()
         },
         rowExpand(row, expandedRows) {
             if (expandedRows != '') {

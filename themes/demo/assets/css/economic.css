@@ -150,8 +150,8 @@
 }
 
 .expand td {
-    background-color: #CCCDCE !important;
-    color: black;
+    background-color: #f4f4f4 !important;
+    color: #999;
 }
 
 .el-col {

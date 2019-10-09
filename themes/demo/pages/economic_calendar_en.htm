@@ -15,7 +15,7 @@ layout = "default"
                     <li @click="handleChangeWeek('Last week')" v-bind:class="{ this_week : temp.time == 'Last week' ? true : false }"> < Last week</li>
                     <li v-for="item in timeArray" @click="handleChangeDate(item.all)" v-bind:class="{ today_date: item.all == temp.date ? true : false }">
                         <p v-html="item.simple" style="margin-bottom: 0px;"></p>
-                        <p v-html="item.weekday"></p>
+                        <p v-html="item.weekday" style="font-size: 11px;"></p>
                     </li>
                     <li @click="handleChangeWeek('Next week')" v-bind:class="{ this_week : temp.time == 'Next week' ? true : false }" style="padding-top: 20px;">Next week > </li>
                     <li @click="handleChangeWeek('This week')" v-bind:class="{ this_week : temp.time == 'This week' ? true : false }">This week</li>
@@ -195,7 +195,7 @@ layout = "default"
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
                 <span v-if="scope.row.id !='--'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.date.split(' ')[1].slice(0, 5)"></span>
-                <span v-else v-html="`${scope.row.timeLine.split(' ')[0]}(${formatWeekDay(scope.row.timeLine)})`"></span>
+                <span v-else v-html="`${formatWeekDay(scope.row.timeLine)}`"></span>
             </template>
         </el-table-column>
 
