@@ -3762,7 +3762,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #cccccc;
 }
 .navbar-inverse {
-  /* background-color: #000000; */
+  background-color: #ffffff;
   /* border-color: #000000; */
 }
 .navbar-inverse .navbar-brand {
