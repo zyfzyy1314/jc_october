@@ -348,12 +348,16 @@ new Vue({
         },
         arraySpanMethod({ row, column, rowIndex, columnIndex }) {
             if (row.id == '--') {
-                return [1, 3];
+                return [1, 4];
             }
         },
         setClassName({ row, index }) {
             // 通过自己的逻辑返回一个class或者空
             return row.expand ? '' : 'expand';
+        },
+        toogleExpand(row) {
+            let $table = this.$refs.table;
+            $table.toggleRowExpansion(row)
         }
     }
 })

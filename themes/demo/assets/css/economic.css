@@ -145,8 +145,8 @@
     color: black;
 }
 
-.expand .el-table_1_column_2 {
-    text-align-last: center;
+.expand .el-table_1_column_1 {
+    text-align: right;
 }
 
 .expand td {
@@ -176,6 +176,7 @@
     height: 60px;
     padding-top: 10px;
     width: 10%;
+    color: #333;
 }
 
 .clendar-ul li:first-child,
@@ -188,11 +189,11 @@
 }
 
 .calendar-left {
-    border-left: 1px solid #dddddd;
+    border-left: 2px solid #dddddd;
     font-size: 16px;
     line-height: 60px;
     height: 20px;
-    padding-left: 10px;
+    padding-left: 15px;
     margin-left: 10px;
 }
 
@@ -248,7 +249,7 @@
 }
 
 .this_week {
-    color: black !important;
+    color: #f3953d !important;
 }
 
 .date-span {
@@ -288,4 +289,8 @@
 
 .el-col, .el-popover, .el-input__inner, .el-checkbox__inner {
     border-radius: 0px !important;
+}
+
+.el-table thead th {
+    color: #666 !important;
 }

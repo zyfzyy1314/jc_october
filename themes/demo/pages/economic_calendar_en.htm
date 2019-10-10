@@ -4,7 +4,7 @@ layout = "default"
 ==
 <link href="{{ 'assets/css/economic.css'|theme }}" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-<link href="//at.alicdn.com/t/font_1434648_lgaky3w0ysg.css" rel="stylesheet">
+<link href="//at.alicdn.com/t/font_1434648_rhslodsxe9.css" rel="stylesheet">
 
 <div class="market" id="app">
     <el-row>
@@ -126,7 +126,7 @@ layout = "default"
         </div> -->
     </el-row>
 
-    <el-table :data="tableData" stripe style="width: 100%" highlight-current-row v-loading="listLoading" @expand-change="rowExpand" 
+    <el-table :data="tableData" ref="table" stripe style="width: 100%" highlight-current-row v-loading="listLoading" @expand-change="rowExpand" 
         :span-method="arraySpanMethod" :row-class-name="setClassName">
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
@@ -190,7 +190,13 @@ layout = "default"
             </template>
         </el-table-column>
 
-        <el-table-column type="expand">
+        <el-table-column>
+            <template slot-scope="scope" v-if="scope.row.id != '--'">
+                    <i class="iconfont icon-xiangqing calendar-pointer" @click="toogleExpand(scope.row)"></i>
+            </template>
+        </el-table-column>
+
+        <el-table-column type="expand" width="1">
             <template slot-scope="props">
                 <el-row :gutter="20">
                     <el-col :span="24">
