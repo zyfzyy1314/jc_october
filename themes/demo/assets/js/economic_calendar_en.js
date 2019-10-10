@@ -145,7 +145,7 @@ new Vue({
                             }
 
                             if (i > 1 && data[i]['id'] != '--' && data[i - 1]['id'] != '--' && 
-                            data[i]['date'].split(' ')[1].slice(0, 5) == data[i-1]['date'].split(' ')[1].slice(0, 5) && data[i]['currency'] == data[i-1]['currency']) 
+                            data[i]['date'].split(' ')[1].slice(0, 5) == data[i-1]['date'].split(' ')[1].slice(0, 5) && data[i]['currency'] == data[i-1]['currency'])
                             {
                                 data [i]['show_date'] = ''
                                 data [i]['show_currency'] = ''
@@ -206,7 +206,7 @@ new Vue({
                 limit: 50,
                 type: 1,
                 language: 'en',
-                time: 'Today',
+                time: '',
                 date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
                 importance: ['High', 'Middle', 'Low'],
                 event: ['Financial Events', 'Economic Data'],
