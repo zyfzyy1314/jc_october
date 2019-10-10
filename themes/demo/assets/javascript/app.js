@@ -60,8 +60,23 @@ jQuery(document).ready(function($){
     } else {
         zone = '-' + zone
     }
+
+    let month = {
+        'Jan': 'January',
+        'Feb': 'February',
+        'Mar': 'March',
+        'Apr': 'April',
+        'May': 'May',
+        'Jun': 'June',
+        'Jul': 'July',
+        'Aug': 'August',
+        'Sept': 'September',
+        'Oct': 'October',
+        'Nov': 'November',
+        'Dec': 'December'
+    }
     
-    nowTime = d + ' ' + nowTime.toDateString().split(' ')[1] + ',' + y + ' GMT' + zone
+    nowTime = month[nowTime.toDateString().split(' ')[1]] + ' ' + d + ', ' + y + ' GMT' + zone
 
     $('#nowTimeZone').html('<i class="iconfont icon-shijian"></i> ' + nowTime)
 });
