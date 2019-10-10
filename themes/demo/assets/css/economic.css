@@ -236,7 +236,7 @@
 }
 
 .today_date {
-    color: #f3953d;
+    color: #f3953d !important;
     font-weight: bold;
     background-image: url('/themes/demo/assets/images/back.png');
     background-repeat: no-repeat;

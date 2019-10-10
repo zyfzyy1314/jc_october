@@ -190,7 +190,7 @@ layout = "default"
             </template>
         </el-table-column>
 
-        <el-table-column>
+        <el-table-column label="Detail">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
                     <i class="iconfont icon-xiangqing calendar-pointer" @click="toogleExpand(scope.row)"></i>
             </template>
