@@ -1,0 +1,500 @@
+fields:
+    title:
+        label: abwebdevelopers.forms::lang.models.form.title.label
+        comment: abwebdevelopers.forms::lang.models.form.title.comment
+        span: left
+        required: 1
+        type: text
+    code:
+        label: abwebdevelopers.forms::lang.models.form.code.label
+        comment: abwebdevelopers.forms::lang.models.form.code.comment
+        span: right
+        required: 1
+        type: text
+tabs:
+    fields:
+        # Fields
+        fields:
+            label: abwebdevelopers.forms::lang.tabs.fields
+            span: full
+            type: partial
+            tab: abwebdevelopers.forms::lang.tabs.fields
+            path: ~/plugins/abwebdevelopers/forms/controllers/form/_fields.htm
+
+        # Caching
+        enable_caching:
+            label: abwebdevelopers.forms::lang.models.settings.enable_caching.label
+            comment: abwebdevelopers.forms::lang.models.settings.enable_caching.comment
+            tab: abwebdevelopers.forms::lang.tabs.caching
+            span: left
+            type: switch
+            trigger:
+                action: enable
+                field: override_enable_caching
+                condition: checked
+        override_enable_caching:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.caching
+            span: right
+            type: checkbox
+        cache_lifetime:
+            label: abwebdevelopers.forms::lang.models.settings.cache_lifetime.label
+            comment: abwebdevelopers.forms::lang.models.settings.cache_lifetime.comment
+            tab: abwebdevelopers.forms::lang.tabs.caching
+            span: left
+            type: text
+            trigger:
+                action: enable
+                field: override_cache_lifetime
+                condition: checked
+        override_cache_lifetime:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.caching
+            span: right
+            type: checkbox
+
+        # Action
+        on_success:
+            label: abwebdevelopers.forms::lang.models.settings.on_success.label
+            comment: abwebdevelopers.forms::lang.models.settings.on_success.comment
+            tab: abwebdevelopers.forms::lang.tabs.action
+            span: left
+            type: dropdown
+            options:
+                hide: abwebdevelopers.forms::lang.models.settings.on_success.options.hide
+                clear: abwebdevelopers.forms::lang.models.settings.on_success.options.clear
+                redirect: abwebdevelopers.forms::lang.models.settings.on_success.options.redirect
+            trigger:
+                action: enable
+                field: override_on_success
+                condition: checked
+        override_on_success:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.action
+            span: right
+            type: checkbox
+        on_success_message:
+            label: abwebdevelopers.forms::lang.models.settings.on_success_message.label
+            comment: abwebdevelopers.forms::lang.models.settings.on_success_message.comment
+            tab: abwebdevelopers.forms::lang.tabs.action
+            span: left
+            type: text
+            trigger:
+                action: enable
+                field: override_on_success_message
+                condition: checked
+        override_on_success_message:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.action
+            span: right
+            type: checkbox
+        on_success_redirect:
+            label: abwebdevelopers.forms::lang.models.settings.on_success_redirect.label
+            comment: abwebdevelopers.forms::lang.models.settings.on_success_redirect.comment
+            tab: abwebdevelopers.forms::lang.tabs.action
+            span: left
+            type: text
+            trigger:
+                action: enable
+                field: override_on_success_redirect
+                condition: checked
+        override_on_success_redirect:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.action
+            span: right
+            type: checkbox
+        
+        # Styling
+        form_class:
+            label: abwebdevelopers.forms::lang.models.settings.form_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.form_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: form-control
+            trigger:
+                action: enable
+                field: override_form_class
+                condition: checked
+        override_form_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        field_class:
+            label: abwebdevelopers.forms::lang.models.settings.field_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.field_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: form-control
+            trigger:
+                action: enable
+                field: override_field_class
+                condition: checked
+        override_field_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        row_class:
+            label: abwebdevelopers.forms::lang.models.settings.row_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.row_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: row
+            trigger:
+                action: enable
+                field: override_row_class
+                condition: checked
+        override_row_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        group_class:
+            label: abwebdevelopers.forms::lang.models.settings.group_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.group_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: form-group col-12
+            trigger:
+                action: enable
+                field: override_group_class
+                condition: checked
+        override_group_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        label_class:
+            label: abwebdevelopers.forms::lang.models.settings.label_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.label_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: form-label
+            trigger:
+                action: enable
+                field: override_label_class
+                condition: checked
+        override_label_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        submit_class:
+            label: abwebdevelopers.forms::lang.models.settings.submit_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.submit_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: btn btn-primary
+            trigger:
+                action: enable
+                field: override_submit_class
+                condition: checked
+        override_submit_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        submit_text:
+            label: abwebdevelopers.forms::lang.models.settings.submit_text.label
+            comment: abwebdevelopers.forms::lang.models.settings.submit_text.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: Submit
+            trigger:
+                action: enable
+                field: override_submit_text
+                condition: checked
+        override_submit_text:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        enable_cancel:
+            label: abwebdevelopers.forms::lang.models.settings.enable_cancel.label
+            comment: abwebdevelopers.forms::lang.models.settings.enable_cancel.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: switch
+            span: left
+            trigger:
+                action: enable
+                field: override_enable_cancel
+                condition: checked
+        override_enable_cancel:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        cancel_class:
+            label: abwebdevelopers.forms::lang.models.settings.cancel_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.cancel_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: btn btn-danger
+            trigger:
+                action: enable
+                field: override_cancel_class
+                condition: checked
+        override_cancel_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        cancel_text:
+            label: abwebdevelopers.forms::lang.models.settings.cancel_text.label
+            comment: abwebdevelopers.forms::lang.models.settings.cancel_text.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: Cancel
+            trigger:
+                action: enable
+                field: override_cancel_text
+                condition: checked
+        override_cancel_text:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: checkbox
+            span: right
+        
+        # Privacy
+        saves_data:
+            label: abwebdevelopers.forms::lang.models.settings.saves_data.label
+            comment: abwebdevelopers.forms::lang.models.settings.saves_data.comment
+            tab: abwebdevelopers.forms::lang.tabs.privacy
+            span: left
+            placeholder: 1
+            type: switch
+            trigger:
+                action: enable
+                field: override_saves_data
+                condition: checked
+        override_saves_data:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.privacy
+            type: checkbox
+            span: right
+
+        # Anti-spam
+        _recaptcha:
+            label: abwebdevelopers.forms::lang.sections.recaptcha.label
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            type: section
+        enable_recaptcha:
+            label: abwebdevelopers.forms::lang.models.settings.enable_recaptcha.label
+            comment: abwebdevelopers.forms::lang.models.settings.enable_recaptcha.comment
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            span: left
+            type: switch
+            trigger:
+                action: enable
+                field: override_enable_recaptcha
+                condition: checked
+        override_enable_recaptcha:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            type: checkbox
+            span: right
+        _ip_restriction:
+            label: abwebdevelopers.forms::lang.sections.ip_restriction.label
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            type: section
+        enable_ip_restriction:
+            label: abwebdevelopers.forms::lang.models.settings.enable_ip_restriction.label
+            comment: abwebdevelopers.forms::lang.models.settings.enable_ip_restriction.comment
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            span: left
+            type: switch
+            trigger:
+                action: enable
+                field: override_enable_ip_restriction
+                condition: checked
+        override_enable_ip_restriction:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            type: checkbox
+            span: right
+        max_requests_per_day:
+            label: abwebdevelopers.forms::lang.models.settings.max_requests_per_day.label
+            comment: abwebdevelopers.forms::lang.models.settings.max_requests_per_day.comment
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            span: left
+            type: number
+            placeholder: 'e.g. 5'
+            trigger:
+                action: enable
+                field: override_max_requests_per_day
+                condition: checked
+        override_max_requests_per_day:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            type: checkbox
+            span: right
+        throttle_message:
+            label: abwebdevelopers.forms::lang.models.settings.throttle_message.label
+            comment: abwebdevelopers.forms::lang.models.settings.throttle_message.comment
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            span: left
+            type: text
+            placeholder: 'Failed to send due to too many requests.'
+            trigger:
+                action: enable
+                field: override_throttle_message
+                condition: checked
+        override_throttle_message:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.antispam
+            type: checkbox
+            span: right
+
+        # Emailing
+        _notifications:
+            label: abwebdevelopers.forms::lang.sections.notifications.label
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: section
+        send_notifications:
+            label: abwebdevelopers.forms::lang.models.settings.send_notifications.label
+            comment: abwebdevelopers.forms::lang.models.settings.send_notifications.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            span: left
+            type: switch
+            trigger:
+                action: enable
+                field: override_send_notifications
+                condition: checked
+        override_send_notifications:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: checkbox
+            span: right
+        notification_template:
+            label: abwebdevelopers.forms::lang.models.settings.notification_template.label
+            comment: abwebdevelopers.forms::lang.models.settings.notification_template.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            span: left
+            type: text
+            trigger:
+                action: enable
+                field: override_notification_template
+                condition: checked
+        override_notification_template:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: checkbox
+            span: right
+        notification_recipients:
+            label: abwebdevelopers.forms::lang.models.settings.notification_recipients.label
+            comment: abwebdevelopers.forms::lang.models.settings.notification_recipients.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            span: left
+            type: text
+            trigger:
+                action: enable
+                field: override_notification_recipients
+                condition: checked
+        override_notification_recipients:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: checkbox
+            span: right
+        _autoReply:
+            label: abwebdevelopers.forms::lang.sections.auto_reply.label
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: section
+        auto_reply:
+            label: abwebdevelopers.forms::lang.models.settings.auto_reply.label
+            comment: abwebdevelopers.forms::lang.models.settings.auto_reply.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            span: left
+            type: switch
+            trigger:
+                action: enable
+                field: override_auto_reply
+                condition: checked
+        override_auto_reply:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: checkbox
+            span: right
+        auto_reply_email_field_id:
+            label: abwebdevelopers.forms::lang.models.settings.auto_reply_email_field_id.label
+            comment: abwebdevelopers.forms::lang.models.settings.auto_reply_email_field_id.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            showSearch: true
+            span: left
+            type: dropdown
+            trigger:
+                action: enable
+                field: override_auto_reply_email_field_id
+                condition: checked
+        override_auto_reply_email_field_id:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: checkbox
+            span: right
+        auto_reply_name_field_id:
+            label: abwebdevelopers.forms::lang.models.settings.auto_reply_name_field_id.label
+            comment: abwebdevelopers.forms::lang.models.settings.auto_reply_name_field_id.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            showSearch: true
+            span: left
+            type: dropdown
+            trigger:
+                action: enable
+                field: override_auto_reply_name_field_id
+                condition: checked
+        override_auto_reply_name_field_id:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: checkbox
+            span: right
+        auto_reply_template:
+            label: abwebdevelopers.forms::lang.models.settings.auto_reply_template.label
+            comment: abwebdevelopers.forms::lang.models.settings.auto_reply_template.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            span: left
+            type: text
+            trigger:
+                action: enable
+                field: override_auto_reply_template
+                condition: checked
+        override_auto_reply_template:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            type: checkbox
+            span: right

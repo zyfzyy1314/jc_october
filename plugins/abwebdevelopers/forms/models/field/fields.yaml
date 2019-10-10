@@ -1,0 +1,212 @@
+fields:
+    name:
+        label: abwebdevelopers.forms::lang.models.field.name.label
+        comment: abwebdevelopers.forms::lang.models.field.name.comment
+        span: auto
+        required: 1
+        type: text
+    code:
+        label: abwebdevelopers.forms::lang.models.field.code.label
+        comment: abwebdevelopers.forms::lang.models.field.code.comment
+        span: auto
+        required: 1
+        type: text
+    type:
+        label: abwebdevelopers.forms::lang.models.field.type.label
+        comment: abwebdevelopers.forms::lang.models.field.type.comment
+        showSearch: true
+        span: auto
+        required: 1
+        type: dropdown
+    description:
+        label: abwebdevelopers.forms::lang.models.field.description.label
+        comment: abwebdevelopers.forms::lang.models.field.description.comment
+        span: auto
+        type: text
+    placeholder:
+        label: abwebdevelopers.forms::lang.models.field.placeholder.label
+        comment: abwebdevelopers.forms::lang.models.field.placeholder.comment
+        span: left
+        type: text
+    default:
+        label: abwebdevelopers.forms::lang.models.field.default.label
+        comment: abwebdevelopers.forms::lang.models.field.default.comment
+        span: right
+        type: text
+        comment: 'Optional. Placeholder'
+    show_description:
+        type: switch
+        label: abwebdevelopers.forms::lang.models.field.show_description.label
+        comment: abwebdevelopers.forms::lang.models.field.show_description.comment
+        span: left
+    required:
+        type: switch
+        label: abwebdevelopers.forms::lang.models.field.required.label
+        comment: abwebdevelopers.forms::lang.models.field.required.comment
+        span: right
+tabs:
+    fields:
+        # Validation
+        validation_rules:
+            tab: abwebdevelopers.forms::lang.tabs.validation
+            label: abwebdevelopers.forms::lang.models.field.validation_rules.label
+            comment: abwebdevelopers.forms::lang.models.field.validation_rules.comment
+            span: left
+            placeholder: 'required|string|min:1|max:200'
+            default: ''
+            type: text
+        validation_message:
+            tab: abwebdevelopers.forms::lang.tabs.validation
+            label: abwebdevelopers.forms::lang.models.field.validation_message.label
+            comment: abwebdevelopers.forms::lang.models.field.validation_message.comment
+            span: right
+            placeholder: 'Invalid :attr'
+            type: text
+
+        # Options
+        options:
+            tab: abwebdevelopers.forms::lang.tabs.options
+            label: abwebdevelopers.forms::lang.models.field.options.label
+            comment: abwebdevelopers.forms::lang.models.field.options.comment
+            prompt: abwebdevelopers.forms::lang.models.field.options.prompt
+            type: repeater
+            form:
+                fields:
+                    option_label:
+                        label: abwebdevelopers.forms::lang.models.field.options.fields.option_label.label
+                        comment: abwebdevelopers.forms::lang.models.field.options.fields.option_label.comment
+                        span: left
+                        type: text
+                    option_code:
+                        label: abwebdevelopers.forms::lang.models.field.options.fields.option_code.label
+                        comment: abwebdevelopers.forms::lang.models.field.options.fields.option_code.comment
+                        span: right
+                        type: text
+                    is_optgroup:
+                        label: abwebdevelopers.forms::lang.models.field.options.fields.is_optgroup.label
+                        comment: abwebdevelopers.forms::lang.models.field.options.fields.is_optgroup.comment
+                        span: full
+                        type: checkbox
+                    options:
+                        label: abwebdevelopers.forms::lang.models.field.options.fields.options.label
+                        comment: abwebdevelopers.forms::lang.models.field.options.fields.options.comment
+                        placeholder: abwebdevelopers.forms::lang.models.field.options.fields.options.placeholder
+                        type: repeater
+                        trigger:
+                            action: show
+                            field: is_optgroup
+                            condition: checked
+                        form:
+                            fields:
+                                option_label:
+                                    label: abwebdevelopers.forms::lang.models.field.options.fields.options.fields.option_label.label
+                                    span: left
+                                    type: text
+                                option_code:
+                                    label: abwebdevelopers.forms::lang.models.field.options.fields.options.fields.option_code.label
+                                    span: right
+                                    type: text
+
+        # HTML Attributes
+        html_attributes:
+            tab: abwebdevelopers.forms::lang.tabs.html_attributes
+            label: abwebdevelopers.forms::lang.models.field.html_attributes.label
+            comment: abwebdevelopers.forms::lang.models.field.html_attributes.comment
+            prompt: abwebdevelopers.forms::lang.models.field.html_attributes.prompt
+            type: repeater
+            form:
+                fields:
+                    attribute_name:
+                        label: abwebdevelopers.forms::lang.models.field.html_attributes.fields.attribute_name.label
+                        comment: abwebdevelopers.forms::lang.models.field.html_attributes.fields.attribute_name.comment
+                        span: left
+                        type: text
+                    attribute_value:
+                        label: abwebdevelopers.forms::lang.models.field.html_attributes.fields.attribute_value.label
+                        comment: abwebdevelopers.forms::lang.models.field.html_attributes.fields.attribute_value.comment
+                        span: right
+                        type: text
+
+        # Styling
+        field_class:
+            label: abwebdevelopers.forms::lang.models.settings.field_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.field_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: Inherit
+            trigger:
+                action: enable
+                field: override_field_class
+                condition: checked
+        override_field_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            span: right
+            type: checkbox
+        row_class:
+            label: abwebdevelopers.forms::lang.models.settings.row_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.row_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: Inherit
+            trigger:
+                action: enable
+                field: override_row_class
+                condition: checked
+        override_row_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            span: right
+            type: checkbox
+        group_class:
+            label: abwebdevelopers.forms::lang.models.settings.group_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.group_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: Inherit
+            trigger:
+                action: enable
+                field: override_group_class
+                condition: checked
+        override_group_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            span: right
+            type: checkbox
+        label_class:
+            label: abwebdevelopers.forms::lang.models.settings.label_class.label
+            comment: abwebdevelopers.forms::lang.models.settings.label_class.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            type: text
+            span: left
+            placeholder: Inherit
+            trigger:
+                action: enable
+                field: override_label_class
+                condition: checked
+        override_label_class:
+            label: abwebdevelopers.forms::lang.models.all.override.label
+            comment: abwebdevelopers.forms::lang.models.all.override.comment
+            tab: abwebdevelopers.forms::lang.tabs.styling
+            span: right
+            type: checkbox
+
+        # Emailing
+        show_in_email_autoreply:
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            label: abwebdevelopers.forms::lang.models.field.show_in_email_autoreply.label
+            comment: abwebdevelopers.forms::lang.models.field.show_in_email_autoreply.comment
+            span: left
+            type: switch
+        show_in_email_notification:
+            tab: abwebdevelopers.forms::lang.tabs.emailing
+            label: abwebdevelopers.forms::lang.models.field.show_in_email_notification.label
+            comment: abwebdevelopers.forms::lang.models.field.show_in_email_notification.comment
+            span: right
+            type: switch

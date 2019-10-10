@@ -294,3 +294,7 @@
 .el-table thead th {
     color: #666 !important;
 }
+
+.el-table td {
+    border-bottom: 1px solid #ddd !important;
+}
