@@ -13,8 +13,10 @@
 
     if ($data ['language'] == 'cn') {
         $table = 'economic_calendar_cn as a';
+        $holidayTable = 'economic_holiday_cn';
     } else {
         $table = 'economic_calendar_en as a';
+        $holidayTable = 'economic_holiday_en';
     }
 
     $List = DB::table($table)
@@ -87,4 +89,48 @@
         ->orderBy('a.date', 'asc')
         ->get();
 
-    echo json_encode(['Status' => 200, 'Content' => $List]);
+    $holiday = DB::table($holidayTable)
+        ->where(function($query) use($data) {
+            if ($data['date'] != '') {
+                $query->whereBetween('holidayDate', [$data['date'] . ' 00:00:00', $data['date'] . ' 23:59:59']);
+            } else {
+                if ($data ['time'] == '今天' || $data ['time'] == 'Today') {
+                    $query->whereBetween('holidayDate', [date('Y-m-d') . ' 00:00:00', date('Y-m-d') . ' 23:59:59']);
+                } else if ($data ['time'] == '明天' || $data ['time'] == 'Tomorrow') {
+                    $query->whereBetween(
+                        'holidayDate', 
+                        [
+                            date('Y-m-d', strtotime('+1 day')) . ' 00:00:00', 
+                            date('Y-m-d', strtotime('+1 day')) . ' 23:59:59'
+                        ]);
+                } else if ($data ['time'] == '这周' || $data ['time'] == 'This week') {
+                    $query->whereBetween('holidayDate', [
+                        date('Y-m-d', strtotime('this week monday')) . ' 00:00:00',
+                        date('Y-m-d', strtotime(date('Y-m-d', strtotime("this week Sunday", time()))) + 24 * 3600 - 1) . ' 23:59:59'
+                    ]);
+                } else if ($data ['time'] == '下周' || $data ['time'] == 'Next week') {
+                    $query->whereBetween('holidayDate', [
+                        date('Y-m-d', strtotime('next week monday', time())) . ' 00:00:00',
+                        date('Y-m-d', strtotime(date('Y-m-d', strtotime("next week Sunday", time()))) + 24 * 3600 - 1) . ' 23:59:59'
+                    ]);
+                } else if ($data ['time'] == '上周' || $data ['time'] == 'Last week') {
+                    $query->whereBetween('holidayDate', [
+                        date('Y-m-d', strtotime('-2 monday', time())) . ' 00:00:00',
+                        date('Y-m-d', strtotime('-1 sunday', time())) . ' 23:59:59'
+                    ]);
+                }
+            }
+
+            if (isset($data ['country']) && $data ['country'] != '') {
+                $query->whereIn('country', formatQuery($data ['country'], 3));
+            }
+        })
+        ->select([
+            '*',
+            DB::raw('"holiday" as date_show'),
+            DB::raw('true as expand'),
+        ])
+        ->orderBy('id', 'asc')
+        ->get();
+
+    echo json_encode(['Status' => 200, 'Content' => $List, 'holiday' => $holiday]);

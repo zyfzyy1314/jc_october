@@ -91,16 +91,6 @@ layout = "default"
                                 <el-checkbox label="United States"></el-checkbox>
                             </el-checkbox-group>
                         </el-form-item>
-            
-                        <!-- <el-form-item>
-                            <el-row :gutter="20">
-                                <el-col :span="4" :offset="16">
-                                    <el-button type="text" size="small" icon="el-icon-refresh-right" plain @click="handleDefault">
-                                        Restore Default Settings
-                                    </el-button>
-                                </el-col>
-                            </el-row>
-                        </el-form-item> -->
 
                         <el-form-item>
                             <el-button type="warning" @click="handleConfirmFilter">Apply Filter</el-button>
@@ -114,23 +104,14 @@ layout = "default"
                 </el-popover>
             </el-col>
         </div>
-
-        <!-- <div class="date-span">
-            <el-col :span="16">
-                <p v-html="`${temp.date}(${formatWeekDay(temp.date)})`"></p>
-            </el-col>
-
-            <el-col :span="4" style="line-height: 40px;">
-                <el-button type="warning" plain style="float: right;" v-bind:class="{ this_week : filterType == 1 ? true : false }" @click="handleChangeWeek('This week')">This Week</el-button>
-            </el-col>
-        </div> -->
     </el-row>
 
     <el-table :data="tableData" ref="table" stripe style="width: 100%" highlight-current-row v-loading="listLoading" @expand-change="rowExpand" 
         :span-method="arraySpanMethod" :row-class-name="setClassName">
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
-                <span v-if="scope.row.id !='--'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.show_date"></span>
+                <span v-if="scope.row.id !='--' && scope.row.date_show != 'holiday'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.show_date"></span>
+                <span v-else-if="scope.row.date_show == 'holiday'"  v-html="scope.row.show_time"></span>
                 <span v-else v-html="`${formatWeekDay(scope.row.timeLine)}`"></span>
             </template>
         </el-table-column>
@@ -151,25 +132,26 @@ layout = "default"
 
         <el-table-column prop="title" label="Event" min-width="200px">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
-                <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.title">{{scope.row.title}}</span>
+                <span v-if="scope.row.date_show != 'holiday'" :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.title">{{scope.row.title}}</span>
+                <span v-else v-html="`${scope.row.holidayName}-${scope.row.title}`"></span>
             </template>
         </el-table-column>
 
         <el-table-column prop="importance" label="Importance">
-            <template slot-scope="scope" v-if="scope.row.id != '--'">
+            <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
                 <i class="el-icon-star-on" v-for="i in [1,2,3]" :key="i"
                     :style="{color: i<=scope.row.importance ? scope.row.importance>=3 ? '#f33d3d' : '#f3953d' : '#f0f0f0'}"></i>
             </template>
         </el-table-column>
 
         <el-table-column prop="previous" label="Previous">
-            <template slot-scope="scope" v-if="scope.row.id != '--'">
+            <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
                 <span v-html="scope.row.previous">{{scope.row.previous}} {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
             </template>
         </el-table-column>
 
         <el-table-column prop="forecast" label="Forecast">
-            <template slot-scope="scope" v-if="scope.row.id != '--'">
+            <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
                 <span v-if="scope.row.forecast != null" v-html="scope.row.forecast">{{scope.row.forecast}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
                 <span v-else>---</span>
@@ -177,7 +159,7 @@ layout = "default"
         </el-table-column>
 
         <el-table-column prop="reality" label="Actual">
-            <template slot-scope="scope" v-if="scope.row.id != '--'">
+            <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
                 <span v-if="scope.row.reality != null" v-html="scope.row.reality">{{scope.row.reality}}
                     {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
                 <span v-else>---</span>
@@ -185,13 +167,13 @@ layout = "default"
         </el-table-column>
 
         <el-table-column prop="reality" label="Graph">
-            <template slot-scope="scope" v-if="scope.row.id != '--'">
+            <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
                 <i class="iconfont icon-tongjitubiao calendar-pointer" @click="handleShowCharts(scope.row)"></i>
             </template>
         </el-table-column>
 
         <el-table-column label="Detail">
-            <template slot-scope="scope" v-if="scope.row.id != '--'">
+            <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
                     <i class="iconfont icon-xiangqing calendar-pointer" @click="toogleExpand(scope.row)"></i>
             </template>
         </el-table-column>

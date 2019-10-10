@@ -128,6 +128,8 @@ new Vue({
                 async: true,
                 success: function (response) {
                     var data = response.Content
+                        holiday = response.holiday
+
                     data.forEach(function (item, key) {
                         item.date = item.date.replace(/\-/g, '/')
                         item.expand = true
@@ -156,8 +158,11 @@ new Vue({
                         }
                     }
 
+                    if (holiday.length > 0) {
+                        data = holiday.concat(data)
+                    }
+
                     _this.tableData = data
-                    _this.total = response.Content.total
                     _this.listLoading = false
 
                     _this.handleChangeZone()

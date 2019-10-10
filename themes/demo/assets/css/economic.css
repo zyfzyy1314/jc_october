@@ -152,6 +152,7 @@
 .expand td {
     background-color: #f4f4f4 !important;
     color: #999;
+    padding: 5px !important;
 }
 
 .el-col {

@@ -1,0 +1,56 @@
+title = "user guide"
+url = "/user_guide"
+layout = "default"
+==
+<link href="{{ 'assets/css/user_guide.css'|theme }}" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+<div class="container" id="app">
+    <el-row class="dark-p">
+        <div class="grid-content bg-purple-dark">
+            <el-col :span="24">
+                <p>>> User Guide</p>
+            </el-col>
+        </div>
+
+        <el-col class="p-margin">
+            <p>Welcome to the Algoal365 user guide! The Algoal365 website is a user friendly application that can take a short time to explore and understand.  While this user guide only covers a fraction of the website, it will give you a great head-start in understanding the site's functionality and underlying rationale.</p>
+            <p>Algoal365 is entirely focused on curating financing-market information for traders. The nature of this information is primarily real-time (i.e., what's happening right now), and the scope ranges from economic data to analysis from members.</p>
+            <p>Algoal365 hosts three main functions: Calendar, News, and Add to website. There's a link to each of these products in the header of every page.</p>
+        </el-col>
+
+        <el-col class="tab-margin">
+            <el-radio-group v-model="activeName" style="margin-bottom: 10px;">
+                <el-radio-button label="calendar">Calendar</el-radio-button>
+                <el-radio-button label="news">News</el-radio-button>
+                <el-radio-button label="add">Add to website</el-radio-button>
+            </el-radio-group>
+
+            <el-col class="col-margin" v-if="activeName == 'calendar'">
+                <p>1. Last / Next Week: To synchronize the calendar records with your selected week.</p>
+                <p>2. Current date: You can browse current date records by clicking the day of the week. </p>
+                <p>3. This Week: To synchronize the calendar records with your week of local time,</p>
+                <p>4. Filter: Expend the query options for calendar records.</p>
+                <img src="/themes/demo/assets/images/user_guide/calendar-2.webp"/>
+                <p>5. Chart: Throughout the calendar you will see chart icons to the right of record and it will expend the chart of history data. s</p>
+                <p>6. Context: Click on the yellow down arrow associated with the record, it will extend the context panel within this record.</p>
+                <img src="/themes/demo/assets/images/user_guide/calendar-2.webp"/>
+            </el-col>
+
+            <el-col v-if="activeName == 'news'">
+                <p>The NEWS page is a real-time updating page and you can get the latest marketing news. Also, you could click the link to brows the context from the source website.</p>
+                <img src="/themes/demo/assets/images/user_guide/news.png"/>
+            </el-col>
+
+                <el-col v-if="activeName == 'add'">
+                    <p>A Widget is a tool that allows you to perform a function or access different services. We offer a great selection of Widgets that allow you to access our provided calendar and new.</p>
+                </el-col>
+        </el-col>
+    </el-row>
+</div>
+
+{% put scripts %}
+<script src="{{ 'assets/javascript/vue.js'|theme }}"></script>
+<script src="{{ 'assets/javascript/element-index.js'|theme }}"></script>
+<script type="text/javascript" src="/themes/demo/assets/js/user_guide.js?v=987878"></script>
+{% endput %}
