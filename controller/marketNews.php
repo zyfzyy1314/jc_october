@@ -14,7 +14,7 @@
     $page = $data ['page'];
     $limit = $data ['limit'];
 
-    $order = $data ['language'] == 'cn' ? 'publishDate' : 'outId';
+    // $order = $data ['language'] == 'cn' ? 'publishDate' : 'outId';
 
     $table = DB::table('economic_news_' . $data ['language']);
 
@@ -28,7 +28,7 @@
         ->count();
 
     $List = $table
-        ->orderBy($order, 'desc')
+        ->orderBy('publishDate', 'desc')
         ->skip(($page - 1) * $limit)
         ->take($limit)
         ->get();

@@ -37,7 +37,7 @@ $(function () {
                             '<a class="title-en" target="_blank" href="' + newsData[i]['source_url'] + '">' +
                             '<span>' + newsData[i]['title'] + '</span>' +
                             '</a><br>' +
-                            '<span class="author-en">By ' + author + ' - ' + newsData[i]['time_str'] + '</span><br>' +
+                            '<span class="author-en">By ' + author + ' - ' + newsData[i]['time_show'] + '</span><br>' +
                             '<a class="content-en" target="_blank" href="' + newsData[i]['source_url'] + '">' +
                             '<span>' + newsData[i]['content'] + '</span>' +
                             '</a>' +
