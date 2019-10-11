@@ -32,6 +32,10 @@
     font-size: 16px !important;
 }
 
+/* .el-button i {
+    font-size: 18px !important;
+} */
+
 .el-button--warning {
     color: #FFF;
     background-color: #f3953d !important;
