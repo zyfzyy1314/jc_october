@@ -135,31 +135,59 @@ new Vue({
                         item.expand = true
                     })
 
+                    holiday.forEach(function (item, key) {
+                        item.holidayDate = item.holidayDate.replace(/\-/g, '/')
+                    })
+
                     if (data.length > 0) {
                         data.unshift({ 'id': '--', 'timeLine': data[0]['date'], 'expand': false })
+
+                        // 如果当前查询的为具体某天数据直接将假期日历插入进去
+                        if (_this.temp.date != '' && holiday.length > 0) {
+                            for (var j = 0; j < holiday.length; j++) {
+                                data.splice(j + 1, 0, holiday[j])
+                            }
+                        } else if (_this.temp.time != '' && holiday.length > 0) { // 周视图时进行补充当周第一天的假期日历
+                            for (var j = 0; j < holiday.length; j++) {
+                                if (data[j + 1]['date'].split(' ')[0] == holiday[j]['holidayDate'].split(' ')[0]) {
+                                    data.splice(j + 1, 0, holiday[j])
+                                }
+                            }
+                        }
 
                         let nowDate = data[0]['timeLine'].split(' ')[0]
                         
                         for (let i = 1; i < data.length; i++) {
-                            if (data[i]['date'].split(' ')[0] != nowDate) {
+                            if (data[i]['date_show'] != 'holiday' && data[i]['date'].split(' ')[0] != nowDate) { // 增加一条新的日期时间没有其他数据(相当于分隔线数据)
                                 nowDate = data[i]['date'].split(' ')[0]
                                 data.splice(i, 0, { 'id': '--', 'timeLine': data[i]['date'], 'expand': false })
+
+                                // 查询周视图时把每天对应的假期日历插入到数组中
+                                if (_this.temp.date == '' && _this.temp.time != '' && holiday.length > 0) {
+                                    for (var j = 0; j < holiday.length; j++) {
+                                        if (data[i + 1]['date'].split(' ')[0] == holiday[j]['holidayDate'].split(' ')[0]) {
+                                            data.splice((i + 1), 0, holiday[j])
+                                        }
+                                    }
+                                }
                             }
 
-                            if (i > 1 && data[i]['id'] != '--' && data[i - 1]['id'] != '--' && 
-                            data[i]['date'].split(' ')[1].slice(0, 5) == data[i-1]['date'].split(' ')[1].slice(0, 5) && data[i]['currency'] == data[i-1]['currency'])
-                            {
+                            if (
+                                i > 1  && 
+                                data[i]['id'] != '--' && 
+                                data[i - 1]['id'] != '--' && 
+                                data[i]['date_show'] != 'holiday' && 
+                                data[i-1]['date_show'] != 'holiday' && 
+                                data[i]['date'].split(' ')[1].slice(0, 5) == data[i-1]['date'].split(' ')[1].slice(0, 5) && 
+                                data[i]['currency'] == data[i-1]['currency']
+                            ) { // 如果当前数据与上调数据时间和货币一致时，用于显示的时间和货币置空(同时需要判断上条数据不能为日期数据)
                                 data [i]['show_date'] = ''
                                 data [i]['show_currency'] = ''
-                            } else if (data[i]['id'] != '--') {
+                            } else if (data[i]['id'] != '--' && data[i]['date_show'] != 'holiday') {
                                 data [i]['show_date'] = data[i]['date'].split(' ')[1].slice(0, 5)
                                 data [i]['show_currency'] = data[i]['currency']
                             }
                         }
-                    }
-
-                    if (holiday.length > 0) {
-                        data = holiday.concat(data)
                     }
 
                     _this.tableData = data

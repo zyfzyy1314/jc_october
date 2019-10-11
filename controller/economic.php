@@ -85,6 +85,7 @@
             'b.overview',
             'b.source_of_report',
             'b.source_of_report_link',
+            DB::raw('"" as date_show'),
         ])
         ->orderBy('a.date', 'asc')
         ->get();
