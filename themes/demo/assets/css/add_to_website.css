@@ -20,3 +20,7 @@
 .el-tabs__item:hover {
     color: #f3953d !important;
 }
+
+.el-tabs__nav-wrap::after {
+    height: 0px !important;
+}

@@ -10,11 +10,12 @@ layout = "default"
     <div>
         <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="Refer Calendar" name="calendar">
-                <el-row :gutter="15">
+                <el-row :gutter="20">
                     <el-col :span="19">
-                        <iframe src="http://54.223.206.181:9183/economic_calendar_en.html" id="jcFrame" frameborder="1" allowtransparency="true" height="500px" width="100%"></iframe>
+                        <el-card class="box-card">
+                            <iframe src="http://54.223.206.181:9183/economic_calendar_en.html" id="jcFrame" frameborder="0" allowtransparency="true" height="500px" width="100%"></iframe>
+                        </el-card>
                     </el-col>
-    
                     <el-col :span="5">
                         <textarea style="width: 100%; height: 320px;" id="iframeText" readonly onfocus="selectText();">
                             <iframe src="http://54.223.206.181:9183/economic_calendar_en.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe><script src="http://54.223.206.181:9183/script/height.js"></script></textarea>
@@ -23,14 +24,16 @@ layout = "default"
             </el-tab-pane>
     
             <el-tab-pane label="Refer News" name="news">
-                    <div style="width: 60%; float: left;">
-                        <iframe src="http://54.223.206.181:9183/newsEnFrame.html" id="jcFrame" frameborder="1" allowtransparency="true" height="500px" width="100%"></iframe>
-                    </div>
-    
-                    <div style="width: 35%; float: right;">
-                        <textarea style="width: 100%; height: 320px;" id="iframeTextNews" readonly onfocus="selectTextNews();"><iframe src="http://54.223.206.181:9183/newsEnFrame.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe>
+                <div style="width: 60%; float: left;">
+                    <el-card class="box-card">
+                        <iframe src="http://54.223.206.181:9183/newsEnFrame.html" id="jcFrame" frameborder="0" allowtransparency="true" height="500px" width="100%"></iframe>
+                    </el-card>
+                </div>
+
+                <div style="width: 35%; float: right;">
+                    <textarea style="width: 100%; height: 320px;" id="iframeTextNews" readonly onfocus="selectTextNews();"><iframe src="http://54.223.206.181:9183/newsEnFrame.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe>
 <script src="http://54.223.206.181:9183/script/height.js"></script></textarea>
-                    </div>
+                </div>
             </el-tab-pane>
         </el-tabs>
     </div>
