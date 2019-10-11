@@ -24,3 +24,20 @@
 .el-tabs__nav-wrap::after {
     height: 0px !important;
 }
+
+.el-button {
+    border-radius: 0px !important;
+    margin-top: 20px !important;
+    float: right;
+}
+
+.el-button--warning {
+    color: #FFF;
+    background-color: #f3953d !important;
+    border-color: #f3953d !important;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+}

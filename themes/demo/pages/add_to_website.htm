@@ -15,23 +15,25 @@ layout = "default"
                         <el-card class="box-card">
                             <iframe src="http://54.223.206.181:9183/economic_calendar_en.html" id="jcFrame" frameborder="0" allowtransparency="true" height="500px" width="100%"></iframe>
                         </el-card>
+                        <el-button type="warning" icon="el-icon-circle-plus-outline" @click="addCalendar = true">add to your website</el-button>
                     </el-col>
-                    <el-col :span="24">
-                        <textarea style="width: 100%;" id="iframeText" readonly onfocus="selectText();">
-                            <iframe src="http://54.223.206.181:9183/economic_calendar_en.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe><script src="http://54.223.206.181:9183/script/height.js"></script></textarea>
+                    <el-col :span="24" v-show="addCalendar" style="margin-top: 20px;">
+                        <textarea id="iframeText" readonly onfocus="selectText();"><iframe src="http://54.223.206.181:9183/economic_calendar_en.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborde="0" allowtransparency="true"></iframe>
+<script src="http://54.223.206.181:9183/script/height.js"></script></textarea>
                     </el-col>
                 </el-row>
             </el-tab-pane>
     
             <el-tab-pane label="Refer News" name="news">
-                <div style="width: 60%; float: left;">
+                <div style="width: 100%;">
                     <el-card class="box-card">
                         <iframe src="http://54.223.206.181:9183/newsEnFrame.html" id="jcFrame" frameborder="0" allowtransparency="true" height="500px" width="100%"></iframe>
                     </el-card>
+                    <el-button type="warning" icon="el-icon-circle-plus-outline" @click="addNews = true">add to your website</el-button>
                 </div>
 
-                <div style="width: 35%; float: right;">
-                    <textarea style="width: 100%; height: 320px;" id="iframeTextNews" readonly onfocus="selectTextNews();"><iframe src="http://54.223.206.181:9183/newsEnFrame.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe>
+                <div style="width: 100%;margin-top: 80px;" v-show="addNews">
+                    <textarea id="iframeTextNews" readonly onfocus="selectTextNews();"><iframe src="http://54.223.206.181:9183/newsEnFrame.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe>
 <script src="http://54.223.206.181:9183/script/height.js"></script></textarea>
                 </div>
             </el-tab-pane>
@@ -43,5 +45,5 @@ layout = "default"
     <script src="{{ 'assets/javascript/selectText.js'|theme }}"></script>
     <script src="{{ 'assets/javascript/vue.js'|theme }}"></script>
     <script src="{{ 'assets/javascript/element-index.js'|theme }}"></script>
-    <script type="text/javascript" src="/themes/demo/assets/js/add_to_website.js?v=987878"></script>
+    <script type="text/javascript" src="/themes/demo/assets/js/add_to_website.js?v=976878"></script>
 {% endput %}

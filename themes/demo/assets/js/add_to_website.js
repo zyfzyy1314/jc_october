@@ -2,7 +2,9 @@ new Vue({
     el: '#app',
     data: function () {
         return {
-            activeName: 'calendar'
+            activeName: 'calendar',
+            addCalendar: false,
+            addNews: false
         }
     },
     created() {
