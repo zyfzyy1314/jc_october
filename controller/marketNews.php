@@ -33,4 +33,10 @@
         ->take($limit)
         ->get();
 
+    if ($List) {
+        foreach($List as $key => $value) {
+            $List[$key]->time_show = date('F j, Y, g:i a', (strtotime($value->publishDate) + 8 * 60 * 60));
+        }
+    }
+
     echo json_encode(['Status' => 200, 'Content' => ['total' => $total, 'data' => $List]]);
