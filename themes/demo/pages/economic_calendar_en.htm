@@ -11,12 +11,12 @@ layout = "default"
             <el-col :span="21">
                 <ul class="clendar-ul calendar-pointer">
                     <li @click="handleChangeWeek('Last week')" v-bind:class="{ this_week : temp.time == 'Last week' ? true : false }"> < Last week</li>
+                    <li @click="handleChangeWeek('This week')" v-bind:class="{ this_week : temp.time == 'This week' ? true : false }" style="padding-top: 20px;">This week</li>
                     <li v-for="item in timeArray" @click="handleChangeDate(item.all)" v-bind:class="{ today_date: item.all == temp.date ? true : false }">
                         <p v-html="item.simple" style="margin-bottom: 0px;"></p>
                         <p v-html="item.weekday" style="font-size: 11px;"></p>
                     </li>
-                    <li @click="handleChangeWeek('Next week')" v-bind:class="{ this_week : temp.time == 'Next week' ? true : false }" style="padding-top: 20px;">Next week > </li>
-                    <li @click="handleChangeWeek('This week')" v-bind:class="{ this_week : temp.time == 'This week' ? true : false }">This week</li>
+                    <li @click="handleChangeWeek('Next week')" v-bind:class="{ this_week : temp.time == 'Next week' ? true : false }">Next week > </li>
                 </ul>
             </el-col>
         

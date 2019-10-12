@@ -422,7 +422,7 @@
   height: 4px;
   bottom: -1px;
   content: '';
-  border-radius: 4px;
+  /* border-radius: 4px; */
   z-index: 5;
   width: 0;
   left: 50%;
