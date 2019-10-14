@@ -113,19 +113,22 @@ layout = "default"
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
                 <span v-if="scope.row.id !='--' && scope.row.date_show != 'holiday'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.show_date"></span>
-                <span v-else-if="scope.row.date_show == 'holiday'"  v-html="scope.row.show_time"></span>
+                <div class="holiday_opacity" v-else-if="scope.row.date_show == 'holiday'">
+                    <i class="iconfont icon-giftcopy"></i>
+                    <span v-html="scope.row.show_time"></span>
+                </div>
                 <span v-else v-html="`${formatWeekDay(scope.row.timeLine)}`"></span>
             </template>
         </el-table-column>
 
         <el-table-column prop="country" label="Currency">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
-                <div v-if="scope.row.currency != 'EUR' && scope.row.show_currency != ''">
+                <div v-if="scope.row.currency != 'EUR' && scope.row.show_currency != ''" v-bind:class="{ holiday_opacity : scope.row.date_show == 'holiday' ? true : false }">
                     <img :src="`/themes/demo/assets/images/flag/${scope.row.currency}.png`" width="32" height="21" style="margin-top: -1px;"/>
                     <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.currency">{{scope.row.currency}}</span>
                 </div>
 
-                <div v-else-if="scope.row.show_currency != ''">
+                <div v-else-if="scope.row.show_currency != ''" v-bind:class="{ holiday_opacity : scope.row.date_show == 'holiday' ? true : false }">
                     <img :src="`/themes/demo/assets/images/flag/${scope.row.country}.png`" width="32" height="21" style="margin-top: -1px;"/>
                     <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.currency">{{scope.row.currency}}</span>
                 </div>
@@ -135,7 +138,7 @@ layout = "default"
         <el-table-column prop="title" label="Event" min-width="200px">
             <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <span v-if="scope.row.date_show != 'holiday'" :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.title">{{scope.row.title}}</span>
-                <span v-else v-html="`${scope.row.holidayName}-${scope.row.title}`"></span>
+                <span v-else v-html="`${scope.row.holidayName}-${scope.row.title}`" class="holiday_opacity"></span>
             </template>
         </el-table-column>
 
@@ -168,13 +171,13 @@ layout = "default"
             </template>
         </el-table-column>
 
-        <el-table-column prop="reality" label="Graph">
+        <el-table-column prop="reality" label="Graph" width="70">
             <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
                 <i class="iconfont icon-tongjitubiao calendar-pointer" @click="handleShowCharts(scope.row)"></i>
             </template>
         </el-table-column>
 
-        <el-table-column label="Detail">
+        <el-table-column label="Detail" width="60">
             <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
                     <i class="iconfont icon-xiangqing calendar-pointer" @click="toogleExpand(scope.row)"></i>
             </template>

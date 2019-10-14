@@ -300,3 +300,7 @@
 .el-table td {
     border-bottom: 1px solid #ddd !important;
 }
+
+.holiday_opacity {
+    opacity: 0.6;
+}
