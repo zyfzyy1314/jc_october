@@ -107,6 +107,9 @@ layout = "default"
 
     <el-table :data="tableData" ref="table" stripe style="width: 100%" highlight-current-row v-loading="listLoading" @expand-change="rowExpand" 
         :span-method="arraySpanMethod" :row-class-name="setClassName">
+        <template slot="empty">
+            No data
+        </template>
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
                 <span v-if="scope.row.id !='--' && scope.row.date_show != 'holiday'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.show_date"></span>
