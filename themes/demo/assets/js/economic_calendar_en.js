@@ -193,7 +193,7 @@ new Vue({
                     _this.tableData = data
                     _this.listLoading = false
 
-                    _this.handleChangeZone()
+                    _this.handleChangeZone(1)
                 }
             })
         },
@@ -201,16 +201,30 @@ new Vue({
             this.temp.country = val ? cityOptions : [];
             this.isIndeterminate = false
         },
-        handleChangeZone() {
+        handleChangeZone(type) { // 1:初次加载调整时区 2:二次加载调整时区加载
+            if (type == 2) {
+                this.listLoading = true
+            }
+
             let data = this.tableData
             for (let i = 0; i < data.length; i++) {
-                let pubTime = new Date(data[i]['date'])
-                pubTime = new Date(pubTime.valueOf() + this.temp.zone * 60 * 60 * 1000 - this.currentZone * 60 * 60 * 1000)
+                if (data[i]['show_date'] && data[i]['show_date'] != undefined) {
+                    let pubTime = new Date(data[i]['date'])
+                    pubTime = new Date(pubTime.valueOf() + this.temp.zone * 60 * 60 * 1000 - this.currentZone * 60 * 60 * 1000)
 
-                data[i]['date'] = pubTime.getFullYear() + '-' + (pubTime.getMonth() + 1) + '-' + pubTime.getDate() + ' '
-                    + this.zeroPadding(pubTime.getHours(), 2) + ':' + this.zeroPadding(pubTime.getMinutes(), 2) + ':' + this.zeroPadding(pubTime.getSeconds(), 2)
+                    data[i]['show_date'] = this.zeroPadding(pubTime.getHours(), 2) + ':' + this.zeroPadding(pubTime.getMinutes(), 2)
+                    data[i]['date'] = pubTime.getFullYear() + '-' + (pubTime.getMonth() + 1) + '-' + pubTime.getDate() + ' '
+                            + this.zeroPadding(pubTime.getHours(), 2) + ':' + this.zeroPadding(pubTime.getMinutes(), 2) + ':' + this.zeroPadding(pubTime.getSeconds(), 2)
+                }
             }
-            this.currentZone = this.temp.zone
+
+            // this.currentZone = this.temp.zone
+
+            let _this = this
+
+            setTimeout(function() {
+                _this.listLoading = false
+            }, 1000)
         },
         handleCountryChange(value) {
             let checkedCount = value.length

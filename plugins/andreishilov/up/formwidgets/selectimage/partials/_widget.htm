@@ -1,0 +1,14 @@
+<div class="ansh_up_selectimage_container">
+    <?php foreach($images as $image) {?>
+    <div class="ansh_up_selectimage_item">
+        <div>
+            <div class="ansh_up_image_preview"
+                 style="background-image: url('/plugins/andreishilov/up/assets/img/arrows/<?php echo $image?>')"></div>
+        </div>
+        <div class="ansh_up_selectimage_input_container">
+            <input name="<?php echo $name?>" type="radio"
+                   value="<?php echo $image?>" <?php echo $image == $selectedValue ? 'checked' : ''?>>
+        </div>
+    </div>
+    <?php } ?>
+</div>

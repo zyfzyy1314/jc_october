@@ -1,0 +1,78 @@
+tabs:
+    fields:
+        position:
+            label: andreishilov.up::lang.config.position.title
+            type: dropdown
+            span: left
+            default: br
+            showSearch: false
+            options:
+                tl: andreishilov.up::lang.config.position.values.tl
+                tr: andreishilov.up::lang.config.position.values.tr
+                bl: andreishilov.up::lang.config.position.values.bl
+                br: andreishilov.up::lang.config.position.values.br
+                bc: andreishilov.up::lang.config.position.values.bc
+            tab: andreishilov.up::lang.config.tabs.display
+
+        offset:
+            label: andreishilov.up::lang.config.offset.title
+            comment: andreishilov.up::lang.config.offset.description
+            span: left
+            type: number
+            default: 10
+            tab: andreishilov.up::lang.config.tabs.display
+
+        min_screen_width:
+            label: andreishilov.up::lang.config.min_screen_width.title
+            comment: andreishilov.up::lang.config.min_screen_width.description
+            span: left
+            type: number
+            default: 320
+            tab: andreishilov.up::lang.config.tabs.display
+
+        exclude_path:
+            label: andreishilov.up::lang.config.exclude.title
+            comment: andreishilov.up::lang.config.exclude.description
+            type: textarea
+            tab: andreishilov.up::lang.config.tabs.display
+
+        height:
+            label: andreishilov.up::lang.config.height.title
+            span: left
+            type: text
+            default: '56'
+            tab: andreishilov.up::lang.config.tabs.button
+
+        width:
+            label: andreishilov.up::lang.config.width.title
+            span: left
+            type: text
+            default: '56'
+            tab: andreishilov.up::lang.config.tabs.button
+
+        background_color:
+            label: andreishilov.up::lang.config.background_color.title
+            span: left
+            type: colorpicker
+            default: '#c51c34'
+            tab: andreishilov.up::lang.config.tabs.button
+
+        padding:
+            label: andreishilov.up::lang.config.padding.title
+            span: left
+            type: text
+            default: '5'
+            tab: andreishilov.up::lang.config.tabs.button
+
+        opacity:
+            label: andreishilov.up::lang.config.opacity.title
+            span: left
+            type: text
+            default: '0.7'
+            tab: andreishilov.up::lang.config.tabs.button
+
+        image:
+            label: andreishilov.up::lang.config.image.title
+            type: selectimage
+            default: 1.png
+            tab: andreishilov.up::lang.config.tabs.button

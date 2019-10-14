@@ -1,0 +1,16 @@
+#ansh_up_page_button {
+    width: 56px;
+    height: 56px;
+    opacity: 0.7;
+    position: fixed;
+    background-size: contain;
+    background-origin: content-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 5px;
+}
+
+#ansh_up_page_button:hover {
+    opacity: 1 !important;
+    cursor: pointer;
+}

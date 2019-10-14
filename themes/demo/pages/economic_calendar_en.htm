@@ -43,7 +43,7 @@ layout = "default"
                         </el-form-item>
             
                         <el-form-item label="Time Zone">
-                            <el-select v-model="temp.zone" placeholder="select" @change="handleChangeZone" style="width: 400px;">
+                            <el-select v-model="temp.zone" placeholder="select" @change="handleChangeZone(2)" style="width: 400px;">
                                 <el-option label="(GMT-11:00) Midway Island, Samoa" value="-11"></el-option>
                                 <el-option label="(GMT-10:00) Hawaii-Aleutian" value="-10"></el-option>
                                 <el-option label="(GMT-09:00) Gambier Islands" value="-9"></el-option>

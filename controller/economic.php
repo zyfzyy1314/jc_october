@@ -88,6 +88,7 @@
             DB::raw('"" as date_show'),
         ])
         ->orderBy('a.date', 'asc')
+        ->orderBy('a.currency', 'asc')
         ->get();
 
     $holiday = DB::table($holidayTable)

@@ -1,0 +1,29 @@
+.ansh_up_image_preview {
+    width: 56px;
+    height: 56px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #c51c34;
+    display: inline-block;
+    background-size: contain;
+    background-origin: content-box;
+    padding: 5px;
+}
+
+.ansh_up_selectimage_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.ansh_up_selectimage_item {
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ansh_up_selectimage_input_container {
+    text-align: center;
+}
