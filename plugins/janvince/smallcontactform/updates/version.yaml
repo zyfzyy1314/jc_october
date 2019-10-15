@@ -1,0 +1,173 @@
+1.0.0:
+    - "First version of Small Contact Form plugin"
+    - scf_tables.php
+1.0.1:
+    - Fix form hiding after successful send
+    - Fix in README.md
+1.0.2:
+    - Fix some typos and add LICENCE file (thanks Szabó Gergő)
+1.1.0:
+    - Added function to delete records in Messages list
+    - Added permission to delete records
+1.2.0:
+    - Added dashboard report widgets (Stats and New messages)
+1.2.1:
+    - Mail templates now render values with {{ values|raw }}
+1.2.2:
+    - Mail templates convert new lines to <br> with {{ values|raw|nl2br }}
+1.2.3:
+    - Fields mapping moved to separate tab *Columns mapping*
+1.2.4:
+    - Updated README.md with assets usage example
+1.2.5:
+    - Added IP protection function (limit too many submits from one IP address)
+    - And Messages list column to show senders IP address (invisible by default)
+    - scf_tables_02.php
+1.2.6:
+    - Fixed IP protection error message
+1.2.7:
+    - Changed remote_ip column type to string
+1.2.8:
+    - Added option to use placeholders instead of labels
+1.3.0:
+    - Added translation support for Rainlab Translate plugin
+    - Fixed some typos
+1.3.1:
+    - Added default value for getTranslated() method
+1.3.2:
+    - Added custom send button wrapper class
+1.4.0:
+    - Added redirect option after successful submit (internal and external URL)
+1.4.1:
+    - Minor UI fix (thanks Szabó Gergő)
+1.4.2:
+    - Added support for default translated mail templates (Czech and English for now)
+1.4.3:
+    - Fixed translation of mail templates description in Settings > Mail templates
+1.4.4:
+    - Fixed array of enabledLocales
+1.4.5:
+    - Fixed email template check
+    - Added default EN locale to enabled locales array
+1.4.6:
+    - Removed field type restriction for Fields mapping
+1.4.7:
+    - Removed hardcoded date format for created_at column in messages list, updated README and added hungarian language (thanks Szabó Gergő for all this)
+1.4.8:
+    - Changes to allow multiple use of contact form (form and message blocks has now unique IDs)
+    - Added checkbox field type
+    - Scoreboard last message time format (thanks Szabó Gergő)
+1.4.9:
+    - Added scoreboard button to quickly open form settings
+1.4.10:
+    - Fixed typo in lang filename
+1.4.11:
+    - Added "fieldsDetails" array to all email templates to have access to field labels, types and more
+    - Updated default autoreply mail templates to include fieldsDetail array
+    - Added function to detect non-defined fields in sent data
+    - Updated README.md file
+1.5.0:
+    - Added some component hacking options (override autoreply and notification emails and template, disable fields)
+    - Fixed some typos
+    - Updated README.md file
+1.5.1:
+    - Fixed flash message visibility when where are some errors
+1.5.2:
+    - Fixed flash error for IP protection visibility
+1.5.3:
+    - Added option for notification emails to have FROM address set from contact form email field
+1.5.4:
+    - Added option to mark selected messages as read
+1.5.5:
+    - Changed JSON type for repeater DB column
+1.5.6:
+    - Removed value attribute in textarea field
+1.5.7:
+    - Added component alias to id attributes for multi-form usage
+1.5.8:
+    - Fixed typo in lang files
+1.5.9:
+    - Added direct link to messages list from dashboard widget
+1.6.0:
+    - Added Google reCAPTCHA validation
+1.6.1:
+    - Changed All messages large indicator to New messages in scoreboard
+1.6.2:
+    - Removed reCAPTCHA hard coded locale string (thx kuzyk). Added settings option to allow locale detection.
+1.7.0:
+    - Added option to specify <label> custom CSS class
+1.7.1:
+    - Fixed 'text_preview' list field type truncate function (thx kuzyk)
+1.7.2:
+    - Changed count() to mb_strlen() function in custom list type definition
+1.8.0:
+    - Added option to disable built-in browser form validation. Added class 'is-invalid' for fields with error (as used Bootstrap 4).
+1.9.0:
+    - Form registered as Page snippet to be used in Rainlab.Page content (thx BtzLeon)
+1.9.1:
+    - REPLY TO address is now used for notification email by default. You can still force FROM address to be used (but this is not supported by all email systems!).
+1.9.2:
+    - Fix problem when ReCaptcha field was logged as an undefined field to system log (thx LukeTowers)
+1.9.3:
+    - Fixed label 'for' attribute to point to input ID (as required by specification)
+1.10.0:
+    - Added form component hacks group (now only for disabling notification emails, more will come)
+1.11.0:
+    - Added form fields alias and description (can be used to distinquish between more forms or to save extra data). More info in README file.
+    - scf_tables_03.php
+1.11.1:
+    - Added form description field to message preview
+1.12.0:
+    - Added Russian translation (thank Dinver)
+1.12.1:
+    - Chanded input custom list column type for switch to prevent interaction with toolbar JS
+1.13.1:
+    - Added form_alias and form_description variables to email (notification and autoreply) templates
+1.13.2:
+    - Disabled placeholder attribute for checkbox
+1.14.0:
+    - Added option to export messages list
+1.14.1:
+    - Added permissions to export messages list
+1.15.0:
+    - Added Privacy tab and new option to disable sent messages saving
+1.15.1:
+    - Fixed settings fields trigger
+1.15.2:
+    - Fixed default values for recaptcha settings to false
+1.15.3:
+    - Allowed combination of disabled messages saving and allowed passive antispam
+1.16.0:
+    - Added option to have more than one notification email address
+1.16.1:
+    - Fixed missing form data in autoreply templates. Updated default autoreply messages.
+1.16.2:
+    - Updated hungarian translation (thx gergo85)
+1.16.3:
+    - Fixed checkbox validation and validation state
+1.17.0:
+    - Added Slovak translation (thx vosco88)
+1.18.0:
+    - Added French translations (thx FelixINX)
+1.19.0:
+    - Added custom validation fields (thanks petr-vytlacil for help)
+1.20.0:
+    - Added dropdown field type
+1.21.0:
+    - Form fields repeater is now translatable
+1.22.0:
+    - Fixed multiple flash messages shown
+1.23.0:
+    - When placeholders are used, labels are now still present and only hidden by style attribute
+1.24.0:
+    - Added option to set custom reCaptcha wrapper CSS class
+1.25.0:
+    Added polish (thanks Magiczne) and spanish (thanks codibit) translations
+1.30.0:
+    Added invisible reCaptcha
+1.30.1:
+    Fixed reCaptcha scripts load
+1.31.2:
+    Fixed AJAX redirect when validation error (thanks zlobec)
+1.31.3:
+    Fixed reCaptcha checkbox version not showing up on older installations
