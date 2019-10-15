@@ -112,7 +112,7 @@ layout = "default"
         </template>
         <el-table-column prop="date" label="Time">
             <template slot-scope="scope">
-                <span v-if="scope.row.id !='--' && scope.row.date_show != 'holiday'" :style=" {color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.show_date"></span>
+                <span v-if="scope.row.id !='--' && scope.row.date_show != 'holiday'" v-html="scope.row.show_date"></span>
                 <div class="holiday_opacity" v-else-if="scope.row.date_show == 'holiday'">
                     <i class="iconfont icon-giftcopy"></i>
                     <span v-html="scope.row.show_time"></span>
@@ -125,12 +125,12 @@ layout = "default"
             <template slot-scope="scope" v-if="scope.row.id != '--'">
                 <div v-if="scope.row.currency != 'EUR' && scope.row.show_currency != ''" v-bind:class="{ holiday_opacity : scope.row.date_show == 'holiday' ? true : false }">
                     <img :src="`/themes/demo/assets/images/flag/${scope.row.currency}.png`" width="32" height="21" style="margin-top: -1px;"/>
-                    <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.currency">{{scope.row.currency}}</span>
+                    <span v-html="scope.row.currency">{{scope.row.currency}}</span>
                 </div>
 
                 <div v-else-if="scope.row.show_currency != ''" v-bind:class="{ holiday_opacity : scope.row.date_show == 'holiday' ? true : false }">
                     <img :src="`/themes/demo/assets/images/flag/${scope.row.country}.png`" width="32" height="21" style="margin-top: -1px;"/>
-                    <span :style="{color: scope.row.importance>=3 ? '#f33d3d' : ''}" v-html="scope.row.currency">{{scope.row.currency}}</span>
+                    <span v-html="scope.row.currency">{{scope.row.currency}}</span>
                 </div>
             </template>
         </el-table-column>
@@ -151,23 +151,19 @@ layout = "default"
 
         <el-table-column prop="previous" label="Previous">
             <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
-                <span v-html="scope.row.previous">{{scope.row.previous}} {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
+                <span v-html="scope.row.previous == '' ? '--' : scope.row.previous"></span>
             </template>
         </el-table-column>
 
         <el-table-column prop="forecast" label="Forecast">
             <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
-                <span v-if="scope.row.forecast != null" v-html="scope.row.forecast">{{scope.row.forecast}}
-                    {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
-                <span v-else>---</span>
+                <span v-html="scope.row.forecast == '' ? '--' : scope.row.forecast"></span>
             </template>
         </el-table-column>
 
         <el-table-column prop="reality" label="Actual">
             <template slot-scope="scope" v-if="scope.row.id != '--' && scope.row.date_show != 'holiday'">
-                <span v-if="scope.row.reality != null" v-html="scope.row.reality">{{scope.row.reality}}
-                    {{scope.row.unit != 'null' ? scope.row.unit:''}}</span>
-                <span v-else>---</span>
+                <span v-html="scope.row.reality == '' ? '--' : scope.row.reality"></span>
             </template>
         </el-table-column>
 
