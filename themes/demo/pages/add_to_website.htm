@@ -13,13 +13,13 @@ layout = "default"
                 <el-row :gutter="20">
                     <el-col :span="24">
                         <el-card class="box-card">
-                            <iframe src="http://54.223.206.181:9183/economic_calendar_en.html" id="jcFrame" frameborder="0" allowtransparency="true" height="550px" width="100%"></iframe>
+                            <iframe src="//economic-data.algoal365.com/economic_calendar_en.html" id="jcFrame" frameborder="0" allowtransparency="true" height="550px" width="100%"></iframe>
                         </el-card>
                         <el-button type="warning" icon="el-icon-plus" @click="addCalendar = true">Add to your website</el-button>
                     </el-col>
                     <el-col :span="24" v-show="addCalendar" style="margin-top: 20px;">
-                        <textarea id="iframeText" readonly onfocus="selectText();"><iframe src="http://54.223.206.181:9183/economic_calendar_en.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborde="0" allowtransparency="true"></iframe>
-<script src="http://54.223.206.181:9183/script/height.js"></script></textarea>
+                        <textarea id="iframeText" readonly onfocus="selectText();"><iframe src="//economic-data.algoal365.com/economic_calendar_en.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborde="0" allowtransparency="true"></iframe>
+<script src="//economic-data.algoal365.com/script/height.js"></script></textarea>
                     </el-col>
                 </el-row>
             </el-tab-pane>
@@ -27,14 +27,14 @@ layout = "default"
             <el-tab-pane label="Refer News" name="news">
                 <div style="width: 100%;">
                     <el-card class="box-card">
-                        <iframe src="http://54.223.206.181:9183/newsEnFrame.html" id="jcFrame" frameborder="0" allowtransparency="true" height="500px" width="100%"></iframe>
+                        <iframe src="//economic-data.algoal365.com/newsEnFrame.html" id="jcFrame" frameborder="0" allowtransparency="true" height="500px" width="100%"></iframe>
                     </el-card>
                     <el-button type="warning" icon="el-icon-plus" @click="addNews = true">Add to your website</el-button>
                 </div>
 
                 <div style="width: 100%;margin-top: 80px;" v-show="addNews">
-                    <textarea id="iframeTextNews" readonly onfocus="selectTextNews();"><iframe src="http://54.223.206.181:9183/newsEnFrame.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe>
-<script src="http://54.223.206.181:9183/script/height.js"></script></textarea>
+                    <textarea id="iframeTextNews" readonly onfocus="selectTextNews();"><iframe src="//economic-data.algoal365.com/newsEnFrame.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe>
+<script src="//economic-data.algoal365.com/script/height.js"></script></textarea>
                 </div>
             </el-tab-pane>
         </el-tabs>
