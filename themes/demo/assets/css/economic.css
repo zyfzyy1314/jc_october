@@ -282,7 +282,7 @@
 
 .el-button--default:hover {
     color: #f3953d !important;
-    border: 1px #f3953d solid !important;
+    border: 0px #f3953d solid !important;
     background-color: #fff !important;
 }
 
