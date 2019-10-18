@@ -176,7 +176,7 @@
     font-size: 14px;
     height: 60px;
     padding-top: 10px;
-    width: 10%;
+    width: 9%;
     color: #333;
 }
 
@@ -267,10 +267,6 @@
     margin-top: 15px !important;
 }
 
-.filter_class {
-    color: #f3953d;
-}
-
 .el-select .el-input.is-focus .el-input__inner {
     border-color: #f3953d !important;
 }
@@ -303,4 +299,27 @@
 
 .holiday_opacity {
     opacity: 0.6;
+}
+
+.filter-button {
+    float: left !important;
+    margin-top: 20px !important;
+}
+
+.filter_class {
+    background-color: #f3953d !important;
+    color: #fff !important;
+}
+
+.el-checkbox {
+    line-height: 30px !important;
+}
+
+.filter-btn {
+    height: 32px !important;
+}
+
+.el-button.is-plain:focus {
+    color: #f3953d !important;
+    border-color: #f3953d !important;
 }

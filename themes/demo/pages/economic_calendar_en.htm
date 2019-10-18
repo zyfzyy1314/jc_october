@@ -72,7 +72,7 @@ layout = "default"
                             </el-select>
                         </el-form-item>
             
-                        <el-form-item label="Region">
+                        <el-form-item label="Region" style="padding-top: 10px;">
                             <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">All
                             </el-checkbox>
                             <el-checkbox-group v-model="temp.country" @change="handleCountryChange" :min="1">
@@ -92,14 +92,19 @@ layout = "default"
                         </el-form-item>
 
                         <el-form-item>
-                            <el-button type="warning" @click="handleConfirmFilter">Apply Filter</el-button>
-                            <el-button @click="handleDefault">Cancel</el-button>
+                            <el-button class="filter-btn" type="warning" @click="handleConfirmFilter">Apply Filter</el-button>
+                            <el-button class="filter-btn" @click="handleDefault">Cancel</el-button>
                         </el-form-item>
                     </el-form>
-                    <i class="iconfont icon-shaixuan calendar-pointer calendar-left" 
+                    <el-button 
+                        class="filter-button" 
                         v-bind:class="{ filter_class : temp.filter == true ? true : false }" 
+                        plain 
                         slot="reference" 
-                        @click="showFilter = !showFilter">Filter</i>
+                        @click="showFilter = !showFilter">
+                        <i class="iconfont icon-shaixuan"></i>
+                        Filter
+                    </el-button>
                 </el-popover>
             </el-col>
         </div>
