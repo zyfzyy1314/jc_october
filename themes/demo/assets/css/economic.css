@@ -176,7 +176,7 @@
     font-size: 14px;
     height: 60px;
     padding-top: 10px;
-    width: 9%;
+    width: 10%;
     color: #333;
 }
 
@@ -308,8 +308,7 @@
 }
 
 .filter_class {
-    background-color: #f3953d !important;
-    color: #fff !important;
+    color: #f3953d !important;
 }
 
 .el-checkbox {

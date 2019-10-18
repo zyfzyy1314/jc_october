@@ -102,15 +102,10 @@ layout = "default"
                             <el-button class="filter-btn" @click="handleDefault">Cancel</el-button>
                         </el-form-item>
                     </el-form>
-                    <el-button 
-                        class="filter-button" 
-                        v-bind:class="{ filter_class : temp.filter == true ? true : false }" 
-                        plain 
-                        slot="reference" 
-                        @click="showFilter = !showFilter">
-                        <i class="iconfont icon-shaixuan"></i>
-                        Filter
-                    </el-button>
+                    <i class="iconfont icon-shaixuan calendar-pointer calendar-left" 
+                    v-bind:class="{ filter_class : temp.filter == true ? true : false }" 
+                    slot="reference" 
+                    @click="showFilter = !showFilter">Filter</i>
                 </el-popover>
             </el-col>
         </div>
