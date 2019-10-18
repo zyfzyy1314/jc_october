@@ -320,6 +320,6 @@
 }
 
 .el-button.is-plain:focus {
-    color: #f3953d !important;
-    border-color: #f3953d !important;
+    color: #606266 !important;
+    border-color: #DCDFE6 !important;
 }
