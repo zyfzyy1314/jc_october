@@ -248,6 +248,7 @@
 .el-button {
     padding: 4px 4px !important;
     border-radius: 0px !important;
+    border: 0px !important;
 }
 
 .this_week {
@@ -321,5 +322,5 @@
 
 .el-button.is-plain:focus {
     color: #606266 !important;
-    border-color: #DCDFE6 !important;
+    border-color: #fff !important;
 }
