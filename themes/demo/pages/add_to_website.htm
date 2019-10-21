@@ -24,13 +24,15 @@ layout = "default"
                         <el-button type="warning" icon="el-icon-plus" @click="addCalendar = true">Add to your website</el-button>
                     </el-col>
                     <el-col :span="24" v-show="addCalendar" style="margin-top: 20px;">
-                        <textarea id="iframeText" readonly onfocus="selectText();"><div id="algoal-calendar"></div>
+                        <textarea id="iframeText" readonly onfocus="selectText();"><!-- algoal365 calendar BEGIN -->
+<div id="algoal-calendar"></div>
 <script type="text/javascript" src="//economic-data.algoal365.com/widget/algoal-calendar.js" id="algoal-calendar-property">
     {
         height: '600px',
         width: '100%'
     }
-</script></textarea>
+</script>
+<!-- algoal365 calendar END --></textarea>
                     </el-col>
                 </el-row>
             </el-tab-pane>
@@ -50,13 +52,15 @@ layout = "default"
                 </div>
 
                 <div style="width: 100%;margin-top: 80px;" v-show="addNews">
-                    <textarea id="iframeTextNews" readonly onfocus="selectTextNews();"><div id="algoal-news"></div>
+                    <textarea id="iframeTextNews" readonly onfocus="selectTextNews();"><!-- algoal365 news BEGIN -->
+<div id="algoal-news"></div>
 <script type="text/javascript" src="//economic-data.algoal365.com/widget/algoal-news.js" id="algoal-news-property">
     {
         height: '500px',
         width: '100%'
     }
-</script></textarea>
+</script>
+<!-- algoal365 news END --></textarea>
                 </div>
             </el-tab-pane>
         </el-tabs>
@@ -68,5 +72,4 @@ layout = "default"
     <script src="{{ 'assets/javascript/vue.js'|theme }}"></script>
     <script src="{{ 'assets/javascript/element-index.js'|theme }}"></script>
     <script type="text/javascript" src="/themes/demo/assets/js/add_to_website.js?v=976878"></script>
-    
 {% endput %}
