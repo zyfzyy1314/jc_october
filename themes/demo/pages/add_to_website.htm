@@ -13,13 +13,24 @@ layout = "default"
                 <el-row :gutter="20">
                     <el-col :span="24">
                         <el-card class="box-card">
-                            <iframe src="//economic-data.algoal365.com/economic_calendar_en.html" id="jcFrame" frameborder="0" allowtransparency="true" height="550px" width="100%"></iframe>
+                            <div id="algoal-calendar"></div>
+                            <script type="text/javascript" src="//economic-data.algoal365.com/widget/algoal-calendar.js" id="algoal-calendar-property">
+                                {
+                                    height: '600px',
+                                    width: '100%'
+                                }
+                            </script>
                         </el-card>
                         <el-button type="warning" icon="el-icon-plus" @click="addCalendar = true">Add to your website</el-button>
                     </el-col>
                     <el-col :span="24" v-show="addCalendar" style="margin-top: 20px;">
-                        <textarea id="iframeText" readonly onfocus="selectText();"><iframe src="//economic-data.algoal365.com/economic_calendar_en.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborde="0" allowtransparency="true"></iframe>
-<script src="//economic-data.algoal365.com/script/height.js"></script></textarea>
+                        <textarea id="iframeText" readonly onfocus="selectText();"><div id="algoal-calendar"></div>
+<script type="text/javascript" src="//economic-data.algoal365.com/widget/algoal-calendar.js" id="algoal-calendar-property">
+    {
+        height: '600px',
+        width: '100%'
+    }
+</script></textarea>
                     </el-col>
                 </el-row>
             </el-tab-pane>
@@ -27,14 +38,25 @@ layout = "default"
             <el-tab-pane label="Refer News" name="news">
                 <div style="width: 100%;">
                     <el-card class="box-card">
-                        <iframe src="//economic-data.algoal365.com/newsEnFrame.html" id="jcFrame" frameborder="0" allowtransparency="true" height="500px" width="100%"></iframe>
+                        <div id="algoal-news"></div>
+                        <script type="text/javascript" src="//economic-data.algoal365.com/widget/algoal-news.js" id="algoal-news-property">
+                            {
+                                height: '500px',
+                                width: '100%'
+                            }
+                        </script>
                     </el-card>
                     <el-button type="warning" icon="el-icon-plus" @click="addNews = true">Add to your website</el-button>
                 </div>
 
                 <div style="width: 100%;margin-top: 80px;" v-show="addNews">
-                    <textarea id="iframeTextNews" readonly onfocus="selectTextNews();"><iframe src="//economic-data.algoal365.com/newsEnFrame.html" width="100%" onload="changeFrameHeight()" id="jcFrame" frameborder="0" allowtransparency="true"></iframe>
-<script src="//economic-data.algoal365.com/script/height.js"></script></textarea>
+                    <textarea id="iframeTextNews" readonly onfocus="selectTextNews();"><div id="algoal-news"></div>
+<script type="text/javascript" src="//economic-data.algoal365.com/widget/algoal-news.js" id="algoal-news-property">
+    {
+        height: '500px',
+        width: '100%'
+    }
+</script></textarea>
                 </div>
             </el-tab-pane>
         </el-tabs>
@@ -46,4 +68,5 @@ layout = "default"
     <script src="{{ 'assets/javascript/vue.js'|theme }}"></script>
     <script src="{{ 'assets/javascript/element-index.js'|theme }}"></script>
     <script type="text/javascript" src="/themes/demo/assets/js/add_to_website.js?v=976878"></script>
+    
 {% endput %}
