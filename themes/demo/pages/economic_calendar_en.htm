@@ -79,8 +79,8 @@ layout = "default"
                         </el-form-item>
             
                         <el-form-item label="Region" style="padding-top: 10px;">
-                            <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">All
-                            </el-checkbox>
+                            <!-- <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">All
+                            </el-checkbox> -->
                             <el-checkbox-group v-model="temp.country" @change="handleCountryChange" :min="1">
                                 <el-checkbox label="Australia"></el-checkbox>
                                 <el-checkbox label="Canada"></el-checkbox>
